@@ -4,7 +4,7 @@
 [![npm](https://img.shields.io/npm/v/@noobsociety/nsds.svg)](https://www.npmjs.com/package/@noobsociety/nsds)
 [![License: MIT](https://img.shields.io/badge/license-MIT-2ea44f.svg)](LICENSE)
 
-**NSDS** is the reusable NoobSociety Design System package: design tokens, CSS primitives, React components, MUI theme source, pixel assets, and reference UI kits for building NoobSociety interfaces.
+**NSDS** is the reusable NoobSociety Design System package: design tokens, CSS primitives, React components, MUI theme runtime, pixel assets, and reference UI kits for building NoobSociety interfaces.
 
 The system is built around a simple rule: **Monokai colors are semantic foregrounds, dark surfaces are the world canvas.**
 
@@ -54,13 +54,19 @@ import '@noobsociety/nsds/tokens/colors.css';
 import logoUrl from '@noobsociety/nsds/assets/logo.png';
 ```
 
-Use the MUI theme in TypeScript-aware app bundlers:
+Install MUI peer dependencies before using the MUI entry:
 
-```ts
+```bash
+npm install @mui/material @emotion/react @emotion/styled
+```
+
+Use the MUI theme in app shells:
+
+```jsx
 import { NSThemeProvider, theme, NS } from '@noobsociety/nsds/mui';
 ```
 
-The MUI entry currently exports source TypeScript for TypeScript-aware app bundlers. A compiled MUI runtime package is planned for a future release.
+The MUI entry ships JavaScript runtime files and TypeScript declarations. The original TypeScript source stays in `mui-theme/` for reference and future migration work.
 
 ## Package Exports
 
@@ -68,7 +74,7 @@ The MUI entry currently exports source TypeScript for TypeScript-aware app bundl
 |---|---|
 | `@noobsociety/nsds` | Root React component entry |
 | `@noobsociety/nsds/react` | React components |
-| `@noobsociety/nsds/mui` | MUI theme source |
+| `@noobsociety/nsds/mui` | MUI theme runtime and types |
 | `@noobsociety/nsds/styles.css` | Full CSS entry |
 | `@noobsociety/nsds/package.json` | Package metadata |
 | `@noobsociety/nsds/components/primitives.css` | Component primitive classes only |
@@ -212,7 +218,7 @@ Status mapping:
 | `components/buttons/` | Button component, types, prompt, specimen |
 | `components/cards/` | FeatureCard and QuestCard components, types, prompts, specimens |
 | `components/navigation/` | SectionArrow component, types, specimen |
-| `mui-theme/` | MUI theme source and examples |
+| `mui-theme/` | MUI theme runtime, TypeScript source, and examples |
 | `assets/` | Logo, sprites, and world imagery |
 | `guidelines/` | Visual specimen cards |
 | `references/` | Polished `.dc.html` references |
@@ -233,10 +239,22 @@ Use patch versions for public package metadata or documentation polish. Use mino
 
 ## Roadmap
 
-- Convert the runtime components and MUI theme to TypeScript.
-- Add component tests for class names, variants, invalid props, and accessibility attributes.
-- Add visual regression coverage for specimen cards and UI kits.
-- Compile the MUI entry to JavaScript and declaration files before publishing.
+Priority order:
+
+1. Move the current JavaScript runtime to first-class TypeScript source with generated JavaScript and declaration output.
+2. Add component tests for class names, variants, invalid props, and accessibility attributes.
+3. Add package linting for npm exports, types, and install behavior.
+4. Add component documentation with live examples.
+5. Add visual regression coverage for specimen cards and UI kits.
+
+## Reference Standards
+
+- README quality: [Make a README](https://www.makeareadme.com/)
+- Changelog format: [Keep a Changelog](https://keepachangelog.com/)
+- Versioning: [Semantic Versioning](https://semver.org/)
+- Release workflow: [Changesets](https://github.com/changesets/changesets)
+- Component documentation: [Storybook](https://storybook.js.org/)
+- License guidance: [Choose a License](https://choosealicense.com/)
 
 ## Repository
 

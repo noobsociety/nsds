@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import React from 'react';
 
-import { Button, FeatureCard, QuestCard, SectionArrow } from '../index.js';
-import * as ReactEntry from '../components/react/index.js';
+import { Button, FeatureCard, QuestCard, SectionArrow } from '@noobsociety/nsds';
+import * as ReactEntry from '@noobsociety/nsds/react';
+import { NS, NSThemeProvider, theme } from '@noobsociety/nsds/mui';
 
 for (const name of ['Button', 'FeatureCard', 'QuestCard', 'SectionArrow']) {
   assert.equal(typeof ReactEntry[name], 'function', `${name} must be exported from /react`);
@@ -47,4 +48,12 @@ assert.equal(arrow.props.href, '#next');
 assert.equal(arrow.props['aria-label'], 'Next section');
 assert.match(arrow.props.className, /\bns-section-arrow\b/);
 
-console.log('React smoke imports passed.');
+assert.equal(NS.gold, '#e6db74');
+assert.equal(theme.palette.mode, 'dark');
+assert.equal(theme.palette.ns.gold, NS.gold);
+assert.equal(theme.spacing(4), '1rem');
+
+const provider = NSThemeProvider({ children: React.createElement('main') });
+assert.equal(React.isValidElement(provider), true);
+
+console.log('Public entry smoke imports passed.');

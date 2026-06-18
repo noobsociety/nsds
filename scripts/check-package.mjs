@@ -43,7 +43,10 @@ const requiredFiles = [
   'components/react/index.js',
   'components/react/index.d.ts',
   'components/primitives.css',
-  'mui-theme/index.ts',
+  'mui-theme/index.js',
+  'mui-theme/index.d.ts',
+  'mui-theme/theme.js',
+  'mui-theme/ThemeProvider.js',
   'tokens/colors.css',
   'tokens/typography.css',
 ];
@@ -61,9 +64,11 @@ for (const file of requiredFiles) {
   assert(exists(file), `missing required file: ${file}`);
 }
 
-for (const file of ['CHANGELOG.md', 'CONTRIBUTING.md', 'LICENSE', 'SECURITY.md', 'scripts']) {
+for (const file of ['CHANGELOG.md', 'CONTRIBUTING.md', 'LICENSE', 'SECURITY.md']) {
   assert(pkg.files?.includes(file), `package files must include ${file}`);
 }
+
+assert(!pkg.files?.includes('scripts'), 'package files should not ship internal scripts');
 
 function checkExportTarget(target, label) {
   if (typeof target === 'string') {
