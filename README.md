@@ -1,18 +1,22 @@
 # NoobSociety Design System
 
+[![CI](https://github.com/noobsociety/nsds/actions/workflows/ci.yml/badge.svg)](https://github.com/noobsociety/nsds/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/@noobsociety/nsds.svg)](https://www.npmjs.com/package/@noobsociety/nsds)
+[![License: MIT](https://img.shields.io/badge/license-MIT-2ea44f.svg)](LICENSE)
+
 **NSDS** is the reusable NoobSociety Design System package: design tokens, CSS primitives, React components, MUI theme source, pixel assets, and reference UI kits for building NoobSociety interfaces.
 
 The system is built around a simple rule: **Monokai colors are semantic foregrounds, dark surfaces are the world canvas.**
 
 ## Install
 
-Install from npm after publish:
+Install from npm:
 
 ```bash
 npm install @noobsociety/nsds
 ```
 
-Use a local workspace package before publish:
+Use a local workspace package while developing against this repository:
 
 ```json
 {
@@ -56,7 +60,7 @@ Use the MUI theme in TypeScript-aware app bundlers:
 import { NSThemeProvider, theme, NS } from '@noobsociety/nsds/mui';
 ```
 
-The MUI entry currently exports source TypeScript. Add a build step before publishing to consumers that require plain JavaScript MUI runtime files.
+The MUI entry currently exports source TypeScript for TypeScript-aware app bundlers. A compiled MUI runtime package is planned for a future release.
 
 ## Package Exports
 
@@ -215,8 +219,27 @@ Status mapping:
 | `ui-kits/` | Complete UI kits |
 | `SKILL.md` | Agent skill definition |
 
+## Development
+
+Run the package checks before publishing:
+
+```bash
+npm install
+npm run check
+npm run release:dry-run
+```
+
+Use patch versions for public package metadata or documentation polish. Use minor versions for new components, tokens, or breaking-adjacent behavior.
+
+## Roadmap
+
+- Convert the runtime components and MUI theme to TypeScript.
+- Add component tests for class names, variants, invalid props, and accessibility attributes.
+- Add visual regression coverage for specimen cards and UI kits.
+- Compile the MUI entry to JavaScript and declaration files before publishing.
+
 ## Repository
 
 Source repository: `https://github.com/noobsociety/nsds`
 
-The current package is ready for local reuse and npm publication as `@noobsociety/nsds@0.1.1`. License is intentionally unset until a license is chosen.
+The current package is public on npm as `@noobsociety/nsds`. NSDS is released under the MIT license.
