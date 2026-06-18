@@ -1,6 +1,6 @@
 {
   "name": "@noobsociety/nsds",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "NoobSociety Design System: tokens, CSS primitives, React components, MUI theme source, assets, and references.",
   "keywords": [
     "design-system",

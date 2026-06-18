@@ -219,4 +219,4 @@ Status mapping:
 
 Source repository: `https://github.com/noobsociety/nsds`
 
-The current package is ready for local reuse and npm publication as `@noobsociety/nsds@0.1.0`. License is intentionally unset until a license is chosen.
+The current package is ready for local reuse and npm publication as `@noobsociety/nsds@0.1.1`. License is intentionally unset until a license is chosen.
