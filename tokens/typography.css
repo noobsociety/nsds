@@ -1,0 +1,43 @@
+/* NoobSociety — Typography tokens */
+:root {
+  /* ── Font families ────────────────────────────────────────── */
+  --ns-font-body:  'Inter', system-ui, sans-serif;
+  --ns-font-pixel: 'Press Start 2P', system-ui, sans-serif;
+
+  /* ── Type scale ───────────────────────────────────────────── */
+  --ns-text-xs:   0.75rem;   /* 12px */
+  --ns-text-sm:   0.875rem;  /* 14px */
+  --ns-text-base: 1rem;      /* 16px */
+  --ns-text-lg:   1.125rem;  /* 18px */
+  --ns-text-xl:   1.25rem;   /* 20px */
+  --ns-text-2xl:  1.5rem;    /* 24px */
+  --ns-text-3xl:  1.875rem;  /* 30px */
+  --ns-text-4xl:  2.25rem;   /* 36px */
+
+  /* ── Pixel font scale ─────────────────────────────────────── */
+  --ns-pixel-2xs: 7px;
+  --ns-pixel-xs:  8px;
+  --ns-pixel-sm:  9px;
+  --ns-pixel-base: 11px;
+  --ns-pixel-md:  12px;
+  --ns-pixel-lg:  13px;
+  --ns-pixel-xl:  1.6rem;    /* hero accent title */
+  --ns-pixel-2xl: clamp(2rem, 1rem + 3vw, 3.5rem);  /* hero title */
+  --ns-title-section: clamp(1.8rem, 1rem + 2vw, 2.4rem);
+
+  /* ── Line heights ─────────────────────────────────────────── */
+  --ns-leading-tight:  1.08;
+  --ns-leading-snug:   1.35;
+  --ns-leading-normal: 1.45;
+  --ns-leading-relaxed: 1.6;
+  --ns-leading-pixel:  1.5;  /* for Press Start 2P */
+
+  /* ── Font weights ─────────────────────────────────────────── */
+  --ns-weight-normal:   400;
+  --ns-weight-medium:   500;
+  --ns-weight-semibold: 600;
+  --ns-weight-bold:     700;
+
+  /* ── Section eyebrow ─────────────────────────────────────────*/
+  /* font: 700 13px/1 var(--ns-font-body); letter-spacing: .18em; text-transform: uppercase; color: var(--ns-gold) */
+}

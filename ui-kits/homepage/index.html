@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NoobSociety — Homepage UI Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @keyframes ns-bob {0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-6px)}}
+  @keyframes ns-bobp {0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+  @keyframes ns-blink {0%,55%{opacity:1}56%,100%{opacity:0}}
+  @keyframes ns-twinkle {0%,100%{opacity:.7}50%{opacity:.35}}
+  @keyframes ns-arrow {0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(5px)}}
+  @keyframes ns-live {0%{box-shadow:0 0 0 0 rgba(166,226,46,.7)}70%{box-shadow:0 0 0 7px rgba(166,226,46,0)}100%{box-shadow:0 0 0 0 rgba(166,226,46,0)}}
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:4rem}
+  body{margin:0;min-height:100vh;font-family:'Inter',system-ui,sans-serif;color:#f8f8f2;line-height:1.6;-webkit-font-smoothing:antialiased;background-color:#272822;background-image:radial-gradient(ellipse 80% 55% at 88% 2%, rgba(249,38,114,.11), transparent 58%),radial-gradient(ellipse 55% 45% at 8% 12%, rgba(174,129,255,.07), transparent 52%),linear-gradient(180deg,#272822 0%,#1e1f1a 100%);background-attachment:fixed}
+  ::selection{background:rgba(249,38,114,.28);color:#f8f8f2}
+  a{color:#e6db74;text-decoration:none}
+  /* Portrait phone 375×667 */
+  @media (max-width:430px){
+    [data-r="site-nav"]{display:none!important}
+    [data-r="play-btn-h"]{margin-left:auto!important}
+    [data-r="hero-grid"]{grid-template-columns:1fr!important;gap:1.5rem!important}
+    [data-r="hero-art"],[data-r="hero-lede"],[data-r="hero-meta"]{display:none!important}
+    [data-r="hero-cta"]{flex-direction:column!important}
+    [data-r="hero-cta"]>a{width:100%!important;justify-content:center!important;box-sizing:border-box!important}
+    [data-r="feat-grid"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+    [data-r="quest-grid"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+    [data-r="footer-grid"]{grid-template-columns:1fr!important;gap:32px!important}
+    [data-r="cta-actions"]{flex-direction:column!important}
+    [data-r="cta-actions"]>a{width:100%!important;justify-content:center!important;box-sizing:border-box!important}
+    #hero h1{font-size:2rem!important;line-height:1.1!important}
+    #hero,#why,#world,#roadmap,#play{padding-top:2.5rem!important;padding-bottom:4.5rem!important}
+  }
+  /* Landscape phone 667×375 */
+  @media (orientation:landscape) and (max-height:430px){
+    [data-r="hero-art"],[data-r="hero-lede"],[data-r="hero-meta"]{display:none!important}
+    [data-r="feat-grid"]{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+    [data-r="quest-grid"]{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+    #hero h1{font-size:2rem!important}
+    #hero,#why,#world,#roadmap,#play,footer{min-height:0!important}
+    #hero,#why,#world,#roadmap,#play{padding-top:1.75rem!important;padding-bottom:3.5rem!important}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+<style>
+/* ── Hover states (replaces DC style-hover) ───────────────────── */
+/* Feature cards */
+#why li:hover {
+  border-color: rgba(230,219,116,.55) !important;
+  transform: translateY(-4px);
+  box-shadow: 0 16px 34px rgba(0,0,0,.38) !important;
+}
+/* Buttons */
+a[style*="background:#e6db74"]:hover { background: #f4f099 !important; }
+a[style*="border:1px solid rgba(248"]:hover {
+  color: #1c1c17 !important;
+  background: #e6db74 !important;
+  border-color: #e6db74 !important;
+}
+/* Nav links */
+nav a[style*="border-bottom"]:hover { color: #e6db74 !important; }
+/* Footer links */
+footer a[style*="color:#a8a28c"]:hover { color: #f8f8f2 !important; }
+</style>
+</head>
+<body>
+<div>
+
+<header style="position:sticky;top:0;z-index:50;height:4rem;background:rgba(30,31,26,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.12)">
+  <div style="display:flex;align-items:center;height:100%;width:100%;max-width:1080px;margin:0 auto;padding:0 clamp(1rem, 4vw, 2rem)">
+    <a href="#home" aria-label="NoobSociety — back to top" style="display:inline-flex;align-items:center;gap:0.75rem;text-decoration:none">
+      <span style="position:relative;display:flex">
+        <img src="../../assets/logo.png" alt="" width="152" height="147" style="height:32px;width:auto;display:block;filter:drop-shadow(0 2px 3px rgba(0,0,0,.45))">
+        <span style="position:absolute;top:-0.125rem;right:-0.125rem;width:0.5rem;height:0.5rem;background:#f92672;border-radius:50%;border:2px solid #272822"></span>
+      </span>
+      <span style="font-family:'Press Start 2P',system-ui,sans-serif;font-size:13px;color:#f8f8f2">Noob<b style="color:#e6db74">Society</b></span>
+    </a>
+    <nav aria-label="Primary" style="margin-left:auto;margin-right:2rem">
+      <ul style="display:flex;gap:2rem;list-style:none;margin:0;padding:0">
+        <li><a data-nav="why" href="#why" style="color:#f8f8f2;font-size:0.875rem;font-weight:500;padding-bottom:0.25rem;border-bottom:2px solid transparent;transition:.15s ease">Why</a></li>
+        <li><a data-nav="world" href="#world" style="color:#f8f8f2;font-size:0.875rem;font-weight:500;padding-bottom:0.25rem;border-bottom:2px solid transparent;transition:.15s ease">World</a></li>
+        <li><a data-nav="roadmap" href="#roadmap" style="color:#f8f8f2;font-size:0.875rem;font-weight:500;padding-bottom:0.25rem;border-bottom:2px solid transparent;transition:.15s ease">Roadmap</a></li>
+        <li><a href="https://github.com/noobsociety/noobsociety.com/tree/main/docs/devblog" style="color:#f8f8f2;font-size:0.875rem;font-weight:500;padding-bottom:0.25rem;border-bottom:2px solid transparent;transition:.15s ease">Devblog</a></li>
+      </ul>
+    </nav>
+    <a href="https://noobsociety.com" style="display:inline-flex;align-items:center;gap:.5em;font-family:'Press Start 2P',system-ui,sans-serif;font-size:9px;color:#1c1c17;background:#e6db74;border:2px solid #cabb50;border-radius:8px;padding:0.625rem 0.875rem;box-shadow:0 3px 0 #b5a83f;text-decoration:none;white-space:nowrap;transition:.15s ease"><svg viewBox="0 0 10 10" width="10" height="10" aria-hidden="true" fill="currentColor" style="display:block;flex-shrink:0"><polygon points="1,0.5 9.5,5 1,9.5"/></svg>Play</a>
+  </div>
+</header>
+
+<main id="home">
+
+<!-- HERO -->
+<section id="hero" data-screen-label="Hero" style="position:relative;overflow:hidden;min-height:calc(100svh - 4rem);display:flex;flex-direction:column;justify-content:center;padding:clamp(2.5rem, 8svh, 4rem) 0 clamp(4rem, 10svh, 5.5rem);border-bottom:1px solid rgba(255,255,255,.1)">
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;background:linear-gradient(90deg, rgba(30,31,26,.97) 0%, rgba(30,31,26,.75) 52%, rgba(30,31,26,.2) 100%),linear-gradient(180deg, rgba(30,31,26,.55) 0%, rgba(249,38,114,.04) 100%),url('../../assets/bg.png') center 34% / cover no-repeat">
+    <div style="position:absolute;top:14%;right:14%;width:118px;height:118px;border-radius:50%;background:#cec8b0;opacity:.72;box-shadow:inset -12px -6px 24px rgba(0,0,0,.6),0 0 40px rgba(209,217,230,.2)"></div>
+    <div style="position:absolute;inset:0;opacity:.6;animation:ns-twinkle 5.5s ease-in-out infinite;background-image:radial-gradient(1px 1px at 10% 12%,#fff,transparent),radial-gradient(1px 1px at 22% 32%,#fff,transparent),radial-gradient(1.5px 1.5px at 34% 68%,#fff,transparent),radial-gradient(1px 1px at 52% 22%,#fff,transparent),radial-gradient(1px 1px at 68% 78%,#fff,transparent),radial-gradient(1.5px 1.5px at 82% 40%,#fff,transparent),radial-gradient(1px 1px at 90% 14%,#fff,transparent),radial-gradient(1px 1px at 44% 54%,#fff,transparent);background-size:420px 420px"></div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg, rgba(0,0,0,.1), rgba(0,0,0,.1) 1px, transparent 1px, transparent 2px)"></div>
+  </div>
+
+  <div style="position:relative;z-index:1;width:100%;max-width:1080px;margin:0 auto;padding:0 clamp(1rem, 4vw, 2rem);display:grid;grid-template-columns:minmax(0,1.08fr) minmax(15rem,.72fr);gap:clamp(1.5rem, 4vw, 3rem);align-items:center">
+    <div style="max-width:36rem">
+      <p style="display:flex;align-items:center;gap:8px;margin:0 0 1rem;font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#e6db74"><svg viewBox="0 0 10 10" width="10" height="10" aria-hidden="true" fill="#e6db74" style="display:block;flex-shrink:0"><polygon points="5,0.5 6.2,3.8 9.8,3.8 6.9,5.9 8,9.2 5,7.1 2,9.2 3.1,5.9 0.2,3.8 3.8,3.8"/></svg>Society of Beginners</p>
+      <h1 style="margin:0 0 1.125rem;font-family:'Press Start 2P',system-ui,sans-serif;font-size:3.45rem;line-height:1.08;text-wrap:balance">
+        <span style="display:block;color:#f8f8f2;text-shadow:3px 4px 0 rgba(0,0,0,.55),0 0 22px rgba(102,217,232,.22)">Noob</span>
+        <span style="display:block;color:#e6db74;text-shadow:3px 4px 0 rgba(0,0,0,.55),0 0 30px rgba(230,219,116,.3)">Society</span>
+      </h1>
+      <p style="margin:0 0 0.875rem;font-size:1.25rem;font-weight:500;color:#f8f8f2;line-height:1.4">Express identity and portfolio in a shared world.</p>
+      <p style="margin:0 0 1.875rem;max-width:34rem;font-size:1rem;color:#a8a28c;line-height:1.58;text-wrap:pretty">The site is a world, pages are maps, your cursor is a character. Walk to objects, click to open overlays — no new tabs.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.875rem;margin-bottom:1.5rem">
+        <a href="https://noobsociety.com" style="display:inline-flex;align-items:center;gap:.6em;font-family:'Press Start 2P',system-ui,sans-serif;font-size:12px;color:#1c1c17;background:#e6db74;border:2px solid #cabb50;border-radius:9px;padding:1rem 1.625rem;box-shadow:0 3px 0 #b5a83f;text-decoration:none;white-space:nowrap;transition:.15s ease"><svg viewBox="0 0 10 10" width="10" height="10" aria-hidden="true" fill="currentColor" style="display:block;flex-shrink:0"><polygon points="1,0.5 9.5,5 1,9.5"/></svg>Enter the world</a>
+        <a href="https://github.com/noobsociety/noobsociety.com" style="display:inline-flex;align-items:center;gap:.6em;font-family:'Press Start 2P',system-ui,sans-serif;font-size:12px;color:#e6db74;background:transparent;border:1px solid rgba(248,248,242,.45);border-radius:9px;padding:1rem 1.625rem;text-decoration:none;white-space:nowrap;transition:.15s ease"><svg viewBox="0 0 10 10" width="10" height="10" aria-hidden="true" fill="currentColor" style="display:block;flex-shrink:0"><polygon points="5,0.5 6.2,3.8 9.8,3.8 6.9,5.9 8,9.2 5,7.1 2,9.2 3.1,5.9 0.2,3.8 3.8,3.8"/></svg>Star on GitHub</a>
+      </div>
+      <p style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:#75715e;margin:0"><span aria-hidden="true" style="width:8px;height:8px;background:#a6e22e;border-radius:50%;animation:ns-live 2.4s ease-in-out infinite"></span>Live now. No download or sign-up.</p>
+    </div>
+
+    <div aria-hidden="true" style="display:flex;justify-content:center">
+      <div style="position:relative;width:min(340px,78vw);aspect-ratio:4/5;border-radius:12px;border:1px solid rgba(255,255,255,.22);overflow:hidden;background:radial-gradient(70% 42% at 50% 92%, rgba(130,180,40,.4), transparent 70%),linear-gradient(180deg, rgba(26,27,22,.88) 0%, rgba(32,33,27,.88) 100%);box-shadow:0 24px 64px rgba(0,0,0,.55),inset 0 0 60px rgba(0,0,0,.35)">
+        <span style="position:absolute;top:10px;left:10px;width:22px;height:22px;border:3px solid #e6db74;border-right:0;border-bottom:0;z-index:2"></span>
+        <span style="position:absolute;top:10px;right:10px;width:22px;height:22px;border:3px solid #e6db74;border-left:0;border-bottom:0;z-index:2"></span>
+        <span style="position:absolute;bottom:10px;left:10px;width:22px;height:22px;border:3px solid #e6db74;border-right:0;border-top:0;z-index:2"></span>
+        <span style="position:absolute;bottom:10px;right:10px;width:22px;height:22px;border:3px solid #e6db74;border-left:0;border-top:0;z-index:2"></span>
+        <span style="position:absolute;top:18px;left:50%;transform:translateX(-50%);padding:6px 10px;font-family:'Press Start 2P',system-ui,sans-serif;font-size:8px;color:#f8f8f2;background:rgba(30,31,26,.88);border:1px solid rgba(255,255,255,.12);border-radius:4px;white-space:nowrap">Visitor · Lv 1</span>
+        <img src="../../assets/bloop.png" alt="" style="position:absolute;bottom:16%;left:20%;width:18%;height:auto;image-rendering:pixelated;filter:drop-shadow(0 6px 5px rgba(0,0,0,.45));animation:ns-bobp 2.7s ease-in-out infinite .4s">
+        <img src="../../assets/hero.png" alt="" style="position:absolute;bottom:15%;left:50%;width:45%;height:auto;transform:translateX(-50%);image-rendering:pixelated;filter:drop-shadow(0 10px 8px rgba(0,0,0,.5));animation:ns-bob 3.6s ease-in-out infinite">
+        <span style="position:absolute;bottom:9%;left:50%;transform:translateX(-50%);font-family:'Press Start 2P',system-ui,sans-serif;font-size:9px;letter-spacing:.1em;color:#e6db74;animation:ns-blink 1.5s steps(1) infinite">Press Start</span>
+      </div>
+    </div>
+  </div>
+
+  <a href="#why" aria-label="Go to why NoobSociety is different" style="position:absolute;left:50%;bottom:1.5rem;transform:translateX(-50%);width:2.125rem;height:2.125rem;display:grid;place-items:center;color:#1c1c17;background:linear-gradient(180deg,#f4f099,#e6db74);border:2px solid rgba(255,255,255,.72);border-radius:50%;box-shadow:0 0 0 4px rgba(230,219,116,.12),0 12px 28px rgba(0,0,0,.36);text-decoration:none;font-size:13px;animation:ns-arrow 2s ease-in-out infinite"><svg viewBox="0 0 12 8" width="12" height="12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><polyline points="1,1.5 6,6.5 11,1.5"/></svg></a>
+</section>
+
+<!-- WHY -->
+<section id="why" data-screen-label="Why" style="position:relative;min-height:calc(100svh - 4rem);display:flex;flex-direction:column;justify-content:center;padding:clamp(2.5rem, 8svh, 4rem) 0 clamp(4rem, 10svh, 5.5rem);border-bottom:1px solid rgba(255,255,255,.1)">
+  <div style="width:100%;max-width:1080px;margin:0 auto;padding:0 clamp(1rem, 4vw, 2rem)">
+    <header style="margin-bottom:2rem">
+      <p style="display:flex;align-items:center;gap:8px;margin:0 0 0.875rem;font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#e6db74"><svg viewBox="0 0 10 10" width="10" height="10" aria-hidden="true" fill="#e6db74" style="display:block;flex-shrink:0"><polygon points="5,0.5 6.2,3.8 9.8,3.8 6.9,5.9 8,9.2 5,7.1 2,9.2 3.1,5.9 0.2,3.8 3.8,3.8"/></svg>Why</p>
+      <h2 style="margin:0;font-size:clamp(1.8rem, 1rem + 2vw, 2.4rem);font-weight:700;line-height:1.14;color:#f8f8f2;text-wrap:balance">Not a card grid. A world.</h2>
+      <p style="margin:0.75rem 0 0;font-size:1.05rem;color:#a8a28c;text-wrap:pretty">For developers, designers, and makers who want a portfolio to discover, not only read.</p>
+    </header>
+    <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(0.75rem, 2vw, 1.5rem)">
+      <li style="position:relative;display:flex;flex-direction:column;gap:1.125rem;min-height:14rem;padding:clamp(1rem, 2vw, 1.125rem);border-radius:10px;background:rgba(30,31,26,.75);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:none;transition:.18s ease">
+        <span style="display:flex;align-items:center;justify-content:center;width:42px;height:42px;background:#32332b;border-radius:6px;color:#e6db74"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M5 2.6 L5 18.6 L9.2 14.7 L12 20.8 L14.4 19.6 L11.6 13.7 L17.4 13.7 Z" fill="currentColor"/></svg></span>
+        <div><h3 style="margin:0 0 0.5625rem;font-family:'Press Start 2P',system-ui,sans-serif;font-size:11px;line-height:1.45;color:#f8f8f2">The site is a world</h3><p style="margin:0;font-size:0.875rem;color:#a8a28c;line-height:1.45;text-wrap:pretty">Pages are maps, links are interactables. Clicks move your character and open overlays — not a new tab.</p></div>
+        <span style="position:absolute;top:14px;right:14px;font-family:'Press Start 2P',system-ui,sans-serif;font-size:8px;color:#e6db74;padding:4px 6px;border:1px solid rgba(230,219,116,.26);border-radius:4px;background:rgba(230,219,116,.08)">Spatial</span>
+      </li>
+      <li style="position:relative;display:flex;flex-direction:column;gap:1.125rem;min-height:14rem;padding:clamp(1rem, 2vw, 1.125rem);border-radius:10px;background:rgba(30,31,26,.75);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:none;transition:.18s ease">
+        <span style="display:flex;align-items:center;justify-content:center;width:42px;height:42px;background:#32332b;border-radius:6px;color:#f92672"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M13 2.5 L5 13.6 H11 L10.2 21.5 L19 9.4 H12.4 Z" fill="currentColor"/></svg></span>
+        <div><h3 style="margin:0 0 0.5625rem;font-family:'Press Start 2P',system-ui,sans-serif;font-size:11px;line-height:1.45;color:#f8f8f2">One typed bridge</h3><p style="margin:0;font-size:0.875rem;color:#a8a28c;line-height:1.45;text-wrap:pretty">A map object in Phaser fires the matching React overlay. Spatial play and UI keep a clear separation.</p></div>
+        <span style="position:absolute;top:14px;right:14px;font-family:'Press Start 2P',system-ui,sans-serif;font-size:8px;color:#f92672;padding:4px 6px;border:1px solid rgba(249,38,114,.26);border-radius:4px;background:rgba(249,38,114,.08)">Live</span>
+      </li>
+      <li style="position:relative;display:flex;flex-direction:column;gap:1.125rem;min-height:14rem;padding:clamp(1rem, 2vw, 1.125rem);border-radius:10px;background:rgba(30,31,26,.75);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:none;transition:.18s ease">
+        <span style="display:flex;align-items:center;justify-content:center;width:42px;height:42px;background:#32332b;border-radius:6px;color:#ae81ff"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3.5 C6.9 3.5 3 7.1 3 11.7 C3 15.1 5.5 17.2 8.3 17.2 C9.9 17.2 10.4 16 11.7 16 C12.8 16 13.1 17.3 14.7 17.3 C18 17.3 21 14.7 21 11.1 C21 6.8 17 3.5 12 3.5 Z" stroke-linejoin="round"/><circle cx="8" cy="9" r="1.1" fill="currentColor" stroke="none"/><circle cx="12" cy="7.4" r="1.1" fill="currentColor" stroke="none"/><circle cx="16" cy="9" r="1.1" fill="currentColor" stroke="none"/></svg></span>
+        <div><h3 style="margin:0 0 0.5625rem;font-family:'Press Start 2P',system-ui,sans-serif;font-size:11px;line-height:1.45;color:#f8f8f2">Sprite-forward</h3><p style="margin:0;font-size:0.875rem;color:#a8a28c;line-height:1.45;text-wrap:pretty">Clear silhouettes, readable at a glance. Space, objects, and character designed to read as one coherent portfolio.</p></div>
+        <span style="position:absolute;top:14px;right:14px;font-family:'Press Start 2P',system-ui,sans-serif;font-size:8px;color:#ae81ff;padding:4px 6px;border:1px solid rgba(174,129,255,.26);border-radius:4px;background:rgba(174,129,255,.08)">Personal</span>
+      </li>
+      <li style="position:relative;display:flex;flex-direction:column;gap:1.125rem;min-height:14rem;padding:clamp(1rem, 2vw, 1.125rem);border-radius:10px;background:rgba(30,31,26,.75);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:none;transition:.18s ease">
+        <span style="display:flex;align-items:center;justify-content:center;width:42px;height:42px;background:#32332b;border-radius:6px;color:#66d9e8"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 6.5 C9.5 4.9 6 4.6 3.6 5.5 V18.7 C6 17.8 9.5 18.1 12 19.8 C14.5 18.1 18 17.8 20.4 18.7 V5.5 C18 4.6 14.5 4.9 12 6.5 Z"/><path d="M12 6.5 V19.8"/></svg></span>
+        <div><h3 style="margin:0 0 0.5625rem;font-family:'Press Start 2P',system-ui,sans-serif;font-size:11px;line-height:1.45;color:#f8f8f2">Built in the open</h3><p style="margin:0;font-size:0.875rem;color:#a8a28c;line-height:1.45;text-wrap:pretty">CI on every push. Cloudflare Pages deploy. Milestones, issues, and devblog — all visible.</p></div>
+        <span style="position:absolute;top:14px;right:14px;font-family:'Press Start 2P',system-ui,sans-serif;font-size:8px;color:#66d9e8;padding:4px 6px;border:1px solid rgba(102,217,232,.26);border-radius:4px;background:rgba(102,217,232,.08)">Open</span>
+      </li>
+    </ul>
+  </div>
+  <a href="#world" aria-label="Go to the live world preview" style="position:absolute;left:50%;bottom:1.5rem;transform:translateX(-50%);width:2.125rem;height:2.125rem;display:grid;place-items:center;color:#1c1c17;background:linear-gradient(180deg,#f4f099,#e6db74);border:2px solid rgba(255,255,255,.72);border-radius:50%;box-shadow:0 0 0 4px rgba(230,219,116,.12),0 12px 28px rgba(0,0,0,.36);text-decoration:none;font-size:13px;animation:ns-arrow 2s ease-in-out infinite"><svg viewBox="0 0 12 8" width="12" height="12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><polyline points="1,1.5 6,6.5 11,1.5"/></svg></a>
+</section>
+
+<!-- WORLD -->
+<section id="world" data-screen-label="World" style="position:relative;min-height:calc(100svh - 4rem);display:flex;flex-direction:column;justify-content:center;padding:clamp(2.5rem, 8svh, 4rem) 0 clamp(4rem, 10svh, 5.5rem);border-bottom:1px solid rgba(255,255,255,.1)">
+  <div style="width:100%;max-width:1080px;margin:0 auto;padding:0 clamp(1rem, 4vw, 2rem);display:flex;flex-direction:column">
+    <header style="margin-bottom:2rem">
+      <p style="display:flex;align-items:center;gap:8px;margin:0 0 0.875rem;font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#e6db74"><svg viewBox="0 0 10 10" width="10" height="10" aria-hidden="true" fill="#e6db74" style="display:block;flex-shrink:0"><polygon points="5,0.5 6.2,3.8 9.8,3.8 6.9,5.9 8,9.2 5,7.1 2,9.2 3.1,5.9 0.2,3.8 3.8,3.8"/></svg>World</p>
+      <h2 style="margin:0;font-size:clamp(1.8rem, 1rem + 2vw, 2.4rem);font-weight:700;line-height:1.14;color:#f8f8f2;text-wrap:balance">The plaza is live.</h2>
+      <p style="margin:0.75rem 0 0;font-size:1.05rem;color:#a8a28c;text-wrap:pretty">Isometric floor, sprite grid, camera, and React overlays — shipped and running.</p>
+    </header>
+    <figure style="margin:0;width:100%;border-radius:10px;overflow:hidden;background:rgba(30,31,26,.88);border:1px solid rgba(255,255,255,.22);box-shadow:0 20px 50px rgba(0,0,0,.5)">
+      <figcaption style="display:flex;align-items:center;gap:0.75rem;padding:0.6875rem 0.875rem;background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.12)">
+        <span aria-hidden="true" style="display:flex;gap:0.375rem"><i style="width:10px;height:10px;border-radius:50%;background:#f92672;display:block"></i><i style="width:10px;height:10px;border-radius:50%;background:#e6db74;display:block"></i><i style="width:10px;height:10px;border-radius:50%;background:#a6e22e;display:block"></i></span>
+        <span style="font-family:'Press Start 2P',system-ui,sans-serif;font-size:8px;color:#75715e;letter-spacing:.05em">the-plaza.live</span>
+      </figcaption>
+      <img src="../../assets/plaza.png" width="1280" height="728" loading="lazy" decoding="async" alt="The NoobSociety plaza with a pixel-art character, notice boards, scenery, and an MMO-style HUD." style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center top;max-block-size:min(26rem,58vh);display:block">
+    </figure>
+  </div>
+  <a href="#roadmap" aria-label="Go to the roadmap" style="position:absolute;left:50%;bottom:1.5rem;transform:translateX(-50%);width:2.125rem;height:2.125rem;display:grid;place-items:center;color:#1c1c17;background:linear-gradient(180deg,#f4f099,#e6db74);border:2px solid rgba(255,255,255,.72);border-radius:50%;box-shadow:0 0 0 4px rgba(230,219,116,.12),0 12px 28px rgba(0,0,0,.36);text-decoration:none;font-size:13px;animation:ns-arrow 2s ease-in-out infinite"><svg viewBox="0 0 12 8" width="12" height="12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><polyline points="1,1.5 6,6.5 11,1.5"/></svg></a>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap" data-screen-label="Roadmap" style="position:relative;min-height:calc(100svh - 4rem);display:flex;flex-direction:column;justify-content:center;padding:clamp(2.5rem, 8svh, 4rem) 0 clamp(4rem, 10svh, 5.5rem);border-bottom:1px solid rgba(255,255,255,.1)">
+  <div style="width:100%;max-width:1080px;margin:0 auto;padding:0 clamp(1rem, 4vw, 2rem)">
+    <header style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:1.75rem">
+      <div style="flex:1;min-width:0"><p style="display:flex;align-items:center;gap:8px;margin:0 0 0.875rem;font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#e6db74"><svg viewBox="0 0 10 10" width="10" height="10" aria-hidden="true" fill="#e6db74" style="display:block;flex-shrink:0"><polygon points="5,0.5 6.2,3.8 9.8,3.8 6.9,5.9 8,9.2 5,7.1 2,9.2 3.1,5.9 0.2,3.8 3.8,3.8"/></svg>Roadmap</p>
+        <h2 style="margin:0;font-size:clamp(1.8rem, 1rem + 2vw, 2.4rem);font-weight:700;line-height:1.14;color:#f8f8f2;text-wrap:balance">Design gates.</h2>
+        <p style="margin:0.75rem 0 0;font-size:1.05rem;color:#a8a28c;text-wrap:pretty">Earlier gates must hold before later ones unlock.</p>
+      </div>
+      <div style="min-width:220px;flex:0 0 auto">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:0.75rem;margin-bottom:0.5rem">
+          <span style="font-family:'Press Start 2P',system-ui,sans-serif;font-size:8px;color:#a6e22e;letter-spacing:.05em">3 holding · 2 building</span>
+          <span style="font-family:'Press Start 2P',system-ui,sans-serif;font-size:8px;color:#75715e">of 9</span>
+        </div>
+        <div style="height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;border:1px solid rgba(255,255,255,.1);position:relative"><div style="position:absolute;inset-block:0;left:0;width:33%;background:#a6e22e"></div><div style="position:absolute;inset-block:0;left:33%;width:22%;background:repeating-linear-gradient(45deg,#fd971f,#fd971f 4px,#c96f00 4px,#c96f00 8px)"></div></div>
+      </div>
+    </header>
+    <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(0.75rem, 2vw, 1.5rem)">
+      <li style="display:grid;grid-template-columns:auto 1fr;align-items:start;gap:0.875rem;padding:clamp(0.875rem, 2vw, 1.25rem);border-radius:9px;background:rgba(30,31,26,.75);border:1px solid rgba(255,255,255,.12);border-left:4px solid #a6e22e;backdrop-filter:blur(8px)">
+        <span aria-hidden="true" style="display:flex;align-items:center;justify-content:center;width:26px;height:26px;background:#32332b;border-radius:50%;font-family:'Press Start 2P',system-ui,sans-serif;font-size:9px;color:#a6e22e">✓</span>
+        <div style="display:flex;flex-direction:column;flex:1"><p style="margin:0 0 0.375rem;font-family:'Press Start 2P',system-ui,sans-serif;font-size:9.5px;line-height:1.5;color:#f8f8f2">Gate 1 · Space</p><p style="margin:0 0 0.5rem;font-size:0.8125rem;color:#a8a28c;line-height:1.4">Walkable area exists.</p><span style="margin-top:auto;display:inline-block;font-family:'Press Start 2P',system-ui,sans-serif;font-size:7px;padding:4px 6px;border-radius:4px;background:rgba(166,226,46,.1);color:#a6e22e">HOLDS</span></div>
+      </li>
+      <li style="display:grid;grid-template-columns:auto 1fr;align-items:start;gap:0.875rem;padding:clamp(0.875rem, 2vw, 1.25rem);border-radius:9px;background:rgba(30,31,26,.75);border:1px solid rgba(255,255,255,.12);border-left:4px solid #a6e22e;backdrop-filter:blur(8px)">
+        <span aria-hidden="true" style="display:flex;align-items:center;justify-content:center;width:26px;height:26px;background:#32332b;border-radius:50%;font-family:'Press Start 2P',system-ui,sans-serif;font-size:9px;color:#a6e22e">✓</span>
+        <div style="display:flex;flex-direction:column;flex:1"><p style="margin:0 0 0.375rem;font-family:'Press Start 2P',system-ui,sans-serif;font-size:9.5px;line-height:1.5;color:#f8f8f2">Gate 2 · Movement</p><p style="margin:0 0 0.5rem;font-size:0.8125rem;color:#a8a28c;line-height:1.4">Movement feels right within the space.</p><span style="margin-top:auto;display:inline-block;font-family:'Press Start 2P',system-ui,sans-serif;font-size:7px;padding:4px 6px;border-radius:4px;background:rgba(166,226,46,.1);color:#a6e22e">HOLDS</span></div>
+      </li>
+      <li style="display:grid;grid-template-columns:auto 1fr;align-items:start;gap:0.875rem;padding:clamp(0.875rem, 2vw, 1.25rem);border-radius:9px;background:rgba(253,151,31,.06);border:1px solid rgba(255,255,255,.12);border-left:4px solid #fd971f;backdrop-filter:blur(8px)">
+        <span aria-hidden="true" style="display:flex;align-items:center;justify-content:center;width:26px;height:26px;background:#32332b;border-radius:50%;font-family:'Press Start 2P',system-ui,sans-serif;font-size:9px;color:#fd971f">▶</span>
+        <div style="display:flex;flex-direction:column;flex:1"><p style="margin:0 0 0.375rem;font-family:'Press Start 2P',system-ui,sans-serif;font-size:9.5px;line-height:1.5;color:#f8f8f2">Gate 3 · Objects</p><p style="margin:0 0 0.5rem;font-size:0.8125rem;color:#a8a28c;line-height:1.4">In-space portfolio sections open content.</p><span style="margin-top:auto;display:inline-block;font-family:'Press Start 2P',system-ui,sans-serif;font-size:7px;padding:4px 6px;border-radius:4px;background:rgba(253,151,31,.14);color:#fd971f">BUILDING</span></div>
+      </li>
+      <li style="display:grid;grid-template-columns:auto 1fr;align-items:start;gap:0.875rem;padding:clamp(0.875rem, 2vw, 1.25rem);border-radius:9px;background:rgba(253,151,31,.06);border:1px solid rgba(255,255,255,.12);border-left:4px solid #fd971f;backdrop-filter:blur(8px)">
+        <span aria-hidden="true" style="display:flex;align-items:center;justify-content:center;width:26px;height:26px;background:#32332b;border-radius:50%;font-family:'Press Start 2P',system-ui,sans-serif;font-size:9px;color:#fd971f">▶</span>
+        <div style="display:flex;flex-direction:column;flex:1"><p style="margin:0 0 0.375rem;font-family:'Press Start 2P',system-ui,sans-serif;font-size:9.5px;line-height:1.5;color:#f8f8f2">Gate 4 · Content</p><p style="margin:0 0 0.5rem;font-size:0.8125rem;color:#a8a28c;line-height:1.4">React overlays open correctly from the world.</p><span style="margin-top:auto;display:inline-block;font-family:'Press Start 2P',system-ui,sans-serif;font-size:7px;padding:4px 6px;border-radius:4px;background:rgba(253,151,31,.14);color:#fd971f">BUILDING</span></div>
+      </li>
+      <li style="display:grid;grid-template-columns:auto 1fr;align-items:start;gap:0.875rem;padding:clamp(0.875rem, 2vw, 1.25rem);border-radius:9px;background:rgba(30,31,26,.75);border:1px solid rgba(255,255,255,.12);border-left:4px solid #a6e22e;backdrop-filter:blur(8px)">
+        <span aria-hidden="true" style="display:flex;align-items:center;justify-content:center;width:26px;height:26px;background:#32332b;border-radius:50%;font-family:'Press Start 2P',system-ui,sans-serif;font-size:9px;color:#a6e22e">✓</span>
+        <div style="display:flex;flex-direction:column;flex:1"><p style="margin:0 0 0.375rem;font-family:'Press Start 2P',system-ui,sans-serif;font-size:9.5px;line-height:1.5;color:#f8f8f2">Gate 5 · Character</p><p style="margin:0 0 0.5rem;font-size:0.8125rem;color:#a8a28c;line-height:1.4">Appearance and motion feel intentional.</p><span style="margin-top:auto;display:inline-block;font-family:'Press Start 2P',system-ui,sans-serif;font-size:7px;padding:4px 6px;border-radius:4px;background:rgba(166,226,46,.1);color:#a6e22e">HOLDS</span></div>
+      </li>
+      <li style="display:grid;grid-template-columns:auto 1fr;align-items:start;gap:0.875rem;padding:clamp(0.875rem, 2vw, 1.25rem);border-radius:9px;background:rgba(30,31,26,.75);border:1px solid rgba(255,255,255,.12);border-left:4px solid #66d9e8;backdrop-filter:blur(8px)">
+        <span aria-hidden="true" style="display:flex;align-items:center;justify-content:center;width:26px;height:26px;background:#32332b;border-radius:50%;font-family:'Press Start 2P',system-ui,sans-serif;font-size:9px;color:#66d9e8">◌</span>
+        <div style="display:flex;flex-direction:column;flex:1"><p style="margin:0 0 0.375rem;font-family:'Press Start 2P',system-ui,sans-serif;font-size:9.5px;line-height:1.5;color:#f8f8f2">Gate 6 · Identity</p><p style="margin:0 0 0.5rem;font-size:0.8125rem;color:#a8a28c;line-height:1.4">Space, objects, and character read as one coherent portfolio.</p><span style="margin-top:auto;display:inline-block;font-family:'Press Start 2P',system-ui,sans-serif;font-size:7px;padding:4px 6px;border-radius:4px;background:rgba(102,217,232,.12);color:#66d9e8">PLANNED</span></div>
+      </li>
+      <li style="display:grid;grid-template-columns:auto 1fr;align-items:start;gap:0.875rem;padding:clamp(0.875rem, 2vw, 1.25rem);border-radius:9px;background:rgba(30,31,26,.75);border:1px solid rgba(255,255,255,.12);border-left:4px solid #66d9e8;backdrop-filter:blur(8px)">
+        <span aria-hidden="true" style="display:flex;align-items:center;justify-content:center;width:26px;height:26px;background:#32332b;border-radius:50%;font-family:'Press Start 2P',system-ui,sans-serif;font-size:9px;color:#66d9e8">◌</span>
+        <div style="display:flex;flex-direction:column;flex:1"><p style="margin:0 0 0.375rem;font-family:'Press Start 2P',system-ui,sans-serif;font-size:9.5px;line-height:1.5;color:#f8f8f2">Gate 7 · Customization</p><p style="margin:0 0 0.5rem;font-size:0.8125rem;color:#a8a28c;line-height:1.4">Floor, walls, and character slots become personalizable.</p><span style="margin-top:auto;display:inline-block;font-family:'Press Start 2P',system-ui,sans-serif;font-size:7px;padding:4px 6px;border-radius:4px;background:rgba(102,217,232,.12);color:#66d9e8">PLANNED</span></div>
+      </li>
+      <li style="display:grid;grid-template-columns:auto 1fr;align-items:start;gap:0.875rem;padding:clamp(0.875rem, 2vw, 1.25rem);border-radius:9px;background:rgba(30,31,26,.60);border:1px solid rgba(255,255,255,.1);border-left:4px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);opacity:.5">
+        <svg viewBox="0 0 10 10" width="10" height="10" aria-hidden="true" fill="#e6db74" style="display:block;flex-shrink:0"><polygon points="5,0.5 6.2,3.8 9.8,3.8 6.9,5.9 8,9.2 5,7.1 2,9.2 3.1,5.9 0.2,3.8 3.8,3.8"/></svg>
+        <div style="display:flex;flex-direction:column;flex:1"><p style="margin:0 0 0.375rem;font-family:'Press Start 2P',system-ui,sans-serif;font-size:9.5px;line-height:1.5;color:#f8f8f2">Gate 8 · Combat</p><p style="margin:0 0 0.5rem;font-size:0.8125rem;color:#a8a28c;line-height:1.4">Unlocks after the single-player loop is solid.</p><span style="margin-top:auto;display:inline-block;font-family:'Press Start 2P',system-ui,sans-serif;font-size:7px;padding:4px 6px;border-radius:4px;background:rgba(255,255,255,.05);color:#75715e">LATER</span></div>
+      </li>
+      <li style="display:grid;grid-template-columns:auto 1fr;align-items:start;gap:0.875rem;padding:clamp(0.875rem, 2vw, 1.25rem);border-radius:9px;background:rgba(30,31,26,.60);border:1px solid rgba(255,255,255,.1);border-left:4px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);opacity:.5">
+        <svg viewBox="0 0 10 10" width="10" height="10" aria-hidden="true" fill="#e6db74" style="display:block;flex-shrink:0"><polygon points="5,0.5 6.2,3.8 9.8,3.8 6.9,5.9 8,9.2 5,7.1 2,9.2 3.1,5.9 0.2,3.8 3.8,3.8"/></svg>
+        <div style="display:flex;flex-direction:column;flex:1"><p style="margin:0 0 0.375rem;font-family:'Press Start 2P',system-ui,sans-serif;font-size:9.5px;line-height:1.5;color:#f8f8f2">Gate 9 · Multiplayer</p><p style="margin:0 0 0.5rem;font-size:0.8125rem;color:#a8a28c;line-height:1.4">The MMO layer stays on a years-later horizon.</p><span style="margin-top:auto;display:inline-block;font-family:'Press Start 2P',system-ui,sans-serif;font-size:7px;padding:4px 6px;border-radius:4px;background:rgba(255,255,255,.05);color:#75715e">LATER</span></div>
+      </li>
+    </ol>
+  </div>
+  <a href="#play" aria-label="Go to the play section" style="position:absolute;left:50%;bottom:1.5rem;transform:translateX(-50%);width:2.125rem;height:2.125rem;display:grid;place-items:center;color:#1c1c17;background:linear-gradient(180deg,#f4f099,#e6db74);border:2px solid rgba(255,255,255,.72);border-radius:50%;box-shadow:0 0 0 4px rgba(230,219,116,.12),0 12px 28px rgba(0,0,0,.36);text-decoration:none;font-size:13px;animation:ns-arrow 2s ease-in-out infinite"><svg viewBox="0 0 12 8" width="12" height="12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><polyline points="1,1.5 6,6.5 11,1.5"/></svg></a>
+</section>
+
+<!-- PLAY / CTA -->
+<section id="play" data-screen-label="Play" style="position:relative;min-height:calc(100svh - 4rem);display:flex;flex-direction:column;justify-content:center;padding:clamp(2.5rem, 8svh, 4rem) 0 clamp(4rem, 10svh, 5.5rem);border-bottom:1px solid rgba(255,255,255,.1)">
+  <div style="width:100%;max-width:1080px;margin:0 auto;padding:0 clamp(1rem, 4vw, 2rem);display:flex;flex-direction:column;align-items:center">
+    <p style="display:flex;align-items:center;gap:8px;margin:0 0 1.375rem;font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#e6db74;align-self:flex-start"><svg viewBox="0 0 10 10" width="10" height="10" aria-hidden="true" fill="#e6db74" style="display:block;flex-shrink:0"><polygon points="5,0.5 6.2,3.8 9.8,3.8 6.9,5.9 8,9.2 5,7.1 2,9.2 3.1,5.9 0.2,3.8 3.8,3.8"/></svg>Play</p>
+    <div style="position:relative;overflow:hidden;text-align:center;width:100%;padding:clamp(2rem, 6svh, 3rem) clamp(1.5rem, 5vw, 2.5rem);background:rgba(30,31,26,.88);border:1px solid rgba(249,38,114,.28);border-radius:12px;box-shadow:0 30px 60px rgba(0,0,0,.5)">
+      <div aria-hidden="true" style="position:absolute;top:50%;left:50%;width:150%;height:150%;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(249,38,114,.08) 0%, transparent 70%);pointer-events:none"></div>
+      <div style="position:relative;z-index:1">
+        <span style="display:inline-block;margin-bottom:1.25rem"><img src="../../assets/logo.png" alt="" width="152" height="147" style="width:88px;height:auto;filter:drop-shadow(0 10px 20px rgba(0,0,0,.3))"></span>
+        <h2 style="margin:0 0 1rem;font-family:'Press Start 2P',system-ui,sans-serif;font-size:1.6rem;line-height:1.4;color:#f8f8f2;text-wrap:balance">Discover it. Don't just read it.</h2>
+        <p style="margin:0 auto 1.75rem;font-size:1rem;color:#a8a28c;line-height:1.55;text-wrap:pretty">Walk the world as a character. Objects open your work. No card grid.</p>
+        <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:14px">
+          <a href="https://noobsociety.com" style="display:inline-flex;align-items:center;gap:.6em;font-family:'Press Start 2P',system-ui,sans-serif;font-size:12px;color:#1c1c17;background:#e6db74;border:2px solid #cabb50;border-radius:9px;padding:1rem 1.625rem;box-shadow:0 3px 0 #b5a83f;text-decoration:none;white-space:nowrap;transition:.15s ease"><svg viewBox="0 0 10 10" width="10" height="10" aria-hidden="true" fill="currentColor" style="display:block;flex-shrink:0"><polygon points="1,0.5 9.5,5 1,9.5"/></svg>Enter the world</a>
+          <a href="https://github.com/noobsociety/noobsociety.com" style="display:inline-flex;align-items:center;gap:.6em;font-family:'Press Start 2P',system-ui,sans-serif;font-size:12px;color:#e6db74;background:transparent;border:1px solid rgba(248,248,242,.45);border-radius:9px;padding:1rem 1.625rem;text-decoration:none;white-space:nowrap;transition:.15s ease"><svg viewBox="0 0 10 10" width="10" height="10" aria-hidden="true" fill="currentColor" style="display:block;flex-shrink:0"><polygon points="5,0.5 6.2,3.8 9.8,3.8 6.9,5.9 8,9.2 5,7.1 2,9.2 3.1,5.9 0.2,3.8 3.8,3.8"/></svg>Star on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="#footer" aria-label="Go to footer links" style="position:absolute;left:50%;bottom:1.5rem;transform:translateX(-50%);width:2.125rem;height:2.125rem;display:grid;place-items:center;color:#1c1c17;background:linear-gradient(180deg,#f4f099,#e6db74);border:2px solid rgba(255,255,255,.72);border-radius:50%;box-shadow:0 0 0 4px rgba(230,219,116,.12),0 12px 28px rgba(0,0,0,.36);text-decoration:none;font-size:13px;animation:ns-arrow 2s ease-in-out infinite"><svg viewBox="0 0 12 8" width="12" height="12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><polyline points="1,1.5 6,6.5 11,1.5"/></svg></a>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer id="footer" data-screen-label="Footer" style="background:#1a1a16;border-top:1px solid rgba(255,255,255,.12);min-height:calc(100svh - 4rem);display:flex;flex-direction:column">
+  <div style="flex:1;width:100%;max-width:1080px;margin:0 auto;padding:clamp(2.5rem, 8svh, 4rem) clamp(1rem, 4vw, 2rem) 2.5rem;display:flex;flex-direction:column;justify-content:center">
+    <div style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(17rem,.9fr);align-items:start;gap:clamp(2rem, 5vw, 3rem);margin-bottom:0">
+      <div style=">
+        <a href="#home" aria-label="NoobSociety — back to top" style="display:inline-flex;align-items:center;gap:0.75rem;text-decoration:none">
+          <img src="../../assets/logo.png" alt="" width="152" height="147" style="height:32px;width:auto;display:block">
+          <span style="font-family:'Press Start 2P',system-ui,sans-serif;font-size:13px;color:#f8f8f2">Noob<b style="color:#e6db74">Society</b></span>
+        </a>
+        <p style="margin:1.125rem 0 0.5rem;font-size:0.875rem;color:#a8a28c;line-height:1.45;text-wrap:pretty">Express identity and portfolio in a shared world.</p>
+        <p style="margin:0 0 16px;font-family:'Press Start 2P',system-ui,sans-serif;font-size:8px;color:#75715e;letter-spacing:.05em">Society of Beginners · est. 2010</p>
+        <div aria-label="Built with" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem">
+          <span style="font-family:'Press Start 2P',system-ui,sans-serif;font-size:7px;padding:6px 10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:20px;color:#75715e">Phaser</span>
+          <span style="font-family:'Press Start 2P',system-ui,sans-serif;font-size:7px;padding:6px 10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:20px;color:#75715e">React</span>
+          <span style="font-family:'Press Start 2P',system-ui,sans-serif;font-size:7px;padding:6px 10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:20px;color:#75715e">TypeScript</span>
+          <span style="font-family:'Press Start 2P',system-ui,sans-serif;font-size:7px;padding:6px 10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:20px;color:#75715e">Vite</span>
+        </div>
+      </div>
+      <nav aria-label="Footer" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;gap:2rem">
+          <div>
+            <h2 style="margin:0 0 0.875rem;font-family:'Press Start 2P',system-ui,sans-serif;font-size:9.5px;color:#e6db74">Explore</h2>
+            <ul style="list-style:none;margin:0;padding:0;display:grid;gap:0.5rem">
+              <li><a href="https://noobsociety.com" style="font-size:0.875rem;color:#a8a28c;text-decoration:none;transition:.15s ease">Play now</a></li>
+              <li><a href="#why" style="font-size:0.875rem;color:#a8a28c;text-decoration:none;transition:.15s ease">Why it matters</a></li>
+              <li><a href="#world" style="font-size:0.875rem;color:#a8a28c;text-decoration:none;transition:.15s ease">The world</a></li>
+              <li><a href="#roadmap" style="font-size:0.875rem;color:#a8a28c;text-decoration:none;transition:.15s ease">Roadmap</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2 style="margin:0 0 0.875rem;font-family:'Press Start 2P',system-ui,sans-serif;font-size:9.5px;color:#e6db74">Open source</h2>
+            <ul style="list-style:none;margin:0;padding:0;display:grid;gap:0.5rem">
+              <li><a href="https://github.com/noobsociety/noobsociety.com" style="font-size:0.875rem;color:#a8a28c;text-decoration:none;transition:.15s ease">GitHub</a></li>
+              <li><a href="https://github.com/noobsociety/noobsociety.com/tree/main/docs/devblog" style="font-size:0.875rem;color:#a8a28c;text-decoration:none;transition:.15s ease">Devblog</a></li>
+              <li><a href="https://github.com/noobsociety/noobsociety.com/issues" style="font-size:0.875rem;color:#a8a28c;text-decoration:none;transition:.15s ease">Report an issue</a></li>
+            </ul>
+          </div>
+      </nav>
+    </div>
+
+  </div>
+  <div style="position:sticky;bottom:0;background:#1a1a16;border-top:1px solid rgba(255,255,255,.12);box-shadow:0 -8px 24px rgba(0,0,0,.45)">
+    <div style="width:100%;max-width:1080px;margin:0 auto;padding:1rem clamp(1rem, 4vw, 2rem);display:flex;justify-content:center;align-items:center">
+      <p style="margin:0;font-size:0.875rem;color:#75715e;text-align:center">© 2026 NoobSociety — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>

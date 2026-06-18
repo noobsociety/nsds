@@ -1,0 +1,41 @@
+<!-- @dsCard group="Brand" viewport="700x160" name="Logo & wordmark" subtitle="Logo usage and wordmark construction" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { background: var(--ns-bg-1); padding: 24px 32px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; }
+  .unit { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+  .label { font-family: 'Press Start 2P', system-ui, sans-serif; font-size: 7px; color: #75715e; }
+  .mark { display: flex; align-items: center; gap: 12px; }
+</style>
+</head>
+<body>
+  <div class="unit">
+    <div class="label">Default</div>
+    <div class="mark">
+      <img src="../assets/logo.png" style="height:40px;width:auto">
+      <span style="font-family:'Press Start 2P',system-ui,sans-serif;font-size:16px;color:#f8f8f2">Noob<b style="color:#e6db74">Society</b></span>
+    </div>
+  </div>
+  <div class="unit">
+    <div class="label">Header (32px)</div>
+    <div class="mark">
+      <img src="../assets/logo.png" style="height:32px;width:auto">
+      <span style="font-family:'Press Start 2P',system-ui,sans-serif;font-size:13px;color:#f8f8f2">Noob<b style="color:#e6db74">Society</b></span>
+    </div>
+  </div>
+  <div class="unit">
+    <div class="label">Icon only</div>
+    <img src="../assets/logo.png" style="height:56px;width:auto">
+  </div>
+  <div class="unit">
+    <div class="label">On dark glass</div>
+    <div class="mark" style="background:rgba(30,31,26,.88);padding:12px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.12)">
+      <img src="../assets/logo.png" style="height:28px;width:auto">
+      <span style="font-family:'Press Start 2P',system-ui,sans-serif;font-size:11px;color:#f8f8f2">Noob<b style="color:#e6db74">Society</b></span>
+    </div>
+  </div>
+</body>
+</html>

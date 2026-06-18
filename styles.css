@@ -1,0 +1,12 @@
+/* NoobSociety Design System — global entry point
+   Import this one file to get all tokens, fonts, base resets, and primitives.
+   Never add rules here directly — use @import only. */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap');
+
+@import './tokens/colors.css';
+@import './tokens/typography.css';
+@import './tokens/spacing.css';
+@import './tokens/motion.css';
+@import './tokens/base.css';
+@import './components/primitives.css';

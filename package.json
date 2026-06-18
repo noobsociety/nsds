@@ -1,0 +1,91 @@
+{
+  "name": "@noobsociety/nsds",
+  "version": "0.1.0",
+  "description": "NoobSociety Design System: tokens, CSS primitives, React components, MUI theme source, assets, and references.",
+  "keywords": [
+    "design-system",
+    "css",
+    "tokens",
+    "react",
+    "mui",
+    "theme",
+    "pixel-art",
+    "monokai",
+    "noobsociety"
+  ],
+  "author": "NoobSociety",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noobsociety/nsds.git"
+  },
+  "bugs": {
+    "url": "https://github.com/noobsociety/nsds/issues"
+  },
+  "homepage": "https://github.com/noobsociety/nsds#readme",
+  "type": "module",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "style": "./styles.css",
+  "sideEffects": [
+    "*.css",
+    "**/*.css"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "README.md",
+    "SKILL.md",
+    "index.js",
+    "index.d.ts",
+    "styles.css",
+    "support.js",
+    "tokens",
+    "components",
+    "mui-theme",
+    "assets",
+    "guidelines",
+    "references",
+    "ui-kits"
+  ],
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
+    },
+    "./react": {
+      "types": "./components/react/index.d.ts",
+      "import": "./components/react/index.js"
+    },
+    "./mui": {
+      "types": "./mui-theme/index.ts",
+      "import": "./mui-theme/index.ts"
+    },
+    "./styles.css": "./styles.css",
+    "./package.json": "./package.json",
+    "./support.js": "./support.js",
+    "./components/primitives.css": "./components/primitives.css",
+    "./tokens/*": "./tokens/*",
+    "./assets/*": "./assets/*",
+    "./guidelines/*": "./guidelines/*",
+    "./references/*": "./references/*",
+    "./ui-kits/*": "./ui-kits/*"
+  },
+  "peerDependencies": {
+    "@emotion/react": ">=11",
+    "@emotion/styled": ">=11",
+    "@mui/material": ">=5",
+    "react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "@emotion/react": {
+      "optional": true
+    },
+    "@emotion/styled": {
+      "optional": true
+    },
+    "@mui/material": {
+      "optional": true
+    }
+  }
+}

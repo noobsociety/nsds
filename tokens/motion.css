@@ -1,0 +1,64 @@
+/* NoobSociety — Motion tokens & keyframes */
+:root {
+  /* ── Durations ────────────────────────────────────────────── */
+  --ns-dur-fast:    150ms;
+  --ns-dur-base:    200ms;
+  --ns-dur-slow:    400ms;
+  --ns-dur-xslow:   600ms;
+
+  /* ── Easings ──────────────────────────────────────────────── */
+  --ns-ease-out:    ease-out;
+  --ns-ease-in-out: ease-in-out;
+  --ns-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Transitions (common shorthand) ──────────────────────── */
+  --ns-transition-fast: var(--ns-dur-fast) var(--ns-ease-out);
+  --ns-transition-base: var(--ns-dur-base) var(--ns-ease-out);
+}
+
+/* ── Keyframes ────────────────────────────────────────────────── */
+
+/* Character idle bob (with centered offset) */
+@keyframes ns-bob {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(-6px); }
+}
+
+/* Generic idle bob (no X offset) */
+@keyframes ns-bob-plain {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+
+/* Pixel text blink (e.g. "Press Start") */
+@keyframes ns-blink {
+  0%,  55% { opacity: 1; }
+  56%, 100% { opacity: 0; }
+}
+
+/* Star field twinkle */
+@keyframes ns-twinkle {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 0.35; }
+}
+
+/* Section arrow nudge */
+@keyframes ns-arrow {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(5px); }
+}
+
+/* Live pulse dot */
+@keyframes ns-live {
+  0%   { box-shadow: 0 0 0 0   rgba(166, 226, 46, 0.7); }
+  70%  { box-shadow: 0 0 0 7px rgba(166, 226, 46, 0);   }
+  100% { box-shadow: 0 0 0 0   rgba(166, 226, 46, 0);   }
+}
+
+/* Reduced motion: disable all ns animations */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}

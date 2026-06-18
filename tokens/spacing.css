@@ -1,0 +1,70 @@
+/* NoobSociety Design System — Spacing, layout & shape tokens
+   All values rem-based (1rem = 16px user default).
+   Fluid layout values use clamp() — min / preferred / max.         */
+
+:root {
+  /* ── Base scale (4px grid, expressed in rem) ──────────────────── */
+  --ns-space-1:   0.25rem;   /* 4px  */
+  --ns-space-2:   0.5rem;    /* 8px  */
+  --ns-space-3:   0.75rem;   /* 12px */
+  --ns-space-4:   1rem;      /* 16px */
+  --ns-space-5:   1.25rem;   /* 20px */
+  --ns-space-6:   1.5rem;    /* 24px */
+  --ns-space-7:   1.75rem;   /* 28px */
+  --ns-space-8:   2rem;      /* 32px */
+  --ns-space-10:  2.5rem;    /* 40px */
+  --ns-space-12:  3rem;      /* 48px */
+  --ns-space-14:  3.5rem;    /* 56px */
+  --ns-space-16:  4rem;      /* 64px */
+  --ns-space-20:  5rem;      /* 80px */
+  --ns-space-24:  5.75rem;   /* 92px */
+
+  /* ── Fluid layout tokens (viewport-responsive) ────────────────── */
+  /* Container side padding: 16px → 32px */
+  --ns-fluid-container:       clamp(1rem, 4vw, 2rem);
+  /* Section top padding: 40px → 64px */
+  --ns-fluid-section-top:     clamp(2.5rem, 8svh, 4rem);
+  /* Section bottom padding: 64px → 88px */
+  --ns-fluid-section-bottom:  clamp(4rem, 10svh, 5.5rem);
+  /* Card grid gap: 12px → 24px */
+  --ns-fluid-gap-cards:       clamp(0.75rem, 2vw, 1.5rem);
+  /* Card internal padding: 16px → 20px */
+  --ns-fluid-card-pad:        clamp(1rem, 2vw, 1.25rem);
+  /* Hero two-col gap: 24px → 48px */
+  --ns-fluid-hero-gap:        clamp(1.5rem, 4vw, 3rem);
+  /* Footer two-col gap: 32px → 48px */
+  --ns-fluid-footer-gap:      clamp(2rem, 5vw, 3rem);
+
+  /* ── Fixed layout ─────────────────────────────────────────────── */
+  --ns-container:     1080px;
+  --ns-header-h:      4rem;    /* 64px — sticky header */
+  --ns-section-min:   calc(100svh - var(--ns-header-h));
+
+  /* ── Radii ────────────────────────────────────────────────────── */
+  --ns-radius-sm:     0.25rem;  /* 4px  */
+  --ns-radius-md:     0.5rem;   /* 8px  */
+  --ns-radius-lg:     0.625rem; /* 10px */
+  --ns-radius-xl:     0.75rem;  /* 12px */
+  --ns-radius-full:   9999px;
+
+  /* ── Shadows ──────────────────────────────────────────────────── */
+  --ns-shadow-card-rest:  none;
+  --ns-shadow-card-hover: 0 1rem 2.125rem rgba(0, 0, 0, 0.38);
+  --ns-shadow-modal:      0 1.5rem 3.5rem rgba(0, 0, 0, 0.5);
+  --ns-shadow-btn:        0 0.1875rem 0 var(--ns-gold-shadow);
+  --ns-shadow-arrow:      0 0 0 0.25rem rgba(230, 219, 116, 0.12), 0 0.75rem 1.75rem rgba(0, 0, 0, 0.36);
+
+  /* ── Borders ──────────────────────────────────────────────────── */
+  --ns-border-card:        1px solid var(--ns-line);
+  --ns-border-card-strong: 1px solid var(--ns-line-strong);
+  --ns-border-gold:        2px solid var(--ns-gold-deep);
+
+  /* ── Blur ─────────────────────────────────────────────────────── */
+  --ns-blur-glass:  blur(8px);
+  --ns-blur-header: blur(12px);
+
+  /* ── Component sizing ──────────────────────────────────────────── */
+  --ns-icon-slot:    2.625rem; /* 42px */
+  --ns-icon-slot-sm: 1.625rem; /* 26px */
+  --ns-arrow-size:   2.125rem; /* 34px */
+}

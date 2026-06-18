@@ -1,0 +1,73 @@
+/* NoobSociety — Color tokens (Monokai dark) */
+:root {
+  /* ── Surfaces ─────────────────────────────────────────────── */
+  --ns-bg-0:      #1a1a16;   /* deepest — footer, sidebar */
+  --ns-bg-1:      #272822;   /* page base */
+  --ns-bg-2:      #32332b;   /* raised surfaces, icon slots */
+  --ns-glass:     rgba(30, 31, 26, 0.88);  /* card, header backdrop */
+  --ns-glass-2:   rgba(30, 31, 26, 0.60);  /* lighter glass */
+  --ns-glass-soft: rgba(30, 31, 26, 0.75); /* subtle card surface */
+
+  --ns-bg-0-rgb: 26 26 22;
+  --ns-bg-1-rgb: 39 40 34;
+  --ns-bg-2-rgb: 50 51 43;
+  --ns-glass-rgb: 30 31 26;
+
+  /* ── Borders ──────────────────────────────────────────────── */
+  --ns-line:        rgba(255, 255, 255, 0.12);
+  --ns-line-strong: rgba(255, 255, 255, 0.22);
+  --ns-line-soft:   rgba(255, 255, 255, 0.08);
+
+  /* ── Ink (text) ───────────────────────────────────────────── */
+  --ns-ink:       #f8f8f2;   /* primary text — Monokai foreground */
+  --ns-ink-dim:   #a8a28c;   /* secondary text */
+  --ns-ink-faint: #75715e;   /* placeholder, captions — Monokai comment */
+  --ns-ink-rgb:       248 248 242;
+  --ns-ink-dim-rgb:   168 162 140;
+  --ns-ink-faint-rgb: 117 113 94;
+
+  /* ── Brand yellow (gold) — primary accent ─────────────────── */
+  --ns-gold:        #e6db74;
+  --ns-gold-pale:   #f4f099;
+  --ns-gold-deep:   #cabb50;
+  --ns-gold-shadow: #b5a83f;
+  --ns-gold-btn-fg: #1c1c17; /* text on gold buttons */
+  --ns-gold-rgb:        230 219 116;
+  --ns-gold-pale-rgb:   244 240 153;
+  --ns-gold-deep-rgb:   202 187 80;
+  --ns-gold-shadow-rgb: 181 168 63;
+
+  /* ── Monokai semantic accents ─────────────────────────────── */
+  --ns-green:       #a6e22e;  /* "Holds" / success */
+  --ns-green-deep:  #7fb81e;
+  --ns-cyan:        #66d9e8;  /* "Planned" / info */
+  --ns-cyan-deep:   #5bc8d7;
+  --ns-orange:      #fd971f;  /* "Building" / in-progress */
+  --ns-orange-deep: #c96f00;
+  --ns-pink:        #f92672;  /* danger / highlight */
+  --ns-purple:      #ae81ff;  /* decorative */
+  --ns-green-rgb:       166 226 46;
+  --ns-green-deep-rgb:  127 184 30;
+  --ns-cyan-rgb:        102 217 232;
+  --ns-cyan-deep-rgb:   91 200 215;
+  --ns-orange-rgb:      253 151 31;
+  --ns-orange-deep-rgb: 201 111 0;
+  --ns-pink-rgb:        249 38 114;
+  --ns-purple-rgb:      174 129 255;
+
+  /* ── Semantic aliases ─────────────────────────────────────── */
+  --ns-surface-page:   var(--ns-bg-1);
+  --ns-surface-card:   var(--ns-glass);
+  --ns-surface-raised: var(--ns-bg-2);
+  --ns-text-primary:   var(--ns-ink);
+  --ns-text-secondary: var(--ns-ink-dim);
+  --ns-text-muted:     var(--ns-ink-faint);
+  --ns-accent:         var(--ns-gold);
+  --ns-accent-hover:   var(--ns-gold-pale);
+  --ns-status-holds:   var(--ns-green);
+  --ns-status-building: var(--ns-orange);
+  --ns-status-planned:  var(--ns-cyan);
+  --ns-status-later:    var(--ns-ink-faint);
+  --ns-focus-ring:      rgba(230, 219, 116, 0.35);
+  --ns-selection-bg:    rgba(249, 38, 114, 0.28);
+}

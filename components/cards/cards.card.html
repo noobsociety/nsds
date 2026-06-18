@@ -1,0 +1,54 @@
+<!-- @dsCard group="Components" viewport="700x380" name="Cards" subtitle="FeatureCard (semantic colors) and QuestCard (status system)" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { background: var(--ns-bg-1); padding: 1.5rem 1.75rem; display: flex; flex-direction: column; gap: 1.25rem; }
+  .label { font-family: var(--ns-font-pixel); font-size: 7px; color: var(--ns-ink-faint); margin: 0 0 0.625rem; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 0.875rem; list-style: none; margin: 0; padding: 0; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0.875rem; list-style: none; margin: 0; padding: 0; }
+</style>
+</head>
+<body>
+<p class="label">Feature cards — icon colors are Monokai semantic</p>
+<ul class="grid-4">
+  <li class="ns-card ns-feature-card">
+    <div class="ns-icon-slot ns-feature-card__icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M5 2.6 L5 18.6 L9.2 14.7 L12 20.8 L14.4 19.6 L11.6 13.7 L17.4 13.7 Z"/></svg></div>
+    <div><p class="ns-feature-card__title">The site is a world</p><p class="ns-feature-card__body">Pages are maps, links are interactables.</p></div>
+    <span class="ns-tag ns-feature-card__tag">Spatial</span>
+  </li>
+  <li class="ns-card ns-feature-card" style="--ns-feature-accent: var(--ns-pink)">
+    <div class="ns-icon-slot ns-feature-card__icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M13 2.5 L5 13.6 H11 L10.2 21.5 L19 9.4 H12.4 Z"/></svg></div>
+    <div><p class="ns-feature-card__title">One typed bridge</p><p class="ns-feature-card__body">Phaser fires the matching React overlay.</p></div>
+    <span class="ns-tag ns-feature-card__tag">Live</span>
+  </li>
+  <li class="ns-card ns-feature-card" style="--ns-feature-accent: var(--ns-purple)">
+    <div class="ns-icon-slot ns-feature-card__icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3.5 C6.9 3.5 3 7.1 3 11.7 C3 15.1 5.5 17.2 8.3 17.2 C9.9 17.2 10.4 16 11.7 16 C12.8 16 13.1 17.3 14.7 17.3 C18 17.3 21 14.7 21 11.1 C21 6.8 17 3.5 12 3.5 Z" stroke-linejoin="round"/><circle cx="8" cy="9" r="1.1" fill="currentColor" stroke="none"/><circle cx="12" cy="7.4" r="1.1" fill="currentColor" stroke="none"/><circle cx="16" cy="9" r="1.1" fill="currentColor" stroke="none"/></svg></div>
+    <div><p class="ns-feature-card__title">Sprite-forward</p><p class="ns-feature-card__body">Clear silhouettes, readable at a glance.</p></div>
+    <span class="ns-tag ns-feature-card__tag">Personal</span>
+  </li>
+  <li class="ns-card ns-feature-card" style="--ns-feature-accent: var(--ns-cyan)">
+    <div class="ns-icon-slot ns-feature-card__icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5 C9.5 4.9 6 4.6 3.6 5.5 V18.7 C6 17.8 9.5 18.1 12 19.8 C14.5 18.1 18 17.8 20.4 18.7 V5.5 C18 4.6 14.5 4.9 12 6.5 Z"/><path d="M12 6.5 V19.8"/></svg></div>
+    <div><p class="ns-feature-card__title">Built in the open</p><p class="ns-feature-card__body">CI on every push. Cloudflare Pages deploy.</p></div>
+    <span class="ns-tag ns-feature-card__tag">Open</span>
+  </li>
+</ul>
+<p class="label">Quest cards — status → Monokai color</p>
+<ul class="grid-3">
+  <li class="ns-quest-card ns-quest-card--done">
+    <span class="ns-quest-card__icon" aria-hidden="true">✓</span>
+    <div class="ns-quest-card__body"><p class="ns-quest-card__title">Gate 1 · Space</p><p class="ns-quest-card__desc">Walkable area exists.</p><span class="ns-status-pill">HOLDS</span></div>
+  </li>
+  <li class="ns-quest-card ns-quest-card--active">
+    <span class="ns-quest-card__icon" aria-hidden="true"><svg viewBox="0 0 10 10" width="8" height="8" fill="currentColor"><polygon points="1,0.5 9.5,5 1,9.5"/></svg></span>
+    <div class="ns-quest-card__body"><p class="ns-quest-card__title">Gate 3 · Objects</p><p class="ns-quest-card__desc">In-space sections open content.</p><span class="ns-status-pill">BUILDING</span></div>
+  </li>
+  <li class="ns-quest-card ns-quest-card--planned">
+    <span class="ns-quest-card__icon" aria-hidden="true">◌</span>
+    <div class="ns-quest-card__body"><p class="ns-quest-card__title">Gate 6 · Identity</p><p class="ns-quest-card__desc">Space and character read as one.</p><span class="ns-status-pill">PLANNED</span></div>
+  </li>
+</ul>
+</body>
+</html>

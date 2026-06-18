@@ -1,0 +1,29 @@
+<!-- @dsCard group="Components" viewport="700x120" name="Navigation" subtitle="SiteNav header with scroll-spy + SVG section arrow" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { background: var(--ns-bg-1); padding: 0; display: flex; flex-direction: column; }
+  .arrow-demo { position:relative; height:3.5rem; background:rgba(30,31,26,.3); }
+  .arrow-demo .ns-section-arrow { bottom:0.75rem; }
+  .nav-play { margin-left:2rem; }
+</style>
+</head>
+<body>
+  <nav class="ns-site-nav">
+    <a class="ns-brand" href="#"><img src="../../assets/logo.png" alt=""><span class="ns-brand__text">Noob<b class="ns-brand__accent">Society</b></span></a>
+    <ul class="ns-nav-links">
+      <li><a href="#">Why</a></li>
+      <li><a href="#" aria-current="page">World</a></li>
+      <li><a href="#">Roadmap</a></li>
+      <li><a href="#">Devblog</a></li>
+    </ul>
+    <a class="ns-button ns-button--play ns-button--sm nav-play" href="#"><svg viewBox="0 0 10 10" width="10" height="10" fill="currentColor" aria-hidden="true"><polygon points="1,0.5 9.5,5 1,9.5"/></svg>Play</a>
+  </nav>
+  <div class="arrow-demo">
+    <a class="ns-section-arrow" href="#" aria-label="Go to next section"><svg viewBox="0 0 12 8" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1,1.5 6,6.5 11,1.5"/></svg></a>
+  </div>
+</body>
+</html>
