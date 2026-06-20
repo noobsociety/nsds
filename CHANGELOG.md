@@ -11,15 +11,14 @@ All notable changes to NSDS are documented here.
 - Repository contribution, security, issue, pull request, and dependency update templates.
 - Package validation scripts for exports, required files, and publish hygiene.
 - React smoke tests for the public component entry points.
-- JavaScript runtime and TypeScript declarations for `@noobsociety/nsds/mui`.
 - TypeScript smoke validation for consumer-facing package imports.
+- Tailwind preset export for token-mapped utility classes.
 - Prioritized README roadmap and reference standards for documentation, changelog, versioning, release, and component documentation workflows.
 
 ### Changed
 
 - Updated README language for the public npm package and repository.
 - Documented the TypeScript and testing roadmap.
-- Pointed the public MUI export at package-ready JavaScript instead of raw TypeScript source.
 
 ## 0.1.1 - 2026-06-18
 
@@ -32,4 +31,4 @@ All notable changes to NSDS are documented here.
 
 ### Added
 
-- Initial NSDS package with tokens, CSS primitives, React components, MUI theme source, assets, guidelines, references, and UI kits.
+- Initial NSDS package with tokens, CSS primitives, React components, assets, guidelines, references, and UI kits.

@@ -9,19 +9,20 @@
   .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start; }
   .swatch { display: flex; flex-direction: column; gap: 6px; }
   .chip { width: 56px; height: 40px; border-radius: 6px; border: 1px solid rgba(255,255,255,.1); }
-  .name { font-family: 'Press Start 2P', system-ui, sans-serif; font-size: 6px; color: #75715e; white-space: nowrap; }
-  .hex  { font-family: 'Press Start 2P', system-ui, sans-serif; font-size: 6px; color: #a8a28c; }
-  .group-label { font-family: 'Press Start 2P', system-ui, sans-serif; font-size: 7px; margin: 0 0 8px; }
+  .name { font-family: var(--ns-font-pixel); font-size: 6px; color: var(--ns-ink-faint); white-space: nowrap; }
+  .hex  { font-family: var(--ns-font-pixel); font-size: 6px; color: var(--ns-ink-dim); }
+  .group-label { font-family: var(--ns-font-pixel); font-size: 7px; margin: 0 0 8px; }
   .divider { border: none; border-top: 1px solid rgba(255,255,255,.08); margin: 4px 0; }
 </style>
 </head>
 <body>
   <div>
-    <p class="group-label" style="color:#e6db74">Monokai foregrounds</p>
+    <p class="group-label" style="color:var(--ns-gold)">Monokai foregrounds</p>
     <div class="row">
       <div class="swatch"><div class="chip" style="background:#f8f8f2"></div><div class="name">ink</div><div class="hex">#f8f8f2</div></div>
+      <div class="swatch"><div class="chip" style="background:#a8a28c"></div><div class="name">ink-dim</div><div class="hex">#a8a28c</div></div>
       <div class="swatch"><div class="chip" style="background:#75715e"></div><div class="name">comment</div><div class="hex">#75715e</div></div>
-      <div class="swatch"><div class="chip" style="background:#e6db74"></div><div class="name">yellow</div><div class="hex">#e6db74</div></div>
+      <div class="swatch"><div class="chip" style="background:#e6db74"></div><div class="name">gold</div><div class="hex">#e6db74</div></div>
       <div class="swatch"><div class="chip" style="background:#a6e22e"></div><div class="name">green</div><div class="hex">#a6e22e</div></div>
       <div class="swatch"><div class="chip" style="background:#fd971f"></div><div class="name">orange</div><div class="hex">#fd971f</div></div>
       <div class="swatch"><div class="chip" style="background:#66d9e8"></div><div class="name">cyan</div><div class="hex">#66d9e8</div></div>
@@ -31,12 +32,13 @@
   </div>
   <hr class="divider">
   <div>
-    <p class="group-label" style="color:#a8a28c">Dark backgrounds</p>
+    <p class="group-label" style="color:var(--ns-ink-dim)">Dark backgrounds</p>
     <div class="row">
       <div class="swatch"><div class="chip" style="background:#1a1a16"></div><div class="name">bg-0</div><div class="hex">#1a1a16</div></div>
       <div class="swatch"><div class="chip" style="background:#272822"></div><div class="name">bg-1</div><div class="hex">#272822</div></div>
       <div class="swatch"><div class="chip" style="background:#32332b"></div><div class="name">bg-2</div><div class="hex">#32332b</div></div>
-      <div class="swatch"><div class="chip" style="background:rgba(30,31,26,.88);backdrop-filter:blur(8px)"></div><div class="name">glass</div><div class="hex">rgba 88%</div></div>
+      <div class="swatch"><div class="chip" style="background:rgba(30,31,26,.88);backdrop-filter:blur(8px)"></div><div class="name">glass 88%</div><div class="hex">rgba</div></div>
+      <div class="swatch"><div class="chip" style="background:rgba(30,31,26,.75)"></div><div class="name">glass-soft</div><div class="hex">75%</div></div>
     </div>
   </div>
 </body>

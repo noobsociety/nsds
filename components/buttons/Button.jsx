@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { cx } from '../shared/styles.js';
 
 const VALID_VARIANTS = new Set(['play', 'ghost']);
@@ -31,25 +29,21 @@ export function Button({
   };
 
   if (href) {
-    return React.createElement(
-      'a',
-      {
-        ...commonProps,
-        href: disabled ? undefined : href,
-        'aria-disabled': disabled || undefined,
-        tabIndex: disabled ? -1 : props.tabIndex,
-      },
-      children,
+    return (
+      <a
+        {...commonProps}
+        href={disabled ? undefined : href}
+        aria-disabled={disabled || undefined}
+        tabIndex={disabled ? -1 : props.tabIndex}
+      >
+        {children}
+      </a>
     );
   }
 
-  return React.createElement(
-    'button',
-    {
-      ...commonProps,
-      type,
-      disabled,
-    },
-    children,
+  return (
+    <button {...commonProps} type={type} disabled={disabled}>
+      {children}
+    </button>
   );
 }

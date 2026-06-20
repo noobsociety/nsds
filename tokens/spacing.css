@@ -20,20 +20,13 @@
   --ns-space-24:  5.75rem;   /* 92px */
 
   /* ── Fluid layout tokens (viewport-responsive) ────────────────── */
-  /* Container side padding: 16px → 32px */
-  --ns-fluid-container:       clamp(1rem, 4vw, 2rem);
-  /* Section top padding: 40px → 64px */
-  --ns-fluid-section-top:     clamp(2.5rem, 8svh, 4rem);
-  /* Section bottom padding: 64px → 88px */
-  --ns-fluid-section-bottom:  clamp(4rem, 10svh, 5.5rem);
-  /* Card grid gap: 12px → 24px */
-  --ns-fluid-gap-cards:       clamp(0.75rem, 2vw, 1.5rem);
-  /* Card internal padding: 16px → 20px */
-  --ns-fluid-card-pad:        clamp(1rem, 2vw, 1.25rem);
-  /* Hero two-col gap: 24px → 48px */
-  --ns-fluid-hero-gap:        clamp(1.5rem, 4vw, 3rem);
-  /* Footer two-col gap: 32px → 48px */
-  --ns-fluid-footer-gap:      clamp(2rem, 5vw, 3rem);
+  --ns-fluid-container:       clamp(1rem, 4vw, 2rem);          /* @kind spacing */
+  --ns-fluid-section-top:     clamp(2.5rem, 8svh, 4rem);        /* @kind spacing */
+  --ns-fluid-section-bottom:  clamp(4rem, 10svh, 5.5rem);       /* @kind spacing */
+  --ns-fluid-gap-cards:       clamp(0.75rem, 2vw, 1.5rem);      /* @kind spacing */
+  --ns-fluid-card-pad:        clamp(1rem, 2vw, 1.25rem);         /* @kind spacing */
+  --ns-fluid-hero-gap:        clamp(1.5rem, 4vw, 3rem);          /* @kind spacing */
+  --ns-fluid-footer-gap:      clamp(2rem, 5vw, 3rem);            /* @kind spacing */
 
   /* ── Fixed layout ─────────────────────────────────────────────── */
   --ns-container:     1080px;
@@ -60,8 +53,8 @@
   --ns-border-gold:        2px solid var(--ns-gold-deep);
 
   /* ── Blur ─────────────────────────────────────────────────────── */
-  --ns-blur-glass:  blur(8px);
-  --ns-blur-header: blur(12px);
+  --ns-blur-glass:  blur(8px);   /* @kind other */
+  --ns-blur-header: blur(12px);  /* @kind other */
 
   /* ── Component sizing ──────────────────────────────────────────── */
   --ns-icon-slot:    2.625rem; /* 42px */
