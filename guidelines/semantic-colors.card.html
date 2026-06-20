@@ -1,4 +1,4 @@
-<!-- @dsCard group="Colors" viewport="700x180" name="Semantic roles" subtitle="What each Monokai foreground color means" -->
+<!-- @dsCard group="Colors" viewport="700x200" name="Semantic roles" subtitle="What each Monokai foreground color means — one color, one role" -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +7,7 @@
 <style>
   body { background: var(--ns-bg-1); padding: 24px 28px; }
   table { border-collapse: collapse; width: 100%; }
-  th { font-family: 'Press Start 2P', system-ui, sans-serif; font-size: 7px; color: var(--ns-ink-faint); text-align: left; padding: 0 12px 10px 0; font-weight: 400; }
+  th { font-family: var(--ns-font-pixel); font-size: 7px; color: var(--ns-ink-faint); text-align: left; padding: 0 12px 10px 0; font-weight: 400; }
   td { font-size: 13px; color: var(--ns-ink-dim); padding: 5px 12px 5px 0; border-top: 1px solid rgba(255,255,255,.06); }
   .dot { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 8px; vertical-align: middle; }
 </style>
@@ -18,12 +18,12 @@
   <tbody>
     <tr><td><span class="dot" style="background:#f8f8f2"></span>#f8f8f2</td><td>Primary text</td><td>Headings, body, labels</td></tr>
     <tr><td><span class="dot" style="background:#75715e"></span>#75715e</td><td>Muted / comment</td><td>Captions, timestamps, placeholders</td></tr>
-    <tr><td><span class="dot" style="background:#e6db74"></span>#e6db74</td><td>Primary accent</td><td>Wordmark "Society", CTAs, eyebrows, active nav</td></tr>
+    <tr><td><span class="dot" style="background:#e6db74"></span>#e6db74</td><td>Primary accent / CTA</td><td>Wordmark "Society", CTAs, eyebrows, active nav</td></tr>
     <tr><td><span class="dot" style="background:#a6e22e"></span>#a6e22e</td><td>Holds / success / live</td><td>Quest "HOLDS", live dot, Gate ✓</td></tr>
     <tr><td><span class="dot" style="background:#fd971f"></span>#fd971f</td><td>Building / in-progress</td><td>Quest "BUILDING", active quest border + bg</td></tr>
-    <tr><td><span class="dot" style="background:#66d9e8"></span>#66d9e8</td><td>Planned / info</td><td>Quest "PLANNED", feature icon (open)</td></tr>
-    <tr><td><span class="dot" style="background:#f92672"></span>#f92672</td><td>Highlight / accent</td><td>CTA panel border, feature icon (energy)</td></tr>
-    <tr><td><span class="dot" style="background:#ae81ff"></span>#ae81ff</td><td>Decorative / personal</td><td>Feature icon (sprite-forward / identity)</td></tr>
+    <tr><td><span class="dot" style="background:#66d9e8"></span>#66d9e8</td><td>Planned / info</td><td>Quest "PLANNED", feature icon (open/info)</td></tr>
+    <tr><td><span class="dot" style="background:#f92672"></span>#f92672</td><td>Highlight / danger</td><td>CTA panel border, high-energy feature icon</td></tr>
+    <tr><td><span class="dot" style="background:#ae81ff"></span>#ae81ff</td><td>Decorative / personal</td><td>Feature icon (identity), decorative accents</td></tr>
   </tbody>
 </table>
 </body>
