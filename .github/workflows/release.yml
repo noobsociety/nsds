@@ -1,18 +1,19 @@
-name: CI
+name: Release
 
 on:
   push:
     branches:
       - main
-  pull_request:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+  pull-requests: write
+  id-token: write
 
 jobs:
-  package:
-    name: Package
+  release:
+    name: Changesets
     runs-on: ubuntu-latest
 
     steps:
@@ -24,6 +25,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
+          registry-url: https://registry.npmjs.org
 
       - name: Install
         run: npm ci
@@ -34,5 +36,11 @@ jobs:
       - name: Build Storybook
         run: npm run build:storybook
 
-      - name: Publish dry run
-        run: npm run release:dry-run
+      - name: Release
+        uses: changesets/action@v1
+        with:
+          version: npm run changeset:version
+          publish: npm run changeset:publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

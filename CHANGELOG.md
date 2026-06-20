@@ -2,7 +2,22 @@
 
 All notable changes to NSDS are documented here.
 
-## 0.2.0 - 2026-06-20
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Added
+
+- Project README structure for install, usage, package exports, development, release, and license guidance.
+- Changesets configuration and release scripts for version intent and publishing.
+- Storybook configuration and component stories for the public React package surface.
+- Release workflow for Changesets version pull requests and npm publishing.
+
+### Changed
+
+- Contribution guidance now documents SemVer, changelog, release, component documentation, and license expectations.
+
+## [0.2.0] - 2026-06-20
 
 ### Added
 
@@ -24,7 +39,7 @@ All notable changes to NSDS are documented here.
 - Duplicate compiled component runtime source files.
 - Superseded `ui-kits/` homepage path.
 
-## 0.1.2 - 2026-06-18
+## [0.1.2] - 2026-06-18
 
 ### Added
 
@@ -35,22 +50,28 @@ All notable changes to NSDS are documented here.
 - React smoke tests for the public component entry points.
 - TypeScript smoke validation for consumer-facing package imports.
 - Tailwind preset export for token-mapped utility classes.
-- Prioritized README roadmap and reference standards for documentation, changelog, versioning, release, and component documentation workflows.
+- Prioritized README roadmap and documentation, changelog, versioning, release, and component documentation workflows.
 
 ### Changed
 
 - Updated README language for the public npm package and repository.
 - Documented the TypeScript and testing roadmap.
 
-## 0.1.1 - 2026-06-18
+## [0.1.1] - 2026-06-18
 
 ### Changed
 
 - Published the package as `@noobsociety/nsds`.
 - Updated repository metadata for the public NSDS package.
 
-## 0.1.0 - 2026-06-18
+## [0.1.0] - 2026-06-18
 
 ### Added
 
-- Initial NSDS package with tokens, CSS primitives, React components, assets, guidelines, references, and UI kits.
+- Initial NSDS package with tokens, CSS primitives, React components, assets, guidelines, and design-system cards.
+
+[Unreleased]: https://github.com/noobsociety/nsds/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/noobsociety/nsds/compare/v0.1.2...v0.2.0
+[0.1.2]: https://github.com/noobsociety/nsds/compare/v0.1.1...v0.1.2
+[0.1.1]: https://github.com/noobsociety/nsds/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/noobsociety/nsds/releases/tag/v0.1.0

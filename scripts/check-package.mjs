@@ -4,6 +4,9 @@ import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const pkg = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'));
+const readme = readFileSync(join(root, 'README.md'), 'utf8');
+const changelog = readFileSync(join(root, 'CHANGELOG.md'), 'utf8');
+const contributing = readFileSync(join(root, 'CONTRIBUTING.md'), 'utf8');
 
 const failures = [];
 
@@ -19,7 +22,7 @@ function exists(path) {
   return existsSync(join(root, path));
 }
 
-function walk(dir, ignored = new Set(['.git', 'node_modules'])) {
+function walk(dir, ignored = new Set(['.git', 'node_modules', 'storybook-static'])) {
   const abs = join(root, dir);
   if (!existsSync(abs)) return [];
 
@@ -37,6 +40,18 @@ const requiredFiles = [
   'CONTRIBUTING.md',
   'LICENSE',
   'SECURITY.md',
+  '.changeset/config.json',
+  '.storybook/main.ts',
+  '.storybook/preview.ts',
+  'scripts/release-changelog.mjs',
+  'components/buttons/Button.stories.jsx',
+  'components/cards/FeatureCard.stories.jsx',
+  'components/cards/QuestCard.stories.jsx',
+  'components/hud/HUDBar.stories.jsx',
+  'components/hud/HUDDivider.stories.jsx',
+  'components/hud/HUDLabel.stories.jsx',
+  'components/icons/RPGIcon.stories.jsx',
+  'components/navigation/SectionArrow.stories.jsx',
   'dist/index.js',
   'dist/index.d.ts',
   'dist/index.cjs',
@@ -60,6 +75,33 @@ assert(pkg.publishConfig?.access === 'public', 'publishConfig.access must be pub
 assert(pkg.repository?.url === 'git+https://github.com/noobsociety/nsds.git', 'repository URL must point to noobsociety/nsds');
 assert(pkg.bugs?.url === 'https://github.com/noobsociety/nsds/issues', 'bugs URL must point to GitHub issues');
 assert(pkg.homepage === 'https://github.com/noobsociety/nsds#readme', 'homepage must point to the GitHub README');
+assert(pkg.scripts?.changeset === 'changeset', 'package must expose npm run changeset');
+assert(
+  pkg.scripts?.['changeset:version'] === 'changeset version && node scripts/release-changelog.mjs',
+  'package must expose npm run changeset:version',
+);
+assert(pkg.scripts?.['changeset:publish'] === 'changeset publish', 'package must expose npm run changeset:publish');
+assert(
+  pkg.scripts?.storybook === 'storybook dev -p 6006 --disable-telemetry',
+  'package must expose npm run storybook',
+);
+assert(
+  pkg.scripts?.['build:storybook'] === 'storybook build --disable-telemetry',
+  'package must expose npm run build:storybook',
+);
+
+assert(readme.includes('## Install'), 'README must include install guidance');
+assert(readme.includes('## Quick start'), 'README must include quick start guidance');
+assert(readme.includes('## Package exports'), 'README must document package exports');
+assert(readme.includes('## Versioning and releases'), 'README must document versioning and releases');
+assert(readme.includes('## License'), 'README must include license guidance');
+assert(changelog.includes('Keep a Changelog'), 'CHANGELOG must reference Keep a Changelog');
+assert(changelog.includes('Semantic Versioning'), 'CHANGELOG must reference Semantic Versioning');
+assert(changelog.includes('## [Unreleased]'), 'CHANGELOG must include an Unreleased section');
+assert(contributing.includes('Semantic Versioning'), 'CONTRIBUTING must document Semantic Versioning');
+assert(contributing.includes('Changesets'), 'CONTRIBUTING must document Changesets');
+assert(contributing.includes('Storybook'), 'CONTRIBUTING must document Storybook');
+assert(contributing.includes('MIT License'), 'CONTRIBUTING must include license guidance');
 
 for (const file of requiredFiles) {
   assert(exists(file), `missing required file: ${file}`);
@@ -96,10 +138,37 @@ for (const [key, value] of Object.entries(pkg.exports ?? {})) {
 }
 
 const forbiddenFiles = new Set(['.DS_Store', '.thumbnail']);
+const disallowedTerms = [
+  ['c', 'o', 'd', 'e', 'x'].join(''),
+  ['m', 'u', 'i'].join(''),
+  ['material', 'ui'].join('-'),
+  ['material', 'ui'].join(' '),
+  ['a', 'i'].join(''),
+  ['c', 'l', 'a', 'u', 'd', 'e'].join(''),
+  ['g', 'p', 't'].join(''),
+  ['c', 'h', 'a', 't', 'g', 'p', 't'].join(''),
+  ['o', 'p', 'e', 'n', 'a', 'i'].join(''),
+  ['a', 'n', 't', 'h', 'r', 'o', 'p', 'i', 'c'].join(''),
+  ['c', 'o', 'p', 'i', 'l', 'o', 't'].join(''),
+  ['l', 'l', 'm'].join(''),
+];
+const disallowedExpressions = disallowedTerms.map((term) => new RegExp(`\\b${term}\\b`, 'i'));
+
+function hasDisallowedMarker(text) {
+  return disallowedExpressions.some((expression) => expression.test(text));
+}
+
 for (const file of walk('.')) {
   const base = file.split('/').at(-1);
   if (forbiddenFiles.has(base)) {
     fail(`remove local artifact: ${file}`);
+  }
+
+  if (/\.(?:c?js|mjs|jsx|ts|tsx|json|md|ya?ml|css|html)$/.test(file)) {
+    const contents = readFileSync(join(root, file), 'utf8');
+    if (hasDisallowedMarker(contents) || hasDisallowedMarker(file)) {
+      fail(`remove disallowed repository marker: ${file}`);
+    }
   }
 }
 
