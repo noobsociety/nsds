@@ -95,6 +95,17 @@ assert(readme.includes('## Quick start'), 'README must include quick start guida
 assert(readme.includes('## Package exports'), 'README must document package exports');
 assert(readme.includes('## Versioning and releases'), 'README must document versioning and releases');
 assert(readme.includes('## License'), 'README must include license guidance');
+for (const [label, contents] of [
+  ['README', readme],
+  ['CHANGELOG', changelog],
+]) {
+  assert(
+    !/(?:_lab\/|guidelines\/|references\/|source cards|lab pages|reference surfaces|design-system cards)/i.test(
+      contents,
+    ),
+    `${label} must not document internal source artifacts`,
+  );
+}
 assert(changelog.includes('Keep a Changelog'), 'CHANGELOG must reference Keep a Changelog');
 assert(changelog.includes('Semantic Versioning'), 'CHANGELOG must reference Semantic Versioning');
 assert(changelog.includes('## [Unreleased]'), 'CHANGELOG must include an Unreleased section');
@@ -138,6 +149,15 @@ for (const [key, value] of Object.entries(pkg.exports ?? {})) {
 }
 
 const forbiddenFiles = new Set(['.DS_Store', '.thumbnail']);
+const internalArtifactPatterns = [
+  /^SKILL\.md$/,
+  /^support\.js$/,
+  /^_lab\//,
+  /^references\//,
+  /^assets\//,
+  /^guidelines\/.*\.card\.html$/,
+  /^components\/.*\.(?:prompt\.md|card\.html)$/,
+];
 const disallowedTerms = [
   ['c', 'o', 'd', 'e', 'x'].join(''),
   ['m', 'u', 'i'].join(''),
@@ -162,6 +182,10 @@ for (const file of walk('.')) {
   const base = file.split('/').at(-1);
   if (forbiddenFiles.has(base)) {
     fail(`remove local artifact: ${file}`);
+  }
+
+  if (internalArtifactPatterns.some((pattern) => pattern.test(file))) {
+    fail(`remove internal source artifact: ${file}`);
   }
 
   if (/\.(?:c?js|mjs|jsx|ts|tsx|json|md|ya?ml|css|html)$/.test(file)) {

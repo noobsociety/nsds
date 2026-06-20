@@ -2,7 +2,7 @@
 
 Reusable design tokens, CSS primitives, Tailwind preset, and pixel-art React components for NoobSociety.
 
-NSDS is Tailwind-first and token-driven. It ships the public package surface needed by product apps while keeping design guidelines, lab pages, and source cards in the repository for design-system development.
+NSDS is Tailwind-first and token-driven. It ships the public package surface needed by product apps: React components, CSS tokens, primitives, and a Tailwind preset.
 
 ## Contents
 
@@ -10,7 +10,7 @@ NSDS is Tailwind-first and token-driven. It ships the public package surface nee
 - [Quick start](#quick-start)
 - [Package exports](#package-exports)
 - [Components](#components)
-- [Design files](#design-files)
+- [Repository layout](#repository-layout)
 - [Development](#development)
 - [Versioning and releases](#versioning-and-releases)
 - [License](#license)
@@ -104,17 +104,14 @@ Build static Storybook documentation:
 npm run build:storybook
 ```
 
-## Design files
+## Repository layout
 
 | Path | Purpose |
 | --- | --- |
 | `styles.css` | Public CSS entry point |
 | `tokens/` | CSS custom properties for color, type, spacing, motion, and HUD values |
-| `components/` | React components, TypeScript declarations, primitive CSS, cards, and stories |
+| `components/` | React components, TypeScript declarations, primitive CSS, and stories |
 | `tailwind/` | Tailwind preset source |
-| `guidelines/` | Design-system guidance cards |
-| `_lab/` | Internal lab pages and experiments |
-| `assets/` | Product sprites and imagery for lab and guideline surfaces |
 
 ## Development
 
