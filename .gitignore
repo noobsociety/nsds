@@ -7,3 +7,5 @@ storybook-static/
 .turbo/
 .vite/
 coverage/
+playwright-report/
+test-results/

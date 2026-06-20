@@ -1,0 +1,263 @@
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background: var(--ns-bg-0);
+  color: var(--ns-ink);
+  font-family: var(--ns-font-body);
+}
+
+a {
+  color: inherit;
+}
+
+.site-shell {
+  width: min(1120px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 72px;
+  border-bottom: 1px solid var(--ns-line);
+}
+
+.site-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ns-ink);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.site-mark__glyph {
+  display: inline-grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid var(--ns-gold);
+  color: var(--ns-gold);
+  font-family: var(--ns-font-pixel);
+  font-size: 10px;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: var(--ns-ink-dim);
+  font-size: 14px;
+}
+
+.site-nav a {
+  text-decoration: none;
+}
+
+.site-nav a:focus-visible,
+.site-nav a:hover {
+  color: var(--ns-gold);
+}
+
+.site-hero {
+  min-height: min(760px, calc(100svh - 96px));
+  display: flex;
+  align-items: center;
+  padding-block: 56px;
+  border-bottom: 1px solid var(--ns-line);
+}
+
+.site-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.05fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.site-hero__copy {
+  display: grid;
+  gap: 22px;
+  max-width: 600px;
+}
+
+.site-kicker {
+  margin: 0;
+  color: var(--ns-cyan);
+  font-family: var(--ns-font-pixel);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+h1 {
+  max-width: 11ch;
+  margin: 0;
+  color: var(--ns-ink);
+  font-size: 56px;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.site-hero__copy p:not(.site-kicker) {
+  max-width: 56ch;
+  margin: 0;
+  color: var(--ns-ink-dim);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.site-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.site-install {
+  width: min(100%, 440px);
+  margin: 0;
+  padding: 14px 16px;
+  overflow-x: auto;
+  border: 1px solid var(--ns-line);
+  background: var(--ns-bg-1);
+  color: var(--ns-green);
+  font-size: 14px;
+}
+
+.site-specimen {
+  display: grid;
+  gap: 16px;
+  padding: 18px;
+  border: 1px solid var(--ns-line);
+  background: var(--ns-bg-1);
+}
+
+.site-hud {
+  display: grid;
+  grid-template-columns: auto minmax(160px, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid rgba(102, 217, 232, 0.45);
+  background: rgba(102, 217, 232, 0.09);
+  color: var(--ns-ink);
+  font-family: var(--ns-font-pixel);
+  font-size: 10px;
+}
+
+.site-meter {
+  position: relative;
+  height: 14px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.site-meter span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--hud-hp-fill);
+}
+
+.site-quest-list {
+  display: grid;
+  gap: 14px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.site-section {
+  padding-block: 28px 56px;
+}
+
+.site-links {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.site-link-card {
+  display: grid;
+  gap: 8px;
+  min-height: 112px;
+  padding: 16px;
+  border: 1px solid var(--ns-line);
+  background: var(--ns-bg-1);
+  color: var(--ns-ink);
+  text-decoration: none;
+}
+
+.site-link-card span {
+  color: var(--ns-pink);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.site-link-card strong {
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.site-link-card:focus-visible,
+.site-link-card:hover {
+  border-color: var(--ns-gold);
+  color: var(--ns-gold);
+}
+
+@media (max-width: 860px) {
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-block: 16px;
+  }
+
+  .site-nav {
+    flex-wrap: wrap;
+  }
+
+  .site-hero {
+    min-height: auto;
+    padding-block: 40px;
+  }
+
+  .site-hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    max-width: 10ch;
+    font-size: 42px;
+  }
+
+  .site-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .site-shell {
+    width: min(100% - 24px, 1120px);
+  }
+
+  .site-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .site-hud {
+    grid-template-columns: 1fr;
+  }
+
+  .site-links {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,34 @@
+# Package Exports
+
+| Export | Purpose |
+| --- | --- |
+| `@noobsociety/nsds` | React components and public types |
+| `@noobsociety/nsds/react` | React component alias |
+| `@noobsociety/nsds/tailwind` | Tailwind preset |
+| `@noobsociety/nsds/styles` | Full CSS entry |
+| `@noobsociety/nsds/styles.css` | CSS entry compatibility alias |
+| `@noobsociety/nsds/tokens/*` | Individual token CSS files |
+| `@noobsociety/nsds/primitives` | Component primitive CSS |
+| `@noobsociety/nsds/components/primitives.css` | Primitive CSS compatibility alias |
+| `@noobsociety/nsds/package.json` | Package metadata |
+
+## JavaScript
+
+Both ESM import and CommonJS require are supported for the React entry points.
+
+```ts
+import { Button } from '@noobsociety/nsds';
+```
+
+```js
+const { Button } = require('@noobsociety/nsds');
+```
+
+## CSS
+
+CSS exports are intended for bundlers and app frameworks that understand CSS
+imports.
+
+```tsx
+import '@noobsociety/nsds/styles';
+```

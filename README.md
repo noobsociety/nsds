@@ -10,6 +10,7 @@ NSDS is Tailwind-first and token-driven. It ships the public package surface nee
 - [Quick start](#quick-start)
 - [Package exports](#package-exports)
 - [Components](#components)
+- [Documentation](#documentation)
 - [Repository layout](#repository-layout)
 - [Development](#development)
 - [Versioning and releases](#versioning-and-releases)
@@ -104,14 +105,34 @@ Build static Storybook documentation:
 npm run build:storybook
 ```
 
+## Documentation
+
+Public docs live in [`docs/`](./docs/README.md) and follow the Diataxis model:
+
+- tutorials for first-time setup
+- how-to guides for integration tasks
+- reference pages for exports, tokens, classes, and generated API details
+- explanation pages for design, accessibility, and versioning decisions
+
+Generate the API reference from TypeScript source:
+
+```bash
+npm run docs:api
+```
+
+The static landing page lives in [`site/`](./site/index.html).
+
 ## Repository layout
 
 | Path | Purpose |
 | --- | --- |
 | `styles.css` | Public CSS entry point |
 | `tokens/` | CSS custom properties for color, type, spacing, motion, and HUD values |
-| `components/` | React components, TypeScript declarations, primitive CSS, and stories |
+| `components/` | TypeScript React source, primitive CSS, and Storybook stories |
 | `tailwind/` | Tailwind preset source |
+| `docs/` | Public documentation and generated API reference |
+| `site/` | Static public landing page |
+| `tests/` | Component and browser-rendered visual checks |
 
 ## Development
 
@@ -127,9 +148,15 @@ Common scripts:
 | Script | Purpose |
 | --- | --- |
 | `npm run build` | Build the package into `dist/` |
-| `npm run check` | Build, validate package metadata, type-check, and smoke-test imports |
+| `npm run check` | Run build, package guards, type checks, tests, and import smoke checks |
+| `npm run check:docs` | Regenerate API docs and fail when generated docs drift |
+| `npm run check:exports` | Validate npm exports and declaration entry points |
+| `npm run check:install` | Install the packed package in a temporary consumer project |
+| `npm run docs:api` | Generate markdown API reference from TypeScript source |
 | `npm run storybook` | Start component documentation locally |
 | `npm run build:storybook` | Build static component documentation |
+| `npm run test:components` | Run component behavior tests |
+| `npm run test:visual` | Run browser-rendered visual checks |
 | `npm run release:dry-run` | Preview the npm package contents |
 | `npm run changeset` | Add a release note and version intent |
 

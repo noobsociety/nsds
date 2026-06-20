@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-06-20
+
+### Added
+
+- First-class TypeScript component source with generated declaration output.
+- Component tests for class names, variants, invalid runtime values, and accessibility attributes.
+- Package export linting, packed install checks, and Tailwind preset type validation.
+- Diataxis-style public docs, generated API reference, and static landing page.
+- Browser-rendered visual checks for the public component specimen surface.
+
+### Changed
+
+- Storybook stories now use typed `.tsx` examples and include a full component showcase.
+- CI and release checks now install the browser needed for visual coverage.
+
 ## [0.2.1] - 2026-06-20
 
 ### Added
@@ -76,7 +91,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Initial NSDS package with tokens, CSS primitives, React components, and Tailwind support.
 
-[Unreleased]: https://github.com/noobsociety/nsds/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com/noobsociety/nsds/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/noobsociety/nsds/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/noobsociety/nsds/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/noobsociety/nsds/compare/v0.1.2...v0.2.0
 [0.1.2]: https://github.com/noobsociety/nsds/compare/v0.1.1...v0.1.2

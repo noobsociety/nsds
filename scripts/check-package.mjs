@@ -43,19 +43,56 @@ const requiredFiles = [
   '.changeset/config.json',
   '.storybook/main.ts',
   '.storybook/preview.ts',
+  'tsconfig.build.json',
   'scripts/release-changelog.mjs',
-  'components/buttons/Button.stories.jsx',
-  'components/cards/FeatureCard.stories.jsx',
-  'components/cards/QuestCard.stories.jsx',
-  'components/hud/HUDBar.stories.jsx',
-  'components/hud/HUDDivider.stories.jsx',
-  'components/hud/HUDLabel.stories.jsx',
-  'components/icons/RPGIcon.stories.jsx',
-  'components/navigation/SectionArrow.stories.jsx',
+  'scripts/prepare-types.mjs',
+  'scripts/check-install.mjs',
+  'scripts/serve-static.mjs',
+  'index.ts',
+  'playwright.config.ts',
+  'typedoc.json',
+  'vitest.config.ts',
+  'docs/README.md',
+  'docs/tutorials/getting-started.md',
+  'docs/how-to/use-with-tailwind.md',
+  'docs/how-to/use-react-components.md',
+  'docs/how-to/customize-tokens.md',
+  'docs/reference/exports.md',
+  'docs/reference/tokens.md',
+  'docs/reference/css-classes.md',
+  'docs/reference/api/README.md',
+  'docs/explanation/design-principles.md',
+  'docs/explanation/accessibility.md',
+  'docs/explanation/versioning.md',
+  'site/index.html',
+  'site/styles.css',
+  'tests/setup.ts',
+  'tests/components.test.tsx',
+  'tests/visual/public-surface.spec.ts',
+  'components/Showcase.stories.tsx',
+  'components/buttons/Button.tsx',
+  'components/buttons/Button.stories.tsx',
+  'components/cards/FeatureCard.tsx',
+  'components/cards/FeatureCard.stories.tsx',
+  'components/cards/QuestCard.tsx',
+  'components/cards/QuestCard.stories.tsx',
+  'components/hud/HUDBar.tsx',
+  'components/hud/HUDBar.stories.tsx',
+  'components/hud/HUDDivider.tsx',
+  'components/hud/HUDDivider.stories.tsx',
+  'components/hud/HUDLabel.tsx',
+  'components/hud/HUDLabel.stories.tsx',
+  'components/icons/RPGIcon.tsx',
+  'components/icons/RPGIcon.stories.tsx',
+  'components/navigation/SectionArrow.tsx',
+  'components/navigation/SectionArrow.stories.tsx',
   'dist/index.js',
   'dist/index.d.ts',
+  'dist/index.d.cts',
   'dist/index.cjs',
   'dist/tailwind/preset.js',
+  'dist/tailwind/preset.d.ts',
+  'dist/tailwind/preset.d.cts',
   'dist/styles.css',
   'dist/tokens/colors.css',
   'dist/tokens/typography.css',
@@ -77,9 +114,23 @@ assert(pkg.bugs?.url === 'https://github.com/noobsociety/nsds/issues', 'bugs URL
 assert(pkg.homepage === 'https://github.com/noobsociety/nsds#readme', 'homepage must point to the GitHub README');
 assert(pkg.scripts?.changeset === 'changeset', 'package must expose npm run changeset');
 assert(
+  pkg.scripts?.['check:exports'] ===
+    'publint run --pack npm --level warning && attw --pack . --profile node16 --entrypoints . ./react ./tailwind --format table --no-emoji',
+  'package must expose npm run check:exports',
+);
+assert(
+  pkg.scripts?.['check:install'] === 'node scripts/check-install.mjs',
+  'package must expose npm run check:install',
+);
+assert(
+  pkg.scripts?.['check:docs'] === 'npm run docs:api && git diff --exit-code docs/reference/api',
+  'package must expose npm run check:docs',
+);
+assert(
   pkg.scripts?.['changeset:version'] === 'changeset version && node scripts/release-changelog.mjs',
   'package must expose npm run changeset:version',
 );
+assert(pkg.scripts?.['docs:api'] === 'typedoc --options typedoc.json', 'package must expose npm run docs:api');
 assert(pkg.scripts?.['changeset:publish'] === 'changeset publish', 'package must expose npm run changeset:publish');
 assert(
   pkg.scripts?.storybook === 'storybook dev -p 6006 --disable-telemetry',
@@ -89,6 +140,8 @@ assert(
   pkg.scripts?.['build:storybook'] === 'storybook build --disable-telemetry',
   'package must expose npm run build:storybook',
 );
+assert(pkg.scripts?.['test:components'] === 'vitest run', 'package must expose npm run test:components');
+assert(pkg.scripts?.['test:visual'] === 'playwright test', 'package must expose npm run test:visual');
 
 assert(readme.includes('## Install'), 'README must include install guidance');
 assert(readme.includes('## Quick start'), 'README must include quick start guidance');

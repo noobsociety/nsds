@@ -1,7 +1,12 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "declaration": true,
     "jsx": "react-jsx",
+    "lib": [
+      "DOM",
+      "ES2022"
+    ],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "noEmit": true,
@@ -10,6 +15,19 @@
     "target": "ES2022"
   },
   "include": [
-    "scripts/type-smoke.ts"
+    ".storybook/**/*.ts",
+    "components/**/*.ts",
+    "components/**/*.tsx",
+    "global.d.ts",
+    "index.ts",
+    "scripts/**/*.ts",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+    "vitest.config.ts"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "storybook-static"
   ]
 }
