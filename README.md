@@ -154,7 +154,9 @@ npm run changeset:version
 
 That command applies Changesets version bumps and promotes the current `[Unreleased]` changelog entries into a dated release section.
 
-Publishing is handled through the release workflow on `main` when `NPM_TOKEN` is configured. Manual publishing remains available for maintainers after the version commit is prepared:
+Open and merge the version commit as a normal release pull request. The release workflow publishes from `main` when the package version is not already on npm and `NPM_TOKEN` is configured.
+
+Manual publishing remains available for maintainers after the version commit is prepared:
 
 ```bash
 npm run check

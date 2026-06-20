@@ -69,9 +69,9 @@ Maintainers prepare release commits with:
 npm run changeset:version
 ```
 
-This command applies the Changesets version plan and updates `CHANGELOG.md` from the `[Unreleased]` section.
+This command applies the Changesets version plan and updates `CHANGELOG.md` from the `[Unreleased]` section. Open the result as a release pull request.
 
-Publishing is handled by the release workflow on `main` when `NPM_TOKEN` is configured:
+Publishing is handled by the release workflow after the release pull request is merged to `main`, when `NPM_TOKEN` is configured:
 
 ```bash
 npm run changeset:publish
