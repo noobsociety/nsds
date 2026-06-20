@@ -8,10 +8,10 @@
   --ns-glass-2:   rgba(30, 31, 26, 0.60);  /* lighter glass */
   --ns-glass-soft: rgba(30, 31, 26, 0.75); /* subtle card surface */
 
-  --ns-bg-0-rgb: 26 26 22;
-  --ns-bg-1-rgb: 39 40 34;
-  --ns-bg-2-rgb: 50 51 43;
-  --ns-glass-rgb: 30 31 26;
+  --ns-bg-0-rgb: 26 26 22;     /* @kind other */
+  --ns-bg-1-rgb: 39 40 34;      /* @kind other */
+  --ns-bg-2-rgb: 50 51 43;      /* @kind other */
+  --ns-glass-rgb: 30 31 26;     /* @kind other */
 
   /* ── Borders ──────────────────────────────────────────────── */
   --ns-line:        rgba(255, 255, 255, 0.12);
@@ -22,9 +22,9 @@
   --ns-ink:       #f8f8f2;   /* primary text — Monokai foreground */
   --ns-ink-dim:   #a8a28c;   /* secondary text */
   --ns-ink-faint: #75715e;   /* placeholder, captions — Monokai comment */
-  --ns-ink-rgb:       248 248 242;
-  --ns-ink-dim-rgb:   168 162 140;
-  --ns-ink-faint-rgb: 117 113 94;
+  --ns-ink-rgb:       248 248 242;  /* @kind other */
+  --ns-ink-dim-rgb:   168 162 140;  /* @kind other */
+  --ns-ink-faint-rgb: 117 113 94;   /* @kind other */
 
   /* ── Brand yellow (gold) — primary accent ─────────────────── */
   --ns-gold:        #e6db74;
@@ -32,10 +32,10 @@
   --ns-gold-deep:   #cabb50;
   --ns-gold-shadow: #b5a83f;
   --ns-gold-btn-fg: #1c1c17; /* text on gold buttons */
-  --ns-gold-rgb:        230 219 116;
-  --ns-gold-pale-rgb:   244 240 153;
-  --ns-gold-deep-rgb:   202 187 80;
-  --ns-gold-shadow-rgb: 181 168 63;
+  --ns-gold-rgb:        230 219 116;  /* @kind other */
+  --ns-gold-pale-rgb:   244 240 153;  /* @kind other */
+  --ns-gold-deep-rgb:   202 187 80;   /* @kind other */
+  --ns-gold-shadow-rgb: 181 168 63;   /* @kind other */
 
   /* ── Monokai semantic accents ─────────────────────────────── */
   --ns-green:       #a6e22e;  /* "Holds" / success */
@@ -46,14 +46,14 @@
   --ns-orange-deep: #c96f00;
   --ns-pink:        #f92672;  /* danger / highlight */
   --ns-purple:      #ae81ff;  /* decorative */
-  --ns-green-rgb:       166 226 46;
-  --ns-green-deep-rgb:  127 184 30;
-  --ns-cyan-rgb:        102 217 232;
-  --ns-cyan-deep-rgb:   91 200 215;
-  --ns-orange-rgb:      253 151 31;
-  --ns-orange-deep-rgb: 201 111 0;
-  --ns-pink-rgb:        249 38 114;
-  --ns-purple-rgb:      174 129 255;
+  --ns-green-rgb:       166 226 46;   /* @kind other */
+  --ns-green-deep-rgb:  127 184 30;   /* @kind other */
+  --ns-cyan-rgb:        102 217 232;  /* @kind other */
+  --ns-cyan-deep-rgb:   91 200 215;   /* @kind other */
+  --ns-orange-rgb:      253 151 31;   /* @kind other */
+  --ns-orange-deep-rgb: 201 111 0;    /* @kind other */
+  --ns-pink-rgb:        249 38 114;   /* @kind other */
+  --ns-purple-rgb:      174 129 255;  /* @kind other */
 
   /* ── Semantic aliases ─────────────────────────────────────── */
   --ns-surface-page:   var(--ns-bg-1);
@@ -68,6 +68,12 @@
   --ns-status-building: var(--ns-orange);
   --ns-status-planned:  var(--ns-cyan);
   --ns-status-later:    var(--ns-ink-faint);
+
+  /* ── Quest card status pill backgrounds ──────────────────────── */
+  --ns-quest-pill-done:    rgba(166, 226, 46, 0.10);
+  --ns-quest-pill-active:  rgba(253, 151, 31, 0.12);
+  --ns-quest-pill-planned: rgba(102, 217, 232, 0.12);
+  --ns-quest-pill-locked:  rgba(255, 255, 255, 0.05);
   --ns-focus-ring:      rgba(230, 219, 116, 0.35);
   --ns-selection-bg:    rgba(249, 38, 114, 0.28);
 }

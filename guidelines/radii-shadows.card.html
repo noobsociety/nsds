@@ -1,4 +1,4 @@
-<!-- @dsCard group="Spacing" viewport="700x160" name="Radii & Shadows" subtitle="Border radii and shadow system" -->
+<!-- @dsCard group="Spacing" viewport="700x160" name="Radii & Shadows" subtitle="Border radius scale + shadow system (card, modal, button press)" -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +7,10 @@
 <style>
   body { background: var(--ns-bg-1); padding: 24px 28px; display: flex; flex-direction: column; gap: 20px; }
   .row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
-  .box { background: rgba(30,31,26,.88); border: 1px solid rgba(255,255,255,.22); width: 60px; height: 44px; display: flex; align-items: center; justify-content: center; }
-  .label { font-family: 'Press Start 2P', system-ui, sans-serif; font-size: 7px; color: #75715e; text-align: center; margin-top: 6px; }
+  .box { background: var(--ns-glass); border: 1px solid var(--ns-line-strong); width: 60px; height: 44px; display: flex; align-items: center; justify-content: center; }
+  .label { font-family: var(--ns-font-pixel); font-size: 7px; color: var(--ns-ink-faint); text-align: center; margin-top: 6px; }
   .unit { display: flex; flex-direction: column; align-items: center; }
-  .shadow-box { width: 80px; height: 44px; background: rgba(30,31,26,.88); border: 1px solid rgba(255,255,255,.22); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Press Start 2P', system-ui, sans-serif; font-size: 6px; color: #75715e; text-align: center; }
+  .shadow-box { width: 80px; height: 44px; background: var(--ns-glass); border: 1px solid var(--ns-line-strong); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: var(--ns-font-pixel); font-size: 6px; color: var(--ns-ink-faint); text-align: center; }
 </style>
 </head>
 <body>
@@ -22,7 +22,7 @@
     <div class="unit"><div class="box" style="border-radius:9999px;width:80px"></div><div class="label">full</div></div>
     <div class="unit"><div class="shadow-box" style="box-shadow:0 16px 34px rgba(0,0,0,.38)">card</div><div class="label">card hover</div></div>
     <div class="unit"><div class="shadow-box" style="box-shadow:0 24px 56px rgba(0,0,0,.5)">modal</div><div class="label">modal</div></div>
-    <div class="unit"><div class="shadow-box" style="box-shadow:0 3px 0 #b5a83f;background:#e6db74;color:#1c1c17">btn</div><div class="label">btn press</div></div>
+    <div class="unit"><div class="shadow-box" style="box-shadow:0 3px 0 #b5a83f;background:var(--ns-gold);color:#1c1c17;font-family:var(--ns-font-pixel);font-size:6px">btn</div><div class="label">btn press</div></div>
   </div>
 </body>
 </html>

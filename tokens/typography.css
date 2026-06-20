@@ -22,8 +22,8 @@
   --ns-pixel-md:  12px;
   --ns-pixel-lg:  13px;
   --ns-pixel-xl:  1.6rem;    /* hero accent title */
-  --ns-pixel-2xl: clamp(2rem, 1rem + 3vw, 3.5rem);  /* hero title */
-  --ns-title-section: clamp(1.8rem, 1rem + 2vw, 2.4rem);
+  --ns-pixel-2xl: clamp(2rem, 1rem + 3vw, 3.5rem); /* @kind other */
+  --ns-title-section: clamp(1.8rem, 1rem + 2vw, 2.4rem); /* @kind other */
 
   /* ── Line heights ─────────────────────────────────────────── */
   --ns-leading-tight:  1.08;

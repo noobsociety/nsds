@@ -1,27 +1,27 @@
 {
   "name": "@noobsociety/nsds",
   "version": "0.1.2",
-  "description": "NoobSociety Design System: tokens, CSS primitives, React components, MUI theme runtime, assets, and references.",
+  "description": "NoobSociety Design System — Monokai dark tokens, Tailwind preset, MUI theme, pixel-art React components",
   "keywords": [
     "design-system",
-    "css",
-    "tokens",
     "react",
-    "mui",
-    "theme",
-    "pixel-art",
     "monokai",
+    "tailwind",
+    "mui",
+    "pixel-art",
     "noobsociety"
   ],
   "author": "NoobSociety",
   "license": "MIT",
   "scripts": {
-    "check": "npm run check:package && npm run check:types && npm run test:smoke",
+    "build": "vite build",
+    "check": "npm run build && npm run check:package && npm run check:types && npm run test:smoke",
     "check:package": "node scripts/check-package.mjs",
     "check:types": "tsc --noEmit",
+    "prepublishOnly": "npm run build",
     "test": "npm run check",
     "test:smoke": "node scripts/smoke-imports.mjs",
-    "release:dry-run": "npm publish --dry-run"
+    "release:dry-run": "npm pack --dry-run"
   },
   "repository": {
     "type": "git",
@@ -32,9 +32,10 @@
   },
   "homepage": "https://github.com/noobsociety/nsds#readme",
   "type": "module",
-  "main": "./index.js",
-  "types": "./index.d.ts",
-  "style": "./styles.css",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "style": "./dist/styles.css",
   "sideEffects": [
     "*.css",
     "**/*.css"
@@ -43,61 +44,51 @@
     "access": "public"
   },
   "files": [
-    "README.md",
+    "dist",
     "CHANGELOG.md",
     "CONTRIBUTING.md",
     "LICENSE",
-    "SECURITY.md",
-    "SKILL.md",
-    "index.js",
-    "index.d.ts",
-    "styles.css",
-    "support.js",
-    "tokens",
-    "components",
-    "mui-theme",
-    "assets",
-    "guidelines",
-    "references",
-    "ui-kits"
+    "SECURITY.md"
   ],
   "exports": {
     ".": {
-      "types": "./index.d.ts",
-      "import": "./index.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
     "./react": {
-      "types": "./components/react/index.d.ts",
-      "import": "./components/react/index.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
     "./mui": {
-      "types": "./mui-theme/index.d.ts",
-      "import": "./mui-theme/index.js"
+      "types": "./dist/mui/index.d.ts",
+      "import": "./dist/mui/index.js",
+      "require": "./dist/mui/index.cjs"
     },
-    "./styles.css": "./styles.css",
-    "./package.json": "./package.json",
-    "./support.js": "./support.js",
-    "./components/primitives.css": "./components/primitives.css",
-    "./tokens/*": "./tokens/*",
-    "./assets/*": "./assets/*",
-    "./guidelines/*": "./guidelines/*",
-    "./references/*": "./references/*",
-    "./ui-kits/*": "./ui-kits/*"
+    "./tailwind": "./dist/tailwind/preset.js",
+    "./styles": "./dist/styles.css",
+    "./styles.css": "./dist/styles.css",
+    "./tokens/*": "./dist/tokens/*",
+    "./primitives": "./dist/components/primitives.css",
+    "./components/primitives.css": "./dist/components/primitives.css",
+    "./package.json": "./package.json"
   },
   "peerDependencies": {
-    "@emotion/react": ">=11",
-    "@emotion/styled": ">=11",
-    "@mui/material": ">=5",
-    "react": ">=18"
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "@mui/material": ">=5.0.0",
+    "@emotion/react": ">=11.0.0",
+    "@emotion/styled": ">=11.0.0"
   },
   "peerDependenciesMeta": {
+    "@mui/material": {
+      "optional": true
+    },
     "@emotion/react": {
       "optional": true
     },
     "@emotion/styled": {
-      "optional": true
-    },
-    "@mui/material": {
       "optional": true
     }
   },
@@ -106,7 +97,11 @@
     "@emotion/styled": "^11.14.1",
     "@mui/material": "^9.1.1",
     "@types/react": "^19.2.17",
+    "@vitejs/plugin-react": "^4.0.0",
     "react": "^19.2.7",
-    "typescript": "^6.0.3"
+    "react-dom": "^19.2.7",
+    "tailwindcss": "^3.0.0",
+    "typescript": "^6.0.3",
+    "vite": "^5.0.0"
   }
 }

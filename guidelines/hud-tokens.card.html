@@ -1,0 +1,153 @@
+<!-- @dsCard group="HUD" viewport="700x520" name="HUD Tokens" subtitle="In-game chrome tokens — vitals, XP, chat tones, minimap, glass, geometry" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #1a1a16; padding: 22px 26px; font-family: 'Press Start 2P', system-ui, sans-serif; color: #f8f8f2; display: flex; flex-direction: column; gap: 20px; }
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+  .section-label { font-size: 7px; color: #75715e; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
+  .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end; }
+  /* swatch */
+  .sw { display: flex; flex-direction: column; gap: 5px; align-items: flex-start; }
+  .chip { width: 52px; height: 36px; border-radius: 4px; border: 1px solid rgba(255,255,255,.1); }
+  .tk { font-size: 6px; color: #75715e; white-space: nowrap; }
+  .hex { font-size: 6px; color: #a8a28c; }
+  /* vital bar */
+  .vbar { position: relative; height: 14px; border-radius: 4px; overflow: hidden; width: 140px; }
+  .vbar-fill { position: absolute; inset: 0; }
+  .vbar-text { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 7px; color: #fff; }
+  /* xp track */
+  .xp-row { display: flex; align-items: center; gap: 6px; width: 260px; }
+  .xp-label { font-size: 6px; width: 28px; flex-shrink: 0; }
+  .xp-track { flex: 1; height: 4px; background: rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.14); border-radius: 2px; overflow: hidden; }
+  .xp-fill { height: 100%; }
+  .xp-pct { font-size: 6px; color: #cccccc; width: 22px; text-align: right; }
+  /* log tone */
+  .tone { font-size: 8px; padding: 3px 8px; border-radius: 3px; background: rgba(0,0,0,.35); }
+  /* minimap dot legend */
+  .dot-row { display: flex; align-items: center; gap: 6px; font-size: 7px; color: #a8a28c; }
+  .dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+  /* glass surface */
+  .glass-demo { width: 160px; height: 44px; background: rgba(12,16,22,.62); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.18); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 7px; color: rgba(255,255,255,.7); }
+  .divider { border: none; border-top: 1px solid rgba(255,255,255,.08); }
+</style>
+</head>
+<body>
+
+<div>
+  <p class="section-label">Vital bars — HP &amp; MP</p>
+  <div class="row">
+    <div class="sw">
+      <div class="vbar" style="background:#2a7a2a">
+        <div class="vbar-fill" style="width:72%;background:#4caf73"></div>
+        <div class="vbar-text">HP &nbsp; 72 / 100</div>
+      </div>
+      <div class="tk">HP healthy</div>
+    </div>
+    <div class="sw">
+      <div class="vbar" style="background:#2a7a2a">
+        <div class="vbar-fill" style="width:24%;background:#cc3333;animation:hp-low 1.1s ease-in-out infinite"></div>
+        <div class="vbar-text">HP &nbsp; 24 / 100</div>
+      </div>
+      <div class="tk">HP low (&lt;30%)</div>
+    </div>
+    <div class="sw">
+      <div class="vbar" style="background:#2a3a9a">
+        <div class="vbar-fill" style="width:58%;background:#5b9bd5"></div>
+        <div class="vbar-text">MP &nbsp; 58 / 100</div>
+      </div>
+      <div class="tk">MP healthy</div>
+    </div>
+    <div class="sw">
+      <div class="vbar" style="background:#2a3a9a">
+        <div class="vbar-fill" style="width:18%;background:#4f7fc0"></div>
+        <div class="vbar-text">MP &nbsp; 18 / 100</div>
+      </div>
+      <div class="tk">MP low</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div>
+  <p class="section-label">XP tracks — BXP / TXP / WXP</p>
+  <div class="row" style="flex-direction:column;align-items:flex-start;gap:6px">
+    <div class="xp-row">
+      <span class="xp-label" style="color:#88aaee">BXP 12</span>
+      <div class="xp-track"><div class="xp-fill" style="width:38%;background:#4488cc"></div></div>
+      <span class="xp-pct">38%</span>
+    </div>
+    <div class="xp-row">
+      <span class="xp-label" style="color:#aa88ee">TXP 7</span>
+      <div class="xp-track"><div class="xp-fill" style="width:61%;background:#8855cc"></div></div>
+      <span class="xp-pct">61%</span>
+    </div>
+    <div class="xp-row">
+      <span class="xp-label" style="color:#eeaa66">WXP 3</span>
+      <div class="xp-track"><div class="xp-fill" style="width:20%;background:#cc8844"></div></div>
+      <span class="xp-pct">20%</span>
+    </div>
+  </div>
+  <div class="row" style="margin-top:10px">
+    <div class="sw"><div class="chip" style="background:#3a2e6e"></div><div class="tk">marks-track</div><div class="hex">#3a2e6e</div></div>
+    <div class="sw"><div class="chip" style="background:#7f77dd"></div><div class="tk">marks-fill</div><div class="hex">#7f77dd</div></div>
+    <div class="sw"><div class="chip" style="background:#4a2e0a"></div><div class="tk">craft-track</div><div class="hex">#4a2e0a</div></div>
+    <div class="sw"><div class="chip" style="background:#ba7517"></div><div class="tk">craft-fill</div><div class="hex">#ba7517</div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div>
+  <p class="section-label">Chat log tones</p>
+  <div class="row">
+    <span class="tone" style="color:#ff8888">battle — You hit the slime for 14 dmg.</span>
+    <span class="tone" style="color:#88ccff">world — You discovered the plaza.</span>
+    <span class="tone" style="color:#aaffaa">gain — You gained 30 BXP.</span>
+    <span class="tone" style="color:#cccccc">say — Welcome to NoobSociety.</span>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div>
+  <p class="section-label">Minimap dot legend</p>
+  <div class="row" style="gap:16px">
+    <div class="dot-row"><div class="dot" style="background:#ffffff"></div>Player</div>
+    <div class="dot-row"><div class="dot" style="background:#ff5a5a"></div>Enemy (aggressive)</div>
+    <div class="dot-row"><div class="dot" style="background:rgba(255,110,100,.65)"></div>Enemy (passive)</div>
+    <div class="dot-row"><div class="dot" style="background:#f4c542"></div>NPC / board</div>
+    <div class="dot-row"><div class="dot" style="background:#67e8f9;border-radius:0;transform:rotate(45deg)"></div>Walk goal</div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div>
+  <p class="section-label">Glass surface &amp; geometry</p>
+  <div class="row">
+    <div class="sw">
+      <div class="glass-demo">--hud-glass</div>
+      <div class="tk">rgba(12,16,22,.62)</div>
+      <div class="hex">blur 6px</div>
+    </div>
+    <div class="sw" style="gap:4px">
+      <div style="font-size:7px;color:#a8a28c;line-height:2">640×360 design canvas<br>3×3 cross — 213×120px cells<br>5% pocket padding per axis<br>--hud-radius: 4px<br>--hud-radius-sm: 2px</div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#e6db74"></div><div class="tk">--hud-gold</div><div class="hex">→ --ns-gold</div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#ee6666"></div><div class="tk">--hud-debuff</div><div class="hex">#ee6666</div>
+    </div>
+  </div>
+</div>
+
+<style>
+@keyframes hp-low { 0%,100%{background:#cc3333} 50%{background:#ff6a6a} }
+</style>
+</body>
+</html>

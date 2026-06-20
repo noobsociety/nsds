@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { NS, cx, mergeStyles } from '../shared/styles.js';
+import { nsTokens, cx, mergeStyles } from '../shared/styles.js';
 
 export function FeatureCard({
   icon,
   title,
   body,
   tag,
-  iconColor = NS.gold,
+  iconColor = nsTokens.gold,
   className,
   style,
   ...props
