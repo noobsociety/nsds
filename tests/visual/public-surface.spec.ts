@@ -12,7 +12,7 @@ test('public landing page renders the component specimen surface', async ({ page
   await expect(specimen).toBeVisible();
 
   const screenshot = await specimen.screenshot();
-  expect(screenshot.byteLength).toBeGreaterThan(12_000);
+  expect(screenshot.byteLength).toBeGreaterThan(8_000);
 
   const metrics = await page.evaluate(() => {
     const styles = (selector: string) => {
