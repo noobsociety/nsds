@@ -16,6 +16,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - Contribution guidance now documents SemVer, changelog, release, component documentation, and license expectations.
+- Public documentation now describes only the package source and published package surface.
+
+### Removed
+
+- Design-source and prototype artifacts from the public repository tree.
 
 ## [0.2.0] - 2026-06-20
 
@@ -23,8 +28,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Tailwind preset export for mapping `--ns-*` design tokens into utility classes.
 - HUD token file and HUD React primitives for game-layer UI.
-- RPG icon React component and icon reference card.
-- Lab homepage and game HUD reference surfaces for internal design work.
+- RPG icon React component and icon catalog support.
 
 ### Changed
 
@@ -68,7 +72,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
-- Initial NSDS package with tokens, CSS primitives, React components, assets, guidelines, and design-system cards.
+- Initial NSDS package with tokens, CSS primitives, React components, and Tailwind support.
 
 [Unreleased]: https://github.com/noobsociety/nsds/compare/v0.2.0...HEAD
 [0.2.0]: https://github.com/noobsociety/nsds/compare/v0.1.2...v0.2.0
