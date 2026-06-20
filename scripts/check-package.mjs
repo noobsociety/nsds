@@ -123,6 +123,10 @@ assert(
   'package must expose npm run check:install',
 );
 assert(
+  pkg.scripts?.['check:docs'] === 'npm run docs:api && git diff --exit-code docs/reference/api',
+  'package must expose npm run check:docs',
+);
+assert(
   pkg.scripts?.['changeset:version'] === 'changeset version && node scripts/release-changelog.mjs',
   'package must expose npm run changeset:version',
 );

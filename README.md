@@ -149,6 +149,7 @@ Common scripts:
 | --- | --- |
 | `npm run build` | Build the package into `dist/` |
 | `npm run check` | Run build, package guards, type checks, tests, and import smoke checks |
+| `npm run check:docs` | Regenerate API docs and fail when generated docs drift |
 | `npm run check:exports` | Validate npm exports and declaration entry points |
 | `npm run check:install` | Install the packed package in a temporary consumer project |
 | `npm run docs:api` | Generate markdown API reference from TypeScript source |

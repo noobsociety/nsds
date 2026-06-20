@@ -107,6 +107,7 @@ npm run test:visual
 Install and export checks run as part of `npm run check`, and can be run directly:
 
 ```bash
+npm run check:docs
 npm run check:exports
 npm run check:install
 ```
