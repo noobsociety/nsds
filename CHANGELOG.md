@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-06-20
+
 ### Added
 
 - Project README structure for install, usage, package exports, development, release, and license guidance.
@@ -74,7 +76,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Initial NSDS package with tokens, CSS primitives, React components, and Tailwind support.
 
-[Unreleased]: https://github.com/noobsociety/nsds/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/noobsociety/nsds/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/noobsociety/nsds/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/noobsociety/nsds/compare/v0.1.2...v0.2.0
 [0.1.2]: https://github.com/noobsociety/nsds/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/noobsociety/nsds/compare/v0.1.0...v0.1.1
