@@ -23,7 +23,9 @@ npm run storybook
 - Prefer CSS tokens and shared primitives over one-off styles.
 - Keep React components small and framework-light.
 - Add or update Storybook stories when changing public component behavior or props.
-- Add or update smoke coverage when changing import behavior, package exports, or runtime behavior.
+- Add or update component tests when changing class names, variants, props, or accessibility behavior.
+- Add or update package checks when changing import behavior, package exports, or generated types.
+- Run `npm run docs:api` when public TypeScript types change.
 - Keep third-party code and assets license-compatible with MIT.
 
 ## Versioning
@@ -87,6 +89,27 @@ npm run build:storybook
 ```
 
 Stories should show the stable public props, common variants, disabled or edge states when relevant, and realistic token-backed styling. Avoid documenting private implementation details as API.
+
+## Tests
+
+Component behavior tests run with:
+
+```bash
+npm run test:components
+```
+
+Browser-rendered visual checks run with:
+
+```bash
+npm run test:visual
+```
+
+Install and export checks run as part of `npm run check`, and can be run directly:
+
+```bash
+npm run check:exports
+npm run check:install
+```
 
 ## Release checks
 

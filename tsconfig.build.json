@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "outDir": "dist",
+    "rootDir": "."
+  },
+  "include": [
+    "components/**/*.ts",
+    "components/**/*.tsx",
+    "index.ts"
+  ],
+  "exclude": [
+    "components/**/*.stories.tsx",
+    "dist",
+    "node_modules",
+    "storybook-static"
+  ]
+}

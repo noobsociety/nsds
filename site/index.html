@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NoobSociety Design System</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../components/primitives.css">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="site-shell site-header" aria-label="NoobSociety Design System">
+      <a class="site-mark" href="./index.html" aria-label="NoobSociety Design System home">
+        <span class="site-mark__glyph" aria-hidden="true">NS</span>
+        <span>NoobSociety Design System</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="../docs/README.md">Docs</a>
+        <a href="../docs/reference/api/README.md">API</a>
+        <a href="../CHANGELOG.md">Changelog</a>
+        <a href="https://www.npmjs.com/package/@noobsociety/nsds">npm</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="site-hero">
+        <div class="site-shell site-hero__grid">
+          <div class="site-hero__copy">
+            <p class="site-kicker">Tailwind-first tokens and React components</p>
+            <h1>NoobSociety Design System</h1>
+            <p>
+              Monokai dark tokens, CSS primitives, a Tailwind preset, and
+              pixel-art React components for NoobSociety product surfaces.
+            </p>
+            <div class="site-actions" aria-label="Package actions">
+              <a class="ns-button ns-button--play ns-button--md" href="../docs/tutorials/getting-started.md">
+                Get started
+              </a>
+              <a class="ns-button ns-button--ghost ns-button--md" href="../docs/reference/api/README.md">
+                API reference
+              </a>
+            </div>
+            <pre class="site-install"><code>npm install @noobsociety/nsds</code></pre>
+          </div>
+
+          <div class="site-specimen" aria-label="Component specimen">
+            <div class="site-hud">
+              <span>HP</span>
+              <div class="site-meter" role="meter" aria-label="Health" aria-valuemin="0" aria-valuemax="40" aria-valuenow="32">
+                <span style="width: 80%"></span>
+              </div>
+              <span>32 / 40</span>
+            </div>
+            <ul class="site-quest-list" aria-label="Quest card specimens">
+              <li class="ns-quest-card ns-quest-card--done">
+                <span class="ns-quest-card__icon" aria-hidden="true">✓</span>
+                <div class="ns-quest-card__body">
+                  <p class="ns-quest-card__title">Gate 1 · Tokens</p>
+                  <p class="ns-quest-card__desc">Color, type, spacing, and motion values hold.</p>
+                  <span class="ns-status-pill">HOLDS</span>
+                </div>
+              </li>
+              <li class="ns-quest-card ns-quest-card--active">
+                <span class="ns-quest-card__icon" aria-hidden="true">▶</span>
+                <div class="ns-quest-card__body">
+                  <p class="ns-quest-card__title">Gate 2 · Components</p>
+                  <p class="ns-quest-card__desc">React primitives stay typed and tested.</p>
+                  <span class="ns-status-pill">BUILDING</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="site-section">
+        <div class="site-shell site-links">
+          <a class="site-link-card" href="../docs/tutorials/getting-started.md">
+            <span>Tutorial</span>
+            <strong>Getting started</strong>
+          </a>
+          <a class="site-link-card" href="../docs/how-to/use-with-tailwind.md">
+            <span>How-to</span>
+            <strong>Use with Tailwind</strong>
+          </a>
+          <a class="site-link-card" href="../docs/reference/exports.md">
+            <span>Reference</span>
+            <strong>Package exports</strong>
+          </a>
+          <a class="site-link-card" href="../docs/explanation/design-principles.md">
+            <span>Explanation</span>
+            <strong>Design principles</strong>
+          </a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

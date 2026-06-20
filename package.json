@@ -13,17 +13,22 @@
   "author": "NoobSociety",
   "license": "MIT",
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && tsc -p tsconfig.build.json && node scripts/prepare-types.mjs",
     "build:storybook": "storybook build --disable-telemetry",
     "changeset": "changeset",
     "changeset:publish": "changeset publish",
     "changeset:version": "changeset version && node scripts/release-changelog.mjs",
-    "check": "npm run build && npm run check:package && npm run check:types && npm run test:smoke",
+    "check": "npm run build && npm run check:package && npm run check:exports && npm run check:install && npm run check:types && npm run test:components && npm run test:visual && npm run test:smoke",
+    "check:exports": "publint run --pack npm --level warning && attw --pack . --profile node16 --entrypoints . ./react ./tailwind --format table --no-emoji",
+    "check:install": "node scripts/check-install.mjs",
     "check:package": "node scripts/check-package.mjs",
     "check:types": "tsc --noEmit",
+    "docs:api": "typedoc --options typedoc.json",
     "prepublishOnly": "npm run build",
     "storybook": "storybook dev -p 6006 --disable-telemetry",
     "test": "npm run check",
+    "test:components": "vitest run",
+    "test:visual": "playwright test",
     "test:smoke": "node scripts/smoke-imports.mjs",
     "release:dry-run": "npm pack --dry-run"
   },
@@ -56,16 +61,35 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     },
     "./react": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     },
-    "./tailwind": "./dist/tailwind/preset.js",
+    "./tailwind": {
+      "import": {
+        "types": "./dist/tailwind/preset.d.ts",
+        "default": "./dist/tailwind/preset.js"
+      },
+      "require": {
+        "types": "./dist/tailwind/preset.d.cts",
+        "default": "./dist/tailwind/preset.js"
+      }
+    },
     "./styles": "./dist/styles.css",
     "./styles.css": "./dist/styles.css",
     "./tokens/*": "./dist/tokens/*",
@@ -78,16 +102,25 @@
     "react-dom": ">=18.0.0"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.3",
     "@changesets/cli": "^2.31.0",
+    "@playwright/test": "^1.61.0",
     "@storybook/addon-docs": "^10.4.6",
     "@storybook/react-vite": "^10.4.6",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
     "@types/react": "^19.2.17",
     "@vitejs/plugin-react": "^6.0.2",
+    "jsdom": "^29.1.1",
+    "publint": "^0.3.21",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "storybook": "^10.4.6",
     "tailwindcss": "^3.0.0",
+    "typedoc": "^0.28.19",
+    "typedoc-plugin-markdown": "^4.12.0",
     "typescript": "^6.0.3",
-    "vite": "^8.0.16"
+    "vite": "^8.0.16",
+    "vitest": "^4.1.9"
   }
 }

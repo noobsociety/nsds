@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- First-class TypeScript component source with generated declaration output.
+- Component tests for class names, variants, invalid runtime values, and accessibility attributes.
+- Package export linting, packed install checks, and Tailwind preset type validation.
+- Diataxis-style public docs, generated API reference, and static landing page.
+- Browser-rendered visual checks for the public component specimen surface.
+
+### Changed
+
+- Storybook stories now use typed `.tsx` examples and include a full component showcase.
+- CI and release checks now install the browser needed for visual coverage.
+
 ## [0.2.1] - 2026-06-20
 
 ### Added
