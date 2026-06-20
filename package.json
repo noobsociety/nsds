@@ -1,6 +1,6 @@
 {
   "name": "@noobsociety/nsds",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "NoobSociety Design System — Monokai dark tokens, Tailwind preset, and pixel-art React components",
   "keywords": [
     "design-system",
@@ -13,7 +13,7 @@
   "author": "NoobSociety",
   "license": "MIT",
   "scripts": {
-    "build": "vite build && tsc -p tsconfig.build.json && node scripts/prepare-types.mjs",
+    "build": "vite build && tsc -p tsconfig.build.json && tsc -p tsconfig.tailwind.json && node scripts/prepare-types.mjs",
     "build:storybook": "storybook build --disable-telemetry",
     "changeset": "changeset",
     "changeset:publish": "changeset publish",
@@ -83,12 +83,12 @@
     },
     "./tailwind": {
       "import": {
-        "types": "./dist/tailwind/preset.d.ts",
-        "default": "./dist/tailwind/preset.js"
+        "types": "./dist/tailwind/preset.d.cts",
+        "default": "./dist/tailwind/preset.cjs"
       },
       "require": {
         "types": "./dist/tailwind/preset.d.cts",
-        "default": "./dist/tailwind/preset.js"
+        "default": "./dist/tailwind/preset.cjs"
       }
     },
     "./styles": "./dist/styles.css",

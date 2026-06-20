@@ -11,8 +11,10 @@ test('public landing page renders the component specimen surface', async ({ page
   const specimen = page.locator('.site-specimen');
   await expect(specimen).toBeVisible();
 
-  const screenshot = await specimen.screenshot();
-  expect(screenshot.byteLength).toBeGreaterThan(8_000);
+  await expect(specimen).toHaveScreenshot('component-specimen.png', {
+    animations: 'disabled',
+    maxDiffPixelRatio: 0.03,
+  });
 
   const metrics = await page.evaluate(() => {
     const styles = (selector: string) => {
@@ -52,6 +54,20 @@ test('public landing page renders the component specimen surface', async ({ page
   });
   expect(metrics.specimenBox.width).toBeGreaterThan(420);
   expect(metrics.specimenBox.height).toBeGreaterThan(240);
+});
+
+test('static UI kit matches the stored visual surface', async ({ page }) => {
+  await page.goto('/tests/visual/fixtures/ui-kit.html');
+
+  const kit = page.locator('.visual-kit');
+  await expect(kit).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'NSDS UI Kit' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Enter world' })).toBeVisible();
+
+  await expect(kit).toHaveScreenshot('ui-kit.png', {
+    animations: 'disabled',
+    maxDiffPixelRatio: 0.03,
+  });
 });
 
 test('public docs links resolve from the landing page', async ({ page }) => {

@@ -44,6 +44,7 @@ const requiredFiles = [
   '.storybook/main.ts',
   '.storybook/preview.ts',
   'tsconfig.build.json',
+  'tsconfig.tailwind.json',
   'scripts/release-changelog.mjs',
   'scripts/prepare-types.mjs',
   'scripts/check-install.mjs',
@@ -69,6 +70,11 @@ const requiredFiles = [
   'tests/setup.ts',
   'tests/components.test.tsx',
   'tests/visual/public-surface.spec.ts',
+  'tests/visual/fixtures/ui-kit.html',
+  'tests/visual/public-surface.spec.ts-snapshots/component-specimen-darwin.png',
+  'tests/visual/public-surface.spec.ts-snapshots/component-specimen-linux.png',
+  'tests/visual/public-surface.spec.ts-snapshots/ui-kit-darwin.png',
+  'tests/visual/public-surface.spec.ts-snapshots/ui-kit-linux.png',
   'components/Showcase.stories.tsx',
   'components/buttons/Button.tsx',
   'components/buttons/Button.stories.tsx',
@@ -90,8 +96,8 @@ const requiredFiles = [
   'dist/index.d.ts',
   'dist/index.d.cts',
   'dist/index.cjs',
-  'dist/tailwind/preset.js',
-  'dist/tailwind/preset.d.ts',
+  'tailwind/preset.cts',
+  'dist/tailwind/preset.cjs',
   'dist/tailwind/preset.d.cts',
   'dist/styles.css',
   'dist/tokens/colors.css',
@@ -241,7 +247,7 @@ for (const file of walk('.')) {
     fail(`remove internal source artifact: ${file}`);
   }
 
-  if (/\.(?:c?js|mjs|jsx|ts|tsx|json|md|ya?ml|css|html)$/.test(file)) {
+  if (/\.(?:c?js|mjs|jsx|[cm]?tsx?|json|md|ya?ml|css|html)$/.test(file)) {
     const contents = readFileSync(join(root, file), 'utf8');
     if (hasDisallowedMarker(contents) || hasDisallowedMarker(file)) {
       fail(`remove disallowed repository marker: ${file}`);
