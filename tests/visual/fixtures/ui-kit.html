@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NSDS UI Kit</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/components/primitives.css">
+    <style>
+      body {
+        display: grid;
+        min-height: 100vh;
+        place-items: center;
+        padding: 32px;
+        background: var(--ns-bg-0);
+      }
+
+      .visual-kit {
+        display: grid;
+        width: 920px;
+        gap: 18px;
+        padding: 20px;
+        border: 1px solid var(--ns-line);
+        background: var(--ns-bg-1);
+      }
+
+      .visual-kit h1 {
+        margin: 0;
+        color: var(--ns-gold);
+        font: 700 16px/1.3 var(--ns-font-pixel);
+      }
+
+      .visual-kit__actions {
+        display: flex;
+        gap: 12px;
+      }
+
+      .visual-kit__grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin: 0;
+        padding: 0;
+      }
+
+      .visual-kit__hud {
+        display: grid;
+        grid-template-columns: 110px 1px minmax(0, 1fr);
+        gap: 16px;
+        min-height: 68px;
+        padding: 14px;
+        border: 1px solid rgba(102, 217, 232, 0.42);
+        background: rgba(102, 217, 232, 0.08);
+      }
+
+      .visual-kit__label {
+        display: grid;
+        place-items: center;
+        color: var(--ns-ink);
+        font: 700 12px/1 var(--ns-font-pixel);
+      }
+
+      .visual-kit__divider {
+        background: var(--hud-divider);
+      }
+
+      .visual-kit__bars {
+        display: grid;
+        align-content: center;
+        gap: 8px;
+      }
+
+      .visual-kit__bar {
+        height: 14px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .visual-kit__bar span {
+        display: block;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="visual-kit" aria-label="NSDS UI Kit">
+      <h1>NSDS UI Kit</h1>
+
+      <div class="visual-kit__actions">
+        <button class="ns-button ns-button--play ns-button--md" type="button">Enter world</button>
+        <button class="ns-button ns-button--ghost ns-button--md" type="button">Open guide</button>
+        <button class="ns-button ns-button--play ns-button--md" type="button" disabled>Locked</button>
+      </div>
+
+      <ul class="visual-kit__grid" aria-label="Feature card samples">
+        <li class="ns-card ns-feature-card" style="--ns-feature-accent: var(--ns-gold)">
+          <span class="ns-feature-card__icon" aria-hidden="true">01</span>
+          <h2 class="ns-feature-card__title">Components</h2>
+          <p class="ns-feature-card__body">Typed runtime pieces with stable public classes.</p>
+          <span class="ns-tag ns-feature-card__tag">React</span>
+        </li>
+        <li class="ns-card ns-feature-card" style="--ns-feature-accent: var(--ns-cyan)">
+          <span class="ns-feature-card__icon" aria-hidden="true">02</span>
+          <h2 class="ns-feature-card__title">Tokens</h2>
+          <p class="ns-feature-card__body">Color, type, spacing, and motion values.</p>
+          <span class="ns-tag ns-feature-card__tag">CSS</span>
+        </li>
+        <li class="ns-card ns-feature-card" style="--ns-feature-accent: var(--ns-green)">
+          <span class="ns-feature-card__icon" aria-hidden="true">03</span>
+          <h2 class="ns-feature-card__title">Preset</h2>
+          <p class="ns-feature-card__body">Tailwind values mapped to NSDS variables.</p>
+          <span class="ns-tag ns-feature-card__tag">Tailwind</span>
+        </li>
+      </ul>
+
+      <ul class="visual-kit__grid" aria-label="Quest card samples">
+        <li class="ns-quest-card ns-quest-card--done">
+          <span class="ns-quest-card__icon" aria-hidden="true">1</span>
+          <div class="ns-quest-card__body">
+            <p class="ns-quest-card__title">Gate 1 - Foundation</p>
+            <p class="ns-quest-card__desc">Package surface holds.</p>
+            <span class="ns-status-pill">HOLDS</span>
+          </div>
+        </li>
+        <li class="ns-quest-card ns-quest-card--active">
+          <span class="ns-quest-card__icon" aria-hidden="true">2</span>
+          <div class="ns-quest-card__body">
+            <p class="ns-quest-card__title">Gate 2 - Runtime</p>
+            <p class="ns-quest-card__desc">Components stay typed.</p>
+            <span class="ns-status-pill">BUILDING</span>
+          </div>
+        </li>
+        <li class="ns-quest-card ns-quest-card--locked">
+          <span class="ns-quest-card__icon" aria-hidden="true">3</span>
+          <div class="ns-quest-card__body">
+            <p class="ns-quest-card__title">Gate 3 - Release</p>
+            <p class="ns-quest-card__desc">Future changes stay visible.</p>
+            <span class="ns-status-pill">LATER</span>
+          </div>
+        </li>
+      </ul>
+
+      <section class="visual-kit__hud" aria-label="HUD samples">
+        <div class="visual-kit__label">STATUS</div>
+        <div class="visual-kit__divider" aria-hidden="true"></div>
+        <div class="visual-kit__bars">
+          <div class="visual-kit__bar" role="meter" aria-label="Health" aria-valuemin="0" aria-valuemax="40" aria-valuenow="32">
+            <span style="width: 80%; background: var(--hud-hp-fill)"></span>
+          </div>
+          <div class="visual-kit__bar" role="meter" aria-label="Mana" aria-valuemin="0" aria-valuemax="30" aria-valuenow="18">
+            <span style="width: 60%; background: var(--ns-cyan)"></span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

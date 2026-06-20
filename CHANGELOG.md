@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-06-20
+
+### Added
+
+- Stored visual regression snapshots for the public component specimen and UI kit surfaces.
+
+### Changed
+
+- Tailwind preset source is now first-class TypeScript with generated CommonJS and declaration output.
+- Package validation now requires the visual fixture, visual snapshots, and generated Tailwind preset output.
+
 ## [0.3.0] - 2026-06-20
 
 ### Added
@@ -91,7 +102,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Initial NSDS package with tokens, CSS primitives, React components, and Tailwind support.
 
-[Unreleased]: https://github.com/noobsociety/nsds/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/noobsociety/nsds/compare/v0.3.1...HEAD
+[0.3.1]: https://github.com/noobsociety/nsds/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/noobsociety/nsds/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/noobsociety/nsds/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/noobsociety/nsds/compare/v0.1.2...v0.2.0

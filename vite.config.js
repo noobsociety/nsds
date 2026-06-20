@@ -1,5 +1,5 @@
 import react from '@vitejs/plugin-react';
-import { cp, mkdir, writeFile } from 'node:fs/promises';
+import { cp, mkdir } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
@@ -22,10 +22,6 @@ function nsdsDistAssets() {
       );
 
       await cp(resolve(__dirname, 'styles.css'), resolve(dist, 'styles.css'));
-
-      await mkdir(resolve(dist, 'tailwind'), { recursive: true });
-      await cp(resolve(__dirname, 'tailwind/preset.js'), resolve(dist, 'tailwind/preset.js'));
-      await writeFile(resolve(dist, 'tailwind/package.json'), '{ "type": "commonjs" }\n');
     },
   };
 }

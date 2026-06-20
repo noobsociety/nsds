@@ -21,6 +21,7 @@
     "global.d.ts",
     "index.ts",
     "scripts/**/*.ts",
+    "tailwind/**/*.cts",
     "tests/**/*.ts",
     "tests/**/*.tsx",
     "vitest.config.ts"
