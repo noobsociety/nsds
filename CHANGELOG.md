@@ -2,6 +2,28 @@
 
 All notable changes to NSDS are documented here.
 
+## 0.2.0 - 2026-06-20
+
+### Added
+
+- Tailwind preset export for mapping `--ns-*` design tokens into utility classes.
+- HUD token file and HUD React primitives for game-layer UI.
+- RPG icon React component and icon reference card.
+- Lab homepage and game HUD reference surfaces for internal design work.
+
+### Changed
+
+- Package output now builds from JSX source into `dist/` with ESM, CommonJS, TypeScript declarations, CSS, tokens, primitives, and Tailwind preset files.
+- Public package surface is React, Tailwind, CSS tokens, and primitives only.
+- Canonical component runtime sources now use `.jsx` files.
+- README package exports and repo layout now match the published package boundary.
+
+### Removed
+
+- Legacy theme package surface, dependencies, docs, tests, and source files.
+- Duplicate compiled component runtime source files.
+- Superseded `ui-kits/` homepage path.
+
 ## 0.1.2 - 2026-06-18
 
 ### Added
