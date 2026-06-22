@@ -9,11 +9,13 @@ const tag = `v${pkg.version}`;
 const emptyTree = '4b825dc642cb6eb9a060e54bf8d69288fbee4904';
 
 function git(args, options = {}) {
-  return execFileSync('git', args, {
+  const output = execFileSync('git', args, {
     cwd: root,
     encoding: 'utf8',
     stdio: options.stdio ?? ['ignore', 'pipe', 'pipe'],
-  }).trim();
+  });
+
+  return typeof output === 'string' ? output.trim() : '';
 }
 
 function remoteTagExists() {
