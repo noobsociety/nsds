@@ -56,8 +56,45 @@ jobs:
             echo "exists=false" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Check publish token
+        id: publish_token
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        shell: bash
+        run: |
+          if [ -n "$NODE_AUTH_TOKEN" ]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check release tag target
+        if: steps.published.outputs.exists == 'false' && steps.publish_token.outputs.available == 'true'
+        env:
+          PACKAGE_VERSION: ${{ steps.published.outputs.package_version }}
+        shell: bash
+        run: |
+          tag="v${PACKAGE_VERSION}"
+
+          if git ls-remote --exit-code --tags origin "refs/tags/${tag}" >/dev/null 2>&1; then
+            tag_commit="$(git ls-remote --tags origin "refs/tags/${tag}^{}" | awk '{print $1}')"
+
+            if [ "$tag_commit" != "$GITHUB_SHA" ]; then
+              echo "Release tag ${tag} points at ${tag_commit}, not ${GITHUB_SHA}." >&2
+              exit 1
+            fi
+          fi
+
+      - name: Skip publish without token
+        if: steps.published.outputs.exists == 'false' && steps.publish_token.outputs.available == 'false'
+        env:
+          PACKAGE_NAME: ${{ steps.published.outputs.package_name }}
+          PACKAGE_VERSION: ${{ steps.published.outputs.package_version }}
+        run: |
+          echo "::notice::Skipping npm publish for ${PACKAGE_NAME}@${PACKAGE_VERSION}; NPM_TOKEN is not configured."
+
       - name: Publish
-        if: steps.published.outputs.exists == 'false'
+        if: steps.published.outputs.exists == 'false' && steps.publish_token.outputs.available == 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           PACKAGE_NAME: ${{ steps.published.outputs.package_name }}
@@ -72,5 +109,5 @@ jobs:
           npm run changeset:publish
 
       - name: Tag published version
-        if: steps.published.outputs.exists == 'false'
+        if: steps.published.outputs.exists == 'false' && steps.publish_token.outputs.available == 'true'
         run: node scripts/tag-release.mjs
