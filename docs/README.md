@@ -4,7 +4,7 @@ NSDS documentation follows the Diataxis model:
 
 - Tutorials help new users complete a first working setup.
 - How-to guides solve common integration tasks.
-- Reference pages define exports, tokens, classes, and generated API details.
+- Reference pages define exports, tokens, client registries, classes, and generated API details.
 - Explanation pages capture design and release decisions.
 
 ## Start Here

@@ -1,4 +1,10 @@
-import type { AnchorHTMLAttributes, HTMLAttributes, MouseEventHandler, ReactElement, ReactNode } from 'react';
+import type {
+  AnchorHTMLAttributes,
+  HTMLAttributes,
+  MouseEventHandler,
+  ReactElement,
+  ReactNode,
+} from 'react';
 
 import { cx } from '../shared/styles.js';
 

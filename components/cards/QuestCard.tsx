@@ -4,12 +4,15 @@ import { cx, questStatus } from '../shared/styles.js';
 
 export type QuestCardStatus = 'done' | 'active' | 'planned' | 'locked';
 
-export interface QuestCardProps extends Omit<LiHTMLAttributes<HTMLLIElement>, 'children' | 'title'> {
+export interface QuestCardProps extends Omit<
+  LiHTMLAttributes<HTMLLIElement>,
+  'children' | 'title'
+> {
   /** Gate number shown in the title. */
   gate: number;
   /** Short gate name. */
   title: string;
-  /** One-sentence description. */
+  /** Supporting copy shown below the gate title. */
   body: string;
   /** Controls border color, tint, icon, and pill label. */
   status?: QuestCardStatus;

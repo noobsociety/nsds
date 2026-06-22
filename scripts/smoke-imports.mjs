@@ -10,6 +10,7 @@ import {
   QuestCard,
   SectionArrow,
 } from '@noobsociety/nsds';
+import { nsClientRelease, questStatus, rpgIconNames } from '@noobsociety/nsds/client';
 import * as ReactEntry from '@noobsociety/nsds/react';
 
 for (const name of [
@@ -23,6 +24,10 @@ for (const name of [
 ]) {
   assert.equal(typeof ReactEntry[name], 'function', `${name} must be exported from /react`);
 }
+
+assert.equal(nsClientRelease, '21.06');
+assert.equal(questStatus.active.className, 'ns-quest-card--active');
+assert.ok(rpgIconNames.includes('sword'));
 
 const button = Button({ children: 'Play' });
 assert.equal(button.type, 'button');

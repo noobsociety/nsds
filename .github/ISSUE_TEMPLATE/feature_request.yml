@@ -1,6 +1,6 @@
 name: Feature request
 description: Suggest a component, token, guideline, or package improvement.
-title: "[Feature]: "
+title: '[Feature]: '
 labels:
   - enhancement
 body:

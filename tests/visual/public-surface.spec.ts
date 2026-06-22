@@ -68,6 +68,14 @@ test('static UI kit matches the stored visual surface', async ({ page }) => {
     animations: 'disabled',
     maxDiffPixelRatio: 0.03,
   });
+
+  const dividerColor = await page.evaluate(() => {
+    const node = document.querySelector('.visual-kit__divider');
+    if (!node) throw new Error('Missing visual kit divider');
+    return getComputedStyle(node).backgroundColor;
+  });
+
+  expect(dividerColor).toBe('rgba(255, 255, 255, 0.18)');
 });
 
 test('public docs links resolve from the landing page', async ({ page }) => {

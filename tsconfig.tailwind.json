@@ -6,12 +6,6 @@
     "outDir": "dist",
     "rootDir": "."
   },
-  "include": [
-    "tailwind/**/*.cts"
-  ],
-  "exclude": [
-    "dist",
-    "node_modules",
-    "storybook-static"
-  ]
+  "include": ["tailwind/**/*.cts"],
+  "exclude": ["dist", "node_modules", "storybook-static"]
 }

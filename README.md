@@ -1,8 +1,8 @@
 # NoobSociety Design System
 
-Reusable design tokens, CSS primitives, Tailwind preset, and pixel-art React components for NoobSociety.
+Reusable design tokens, client registries, CSS primitives, Tailwind preset, and pixel-art React components for NoobSociety.
 
-NSDS is Tailwind-first and token-driven. It ships the public package surface needed by product apps: React components, CSS tokens, primitives, and a Tailwind preset.
+NSDS is Tailwind-first and token-driven. It ships the public package surface needed by product apps: client registries, React components, CSS tokens, primitives, and a Tailwind preset.
 
 ## Contents
 
@@ -36,6 +36,14 @@ Import the CSS entry once in your app:
 import '@noobsociety/nsds/styles';
 ```
 
+Use renderer-neutral client registries when code needs shared names without React:
+
+```ts
+import { nsClientRelease, rpgIconNames } from '@noobsociety/nsds/client';
+
+console.log(nsClientRelease, rpgIconNames.includes('sword'));
+```
+
 Use React components from the package root:
 
 ```tsx
@@ -66,16 +74,17 @@ export default {
 
 ## Package exports
 
-| Export | Purpose |
-| --- | --- |
-| `@noobsociety/nsds` | React components |
-| `@noobsociety/nsds/react` | Compatibility alias for React components |
-| `@noobsociety/nsds/tailwind` | Tailwind preset mapped to `--ns-*` tokens |
-| `@noobsociety/nsds/styles` | Full CSS entry |
-| `@noobsociety/nsds/styles.css` | CSS entry compatibility alias |
-| `@noobsociety/nsds/tokens/*` | Individual token CSS files |
-| `@noobsociety/nsds/primitives` | Component primitive CSS |
-| `@noobsociety/nsds/components/primitives.css` | Component primitive CSS compatibility alias |
+| Export                                        | Purpose                                                |
+| --------------------------------------------- | ------------------------------------------------------ |
+| `@noobsociety/nsds`                           | React components                                       |
+| `@noobsociety/nsds/react`                     | Compatibility alias for React components               |
+| `@noobsociety/nsds/client`                    | Renderer-neutral client registries and shared metadata |
+| `@noobsociety/nsds/tailwind`                  | Tailwind preset mapped to `--ns-*` tokens              |
+| `@noobsociety/nsds/styles`                    | Full CSS entry                                         |
+| `@noobsociety/nsds/styles.css`                | CSS entry compatibility alias                          |
+| `@noobsociety/nsds/tokens/*`                  | Individual token CSS files                             |
+| `@noobsociety/nsds/primitives`                | Component primitive CSS                                |
+| `@noobsociety/nsds/components/primitives.css` | Component primitive CSS compatibility alias            |
 
 The npm package ships `dist/` plus package metadata, changelog, contribution guidance, security policy, and license.
 
@@ -124,41 +133,50 @@ The static landing page lives in [`site/`](./site/index.html).
 
 ## Repository layout
 
-| Path | Purpose |
-| --- | --- |
-| `styles.css` | Public CSS entry point |
-| `tokens/` | CSS custom properties for color, type, spacing, motion, and HUD values |
-| `components/` | TypeScript React source, primitive CSS, and Storybook stories |
-| `tailwind/` | Tailwind preset source |
-| `docs/` | Public documentation and generated API reference |
-| `site/` | Static public landing page |
-| `tests/` | Component and browser-rendered visual checks |
+| Path          | Purpose                                                                |
+| ------------- | ---------------------------------------------------------------------- |
+| `styles.css`  | Public CSS entry point                                                 |
+| `client/`     | Renderer-neutral client registry entry point                           |
+| `tokens/`     | CSS custom properties for color, type, spacing, motion, and HUD values |
+| `components/` | TypeScript React source, primitive CSS, and Storybook stories          |
+| `tailwind/`   | Tailwind preset source                                                 |
+| `docs/`       | Public documentation and generated API reference                       |
+| `site/`       | Static public landing page                                             |
+| `tests/`      | Component and browser-rendered visual checks                           |
 
 ## Development
 
-Use Node.js 22 or newer.
+Use Node.js 22 or newer. The repo pins Node 22 in `.nvmrc` for parity with CI; with nvm, run
+`nvm use` to match it.
 
 ```bash
+nvm use
 npm install
 npm run check
 ```
 
 Common scripts:
 
-| Script | Purpose |
-| --- | --- |
-| `npm run build` | Build the package into `dist/` |
-| `npm run check` | Run build, package guards, type checks, tests, and import smoke checks |
-| `npm run check:docs` | Regenerate API docs and fail when generated docs drift |
-| `npm run check:exports` | Validate npm exports and declaration entry points |
-| `npm run check:install` | Install the packed package in a temporary consumer project |
-| `npm run docs:api` | Generate markdown API reference from TypeScript source |
-| `npm run storybook` | Start component documentation locally |
-| `npm run build:storybook` | Build static component documentation |
-| `npm run test:components` | Run component behavior tests |
-| `npm run test:visual` | Run browser-rendered visual checks |
-| `npm run release:dry-run` | Preview the npm package contents |
-| `npm run changeset` | Add a release note and version intent |
+| Script                    | Purpose                                                                |
+| ------------------------- | ---------------------------------------------------------------------- |
+| `npm run build`           | Build the package into `dist/`                                         |
+| `npm run check`           | Run build, package guards, type checks, tests, and import smoke checks |
+| `npm run check:commits`   | Validate branch commit messages with Commitlint                        |
+| `npm run check:deps`      | Validate dependency pins and cross-platform lockfile coverage          |
+| `npm run check:docs`      | Regenerate API docs and fail when generated docs drift                 |
+| `npm run check:exports`   | Validate npm exports and declaration entry points                      |
+| `npm run check:install`   | Install the packed package in a temporary consumer project             |
+| `npm run check:markdown`  | Lint authored Markdown docs and templates                              |
+| `npm run check:workflows` | Validate GitHub workflow syntax and Node 22 pins                       |
+| `npm run docs:api`        | Generate markdown API reference from TypeScript source                 |
+| `npm run format:check`    | Check repository formatting with Prettier                              |
+| `npm run lint`            | Lint source, tests, scripts, and configs with ESLint                   |
+| `npm run storybook`       | Start component documentation locally                                  |
+| `npm run build:storybook` | Build static component documentation                                   |
+| `npm run test:components` | Run component behavior tests                                           |
+| `npm run test:visual`     | Run browser-rendered visual checks                                     |
+| `npm run release:dry-run` | Preview the npm package contents                                       |
+| `npm run changeset`       | Add a release note and version intent                                  |
 
 ## Versioning and releases
 

@@ -21,7 +21,8 @@ if (!unreleasedBody) {
   process.exit(0);
 }
 
-const previousMatch = changelog.slice(unreleasedMatch.index + unreleasedMatch[0].length)
+const previousMatch = changelog
+  .slice(unreleasedMatch.index + unreleasedMatch[0].length)
   .match(/## \[(\d+\.\d+\.\d+(?:-[\w.-]+)?)\] - \d{4}-\d{2}-\d{2}/);
 
 if (!previousMatch) {
@@ -33,10 +34,7 @@ const previousVersion = previousMatch[1];
 const date = new Date().toISOString().slice(0, 10);
 const releaseBlock = `## [${version}] - ${date}\n\n${unreleasedBody}\n`;
 
-changelog = changelog.replace(
-  unreleasedPattern,
-  `## [Unreleased]\n\n${releaseBlock}`,
-);
+changelog = changelog.replace(unreleasedPattern, `## [Unreleased]\n\n${releaseBlock}`);
 
 const unreleasedLink = `[Unreleased]: ${repoUrl}/compare/v${version}...HEAD`;
 const versionLink = `[${version}]: ${repoUrl}/compare/v${previousVersion}...v${version}`;

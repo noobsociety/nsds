@@ -1,15 +1,11 @@
 {
   "$schema": "https://typedoc.org/schema.json",
   "disableSources": true,
-  "entryPoints": [
-    "index.ts"
-  ],
+  "entryPoints": ["index.ts", "client/index.ts"],
   "excludeExternals": true,
   "hideGenerator": true,
   "out": "docs/reference/api",
-  "plugin": [
-    "typedoc-plugin-markdown"
-  ],
+  "plugin": ["typedoc-plugin-markdown"],
   "readme": "none",
   "tsconfig": "tsconfig.json"
 }

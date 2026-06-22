@@ -3,10 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "jsx": "react-jsx",
-    "lib": [
-      "DOM",
-      "ES2022"
-    ],
+    "lib": ["DOM", "ES2022"],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "noEmit": true,
@@ -16,6 +13,7 @@
   },
   "include": [
     ".storybook/**/*.ts",
+    "client/**/*.ts",
     "components/**/*.ts",
     "components/**/*.tsx",
     "global.d.ts",
@@ -24,11 +22,7 @@
     "tailwind/**/*.cts",
     "tests/**/*.ts",
     "tests/**/*.tsx",
-    "vitest.config.ts"
+    "*.config.ts"
   ],
-  "exclude": [
-    "dist",
-    "node_modules",
-    "storybook-static"
-  ]
+  "exclude": ["dist", "node_modules", "storybook-static"]
 }

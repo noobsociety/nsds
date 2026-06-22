@@ -2,14 +2,14 @@
 
 NSDS tokens are CSS custom properties grouped by file.
 
-| File | Contents |
-| --- | --- |
-| `@noobsociety/nsds/tokens/base.css` | Base surfaces and shared defaults |
-| `@noobsociety/nsds/tokens/colors.css` | Monokai-inspired color tokens |
+| File                                      | Contents                                        |
+| ----------------------------------------- | ----------------------------------------------- |
+| `@noobsociety/nsds/tokens/base.css`       | Base surfaces and shared defaults               |
+| `@noobsociety/nsds/tokens/colors.css`     | Monokai-inspired color tokens                   |
 | `@noobsociety/nsds/tokens/typography.css` | Font families, sizes, weights, and line heights |
-| `@noobsociety/nsds/tokens/spacing.css` | Spacing and container values |
-| `@noobsociety/nsds/tokens/motion.css` | Duration and easing values |
-| `@noobsociety/nsds/tokens/hud.css` | HUD-specific values |
+| `@noobsociety/nsds/tokens/spacing.css`    | Spacing and container values                    |
+| `@noobsociety/nsds/tokens/motion.css`     | Duration and easing values                      |
+| `@noobsociety/nsds/tokens/hud.css`        | HUD-specific values                             |
 
 ## Naming
 
@@ -19,7 +19,8 @@ NSDS tokens are CSS custom properties grouped by file.
 
 ## Usage
 
-Use tokens through CSS, Tailwind theme values, or component props:
+Use tokens through CSS, Tailwind theme values, component props, or the client
+registry entry when shared names are needed outside React:
 
 ```css
 .panel {
@@ -31,4 +32,8 @@ Use tokens through CSS, Tailwind theme values, or component props:
 
 ```tsx
 <HUDBar fillColor="var(--ns-cyan)" />
+```
+
+```ts
+import { nsTokens, questStatus, rpgIconNames } from '@noobsociety/nsds/client';
 ```

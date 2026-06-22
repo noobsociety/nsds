@@ -7,15 +7,6 @@
     "outDir": "dist",
     "rootDir": "."
   },
-  "include": [
-    "components/**/*.ts",
-    "components/**/*.tsx",
-    "index.ts"
-  ],
-  "exclude": [
-    "components/**/*.stories.tsx",
-    "dist",
-    "node_modules",
-    "storybook-static"
-  ]
+  "include": ["client/**/*.ts", "components/**/*.ts", "components/**/*.tsx", "index.ts"],
+  "exclude": ["components/**/*.stories.tsx", "dist", "node_modules", "storybook-static"]
 }

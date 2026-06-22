@@ -23,6 +23,7 @@ variants.
 
 The package surface is intentionally small:
 
+- client registries
 - React components
 - CSS token files
 - CSS primitive entry

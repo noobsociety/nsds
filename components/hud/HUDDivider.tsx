@@ -2,7 +2,10 @@ import type { HTMLAttributes, ReactElement } from 'react';
 
 import type { NSStyle } from '../shared/styles.js';
 
-export interface HUDDividerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'style'> {
+export interface HUDDividerProps extends Omit<
+  HTMLAttributes<HTMLDivElement>,
+  'children' | 'style'
+> {
   /** Vertical by default; use horizontal for a 1px row rule. */
   direction?: 'vertical' | 'horizontal';
   /** Line color. */
