@@ -1,5 +1,10 @@
 # NoobSociety Design System
 
+[![CI](https://github.com/noobsociety/nsds/actions/workflows/ci.yml/badge.svg)](https://github.com/noobsociety/nsds/actions/workflows/ci.yml)
+[![Release](https://github.com/noobsociety/nsds/actions/workflows/release.yml/badge.svg)](https://github.com/noobsociety/nsds/actions/workflows/release.yml)
+[![npm version](https://img.shields.io/npm/v/@noobsociety/nsds.svg)](https://www.npmjs.com/package/@noobsociety/nsds)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+
 Reusable design tokens, client registries, CSS primitives, Tailwind preset, and pixel-art React components for NoobSociety.
 
 NSDS is Tailwind-first and token-driven. It ships the public package surface needed by product apps: client registries, React components, CSS tokens, primitives, and a Tailwind preset.
@@ -11,6 +16,7 @@ NSDS is Tailwind-first and token-driven. It ships the public package surface nee
 - [Package exports](#package-exports)
 - [Components](#components)
 - [Documentation](#documentation)
+- [Quality](#quality)
 - [Repository layout](#repository-layout)
 - [Development](#development)
 - [Versioning and releases](#versioning-and-releases)
@@ -131,6 +137,19 @@ npm run docs:api
 
 The static landing page lives in [`site/`](./site/index.html).
 
+## Quality
+
+See [QUALITY.md](./QUALITY.md) for the package gate, release evidence, visual baseline policy, and
+tagging rules.
+
+Before opening a pull request, run:
+
+```bash
+npm run check
+npm run build:storybook
+npm run release:dry-run
+```
+
 ## Repository layout
 
 | Path          | Purpose                                                                |
@@ -161,12 +180,15 @@ Common scripts:
 | ------------------------- | ---------------------------------------------------------------------- |
 | `npm run build`           | Build the package into `dist/`                                         |
 | `npm run check`           | Run build, package guards, type checks, tests, and import smoke checks |
+| `npm run check:content`   | Catch local path leaks in committed text                               |
 | `npm run check:commits`   | Validate branch commit messages with Commitlint                        |
 | `npm run check:deps`      | Validate dependency pins and cross-platform lockfile coverage          |
 | `npm run check:docs`      | Regenerate API docs and fail when generated docs drift                 |
 | `npm run check:exports`   | Validate npm exports and declaration entry points                      |
 | `npm run check:install`   | Install the packed package in a temporary consumer project             |
 | `npm run check:markdown`  | Lint authored Markdown docs and templates                              |
+| `npm run check:package`   | Validate package metadata, required files, and dist shape              |
+| `npm run check:release`   | Validate release scripts, changelog links, and tag workflow wiring     |
 | `npm run check:workflows` | Validate GitHub workflow syntax and Node 22 pins                       |
 | `npm run docs:api`        | Generate markdown API reference from TypeScript source                 |
 | `npm run format:check`    | Check repository formatting with Prettier                              |
@@ -197,6 +219,10 @@ npm run changeset:version
 That command applies Changesets version bumps and promotes the current `[Unreleased]` changelog entries into a dated release section.
 
 Open and merge the version commit as a normal release pull request. The release workflow publishes from `main` when the package version is not already on npm and `NPM_TOKEN` is configured.
+
+After a successful new publish, the workflow creates an annotated `vX.Y.Z` tag on the published
+commit. Tag messages use the NoobSociety release-note style: one concise subject, one factual
+paragraph, and a footprint sentence grounded in the release diff.
 
 Manual publishing remains available for maintainers after the version commit is prepared:
 

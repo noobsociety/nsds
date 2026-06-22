@@ -73,21 +73,4 @@ jobs:
 
       - name: Tag published version
         if: steps.published.outputs.exists == 'false'
-        env:
-          PACKAGE_NAME: ${{ steps.published.outputs.package_name }}
-          PACKAGE_VERSION: ${{ steps.published.outputs.package_version }}
-        shell: bash
-        run: |
-          tag="v${PACKAGE_VERSION}"
-
-          if git ls-remote --exit-code --tags origin "refs/tags/${tag}" >/dev/null 2>&1; then
-            echo "Release tag ${tag} already exists." >&2
-            exit 1
-          fi
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git tag -a "${tag}" \
-            -m "${PACKAGE_NAME}@${PACKAGE_VERSION}" \
-            -m "Published ${PACKAGE_NAME}@${PACKAGE_VERSION} from ${GITHUB_SHA}."
-          git push origin "refs/tags/${tag}"
+        run: node scripts/tag-release.mjs
