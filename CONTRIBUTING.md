@@ -13,6 +13,9 @@ npm install
 npm run check
 ```
 
+See [QUALITY.md](./QUALITY.md) for the package gate, release evidence, visual baseline policy, and
+tagging rules.
+
 Run Storybook while changing components:
 
 ```bash
@@ -110,11 +113,13 @@ Install and export checks run as part of `npm run check`, and can be run directl
 
 ```bash
 npm run check:commits
+npm run check:content
 npm run check:deps
 npm run check:docs
 npm run check:exports
 npm run check:install
 npm run check:markdown
+npm run check:release
 npm run check:workflows
 npm run format:check
 npm run lint
@@ -140,12 +145,30 @@ intended squash commit subject, and keep the squash body as one contiguous
 bullet list of meaningful branch changes. Commit generated API docs with the
 source or TypeDoc configuration change that generated them.
 
+Complete the pull request template before requesting review:
+
+- Summary uses checklist items for concrete changes.
+- PR description bullet items stay at or below 100 characters.
+- Verification commands are fenced as `bash` blocks.
+- PR text uses repo-relative paths and omits local-only workflow paths.
+- Changeset and changelog status are declared.
+- Release tag timing is declared.
+- Squash shape is confirmed.
+
 Before publishing manually:
 
 ```bash
 npm run check
 npm run release:dry-run
 npm run changeset:publish
+```
+
+When a release tag must be repaired manually, use the release tag helper on the final release
+commit. Do not create or push tags before the reviewed release PR has merged unless the target
+commit will not change.
+
+```bash
+node scripts/tag-release.mjs
 ```
 
 ## License guidance

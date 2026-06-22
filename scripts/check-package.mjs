@@ -39,9 +39,14 @@ const requiredFiles = [
   'CHANGELOG.md',
   'CONTRIBUTING.md',
   'CODE_OF_CONDUCT.md',
+  'QUALITY.md',
   'LICENSE',
   'SECURITY.md',
   '.github/CODEOWNERS',
+  '.github/ISSUE_TEMPLATE/config.yml',
+  '.github/ISSUE_TEMPLATE/bug_report.yml',
+  '.github/ISSUE_TEMPLATE/feature_request.yml',
+  '.github/ISSUE_TEMPLATE/product_hygiene.yml',
   '.editorconfig',
   '.husky/commit-msg',
   '.markdownlint.jsonc',
@@ -57,6 +62,11 @@ const requiredFiles = [
   'tsconfig.build.json',
   'tsconfig.tailwind.json',
   'scripts/release-changelog.mjs',
+  'scripts/check-content.mjs',
+  'scripts/create-changeset.mjs',
+  'scripts/changeset-version.mjs',
+  'scripts/check-release.mjs',
+  'scripts/tag-release.mjs',
   'scripts/prepare-types.mjs',
   'scripts/check-deps.mjs',
   'scripts/check-install.mjs',
@@ -148,12 +158,23 @@ assert(
   pkg.homepage === 'https://github.com/noobsociety/nsds#readme',
   'homepage must point to the GitHub README',
 );
-assert(pkg.scripts?.changeset === 'changeset', 'package must expose npm run changeset');
+assert(
+  pkg.scripts?.changeset === 'node scripts/create-changeset.mjs',
+  'package must expose npm run changeset',
+);
 assert(
   pkg.scripts?.check?.includes('npm run check:commits'),
   'npm run check must include check:commits',
 );
+assert(
+  pkg.scripts?.check?.includes('npm run check:content'),
+  'npm run check must include check:content',
+);
 assert(pkg.scripts?.check?.includes('npm run check:deps'), 'npm run check must include check:deps');
+assert(
+  pkg.scripts?.check?.includes('npm run check:release'),
+  'npm run check must include check:release',
+);
 assert(
   pkg.scripts?.check?.includes('npm run check:workflows'),
   'npm run check must include check:workflows',
@@ -166,6 +187,10 @@ assert(
 assert(
   pkg.scripts?.['check:commits'] === 'commitlint --from origin/main --to HEAD --verbose',
   'package must expose npm run check:commits',
+);
+assert(
+  pkg.scripts?.['check:content'] === 'node scripts/check-content.mjs',
+  'package must expose npm run check:content',
 );
 assert(
   pkg.scripts?.['check:deps'] === 'node scripts/check-deps.mjs',
@@ -196,11 +221,20 @@ assert(
   'package must expose npm run check:workflows',
 );
 assert(
+  pkg.scripts?.['check:release'] === 'node scripts/check-release.mjs',
+  'package must expose npm run check:release',
+);
+assert(
+  pkg.scripts?.['check:release:strict'] === 'node scripts/check-release.mjs --strict',
+  'package must expose npm run check:release:strict',
+);
+assert(
   pkg.scripts?.['check:docs'] === 'npm run docs:api && git diff --exit-code docs/reference/api',
   'package must expose npm run check:docs',
 );
 assert(
-  pkg.scripts?.['changeset:version'] === 'changeset version && node scripts/release-changelog.mjs',
+  pkg.scripts?.['changeset:version'] ===
+    'node scripts/changeset-version.mjs && node scripts/release-changelog.mjs',
   'package must expose npm run changeset:version',
 );
 assert(
@@ -208,7 +242,7 @@ assert(
   'package must expose npm run docs:api',
 );
 assert(
-  pkg.scripts?.['changeset:publish'] === 'changeset publish',
+  pkg.scripts?.['changeset:publish'] === 'npm publish --access public --provenance',
   'package must expose npm run changeset:publish',
 );
 assert(
@@ -229,12 +263,19 @@ assert(
 );
 
 assert(readme.includes('## Install'), 'README must include install guidance');
+assert(readme.includes('actions/workflows/ci.yml/badge.svg'), 'README must include a CI badge');
+assert(
+  readme.includes('actions/workflows/release.yml/badge.svg'),
+  'README must include a release badge',
+);
+assert(readme.includes('img.shields.io/npm/v/@noobsociety/nsds'), 'README must include npm badge');
 assert(readme.includes('## Quick start'), 'README must include quick start guidance');
 assert(readme.includes('## Package exports'), 'README must document package exports');
 assert(
   readme.includes('## Versioning and releases'),
   'README must document versioning and releases',
 );
+assert(readme.includes('## Quality'), 'README must link package quality guidance');
 assert(readme.includes('## License'), 'README must include license guidance');
 for (const [label, contents] of [
   ['README', readme],

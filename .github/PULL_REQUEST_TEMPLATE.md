@@ -1,18 +1,33 @@
 ## Summary
 
--
+- [ ] Replace this line with a concrete package/repo change
 
-## Checks
+## Verification
 
-- [ ] `npm run check`
-- [ ] `npm run build:storybook`
-- [ ] `npm run release:dry-run`
+- [ ] Required package gate passed
+
+```bash
+npm run check
+```
+
+- [ ] Storybook build passed or is not applicable
+
+```bash
+npm run build:storybook
+```
+
+- [ ] Publish dry run passed
+
+```bash
+npm run release:dry-run
+```
 
 ## Release Hygiene
 
 - [ ] Package-impacting change has a Changeset, or this PR is explicitly docs/internal only
 - [ ] Changelog `[Unreleased]` entry is current, or this PR has no user-facing package impact
 - [ ] Release PR only: `npm run changeset:version` updated version, lockfile, and changelog
+- [ ] Release tag timing declared: workflow after publish, repair after merge, or not applicable
 
 ## Merge Shape
 

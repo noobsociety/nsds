@@ -1,5 +1,7 @@
 # Code of Conduct
 
+NoobSociety welcomes focused, respectful collaboration on NSDS.
+
 ## Our Standard
 
 NoobSociety projects should be practical, respectful, and focused on the work. Contributors and
@@ -15,10 +17,9 @@ Maintainers may edit, hide, or remove comments, issues, pull requests, and other
 violate this Code of Conduct. Maintainers may also temporarily or permanently limit participation
 when behavior makes the project unsafe or unproductive.
 
-Report concerns through the repository maintainers or the security contact listed in
-`SECURITY.md` when disclosure should not be public.
+Report concerns to **<ejelome@gmail.com>** with the subject line `[CONDUCT] nsds`.
 
 ## Scope
 
-This Code of Conduct applies in repository spaces and project-related community spaces when someone
-is representing the project.
+This Code of Conduct applies to issues, pull requests, discussions, and other project spaces for
+`noobsociety/nsds`.

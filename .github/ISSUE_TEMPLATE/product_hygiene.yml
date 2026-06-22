@@ -1,0 +1,33 @@
+name: Product hygiene
+description: Track package quality, governance, dependency, or release-process follow-up.
+title: 'chore: '
+labels:
+  - enhancement
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Accessibility
+        - Package exports and install
+        - CI and checks
+        - Documentation and metadata
+        - Repository governance
+        - Release notes and versioning
+    validations:
+      required: true
+  - type: textarea
+    id: gap
+    attributes:
+      label: Gap
+      description: What product or hygiene risk needs to be closed?
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: Done when
+      description: Describe the concrete evidence that closes this item.
+    validations:
+      required: true
