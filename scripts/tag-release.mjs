@@ -27,6 +27,11 @@ function remoteTagExists() {
   }
 }
 
+function remoteTagCommit() {
+  const output = git(['ls-remote', '--tags', 'origin', `refs/tags/${tag}^{}`]);
+  return output.split(/\s+/)[0] || null;
+}
+
 function localTagExists() {
   try {
     git(['rev-parse', '--verify', '--quiet', tag]);
@@ -87,11 +92,23 @@ function footprint(base, target, previousTag) {
   return `Altogether it touched ${files} files (+${insertions}/-${deletions}) across ${commitCount} commits.`;
 }
 
-if (localTagExists() || remoteTagExists()) {
-  throw new Error(`Release tag ${tag} already exists.`);
+const target = process.env.GITHUB_SHA || git(['rev-parse', 'HEAD']);
+
+if (remoteTagExists()) {
+  const tagCommit = remoteTagCommit();
+
+  if (tagCommit === target) {
+    console.log(`Release tag ${tag} already exists on ${target}.`);
+    process.exit(0);
+  }
+
+  throw new Error(`Release tag ${tag} already points at ${tagCommit}, not ${target}.`);
 }
 
-const target = process.env.GITHUB_SHA || git(['rev-parse', 'HEAD']);
+if (localTagExists()) {
+  throw new Error(`Local release tag ${tag} already exists.`);
+}
+
 const section = releaseSection();
 const bullets = releaseBullets(section);
 
