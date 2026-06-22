@@ -9,118 +9,121 @@
    vital bar colours that have no homepage analogue) the token is defined independently. */
 
 :root {
-
   /* ── Fonts ─────────────────────────────────────────────────── */
-  --hud-font:    var(--ns-font-pixel);  /* chrome labels, tab caps, key glyphs */
-  --hud-font-ui: var(--ns-font-body);  /* draggable windows, dialogue, inventory */
+  --hud-font: var(--ns-font-pixel); /* chrome labels, tab caps, key glyphs */
+  --hud-font-ui: var(--ns-font-body); /* draggable windows, dialogue, inventory */
 
   /* ── Accent / currency ─────────────────────────────────────── */
   /* DS is source of truth: game migrates from #ffe066 → --ns-gold (#e6db74). */
-  --hud-gold:    var(--ns-gold);
-  --hud-talents: var(--ns-gold);        /* Talents wallet number */
+  --hud-gold: var(--ns-gold);
+  --hud-talents: var(--ns-gold); /* Talents wallet number */
 
   /* ── Text ───────────────────────────────────────────────────── */
-  --hud-text:     var(--ns-ink);
+  --hud-text: var(--ns-ink);
   --hud-text-dim: var(--ns-ink-dim);
-  --hud-shadow:   none;                  /* no text-shadow at HUD pixel sizes */
+  --hud-shadow: none; /* no text-shadow at HUD pixel sizes */
   --hud-bar-shadow: none;
 
   /* ── Surfaces ───────────────────────────────────────────────── */
   /* Game chrome glass: lighter than --ns-glass so the world reads through. */
-  --hud-glass:      rgba(12, 16, 22, 0.62);
+  --hud-glass: rgba(12, 16, 22, 0.62);
   --hud-glass-blur: 6px;
-  --hud-bg:         rgba(0, 0, 0, 0.35);
-  --hud-bg-strong:  rgba(0, 0, 0, 0.72);
-  --hud-track:      rgba(255, 255, 255, 0.10);   /* bar + XP track background */
-  --hud-line:       rgba(255, 255, 255, 0.18);
-  --hud-divider:    var(--hud-line);
-  --hud-avatar-bg:  rgba(72, 86, 116, 0.82);
+  --hud-bg: rgba(0, 0, 0, 0.35);
+  --hud-bg-strong: rgba(0, 0, 0, 0.72);
+  --hud-track: rgba(255, 255, 255, 0.1); /* bar + XP track background */
+  --hud-line: rgba(255, 255, 255, 0.18);
+  --hud-divider: var(--hud-line);
+  --hud-avatar-bg: rgba(72, 86, 116, 0.82);
 
   /* ── Input / selection ─────────────────────────────────────── */
-  --hud-input-bg:  rgba(10, 14, 20, 0.55);
-  --hud-sel-bg:    var(--ns-ink);
-  --hud-sel-fg:    var(--ns-bg-1);
+  --hud-input-bg: rgba(10, 14, 20, 0.55);
+  --hud-sel-bg: var(--ns-ink);
+  --hud-sel-fg: var(--ns-bg-1);
 
   /* ── Elements (identity.ts ELEMENT_DISPLAY) ───────────────────── */
   /* ── Elements (identity.ts ELEMENT_DISPLAY exact colors) ─────────── */
   --hud-el-neutral: #888780;
-  --hud-el-earth:   #639922;
-  --hud-el-wind:    #5dcaa5;
-  --hud-el-water:   #378add;
-  --hud-el-fire:    #ba7517;
-  --hud-el-light:   #fac775;
-  --hud-el-dark:    #888780;
-  --hud-el-void:    #7f77dd;
+  --hud-el-earth: #639922;
+  --hud-el-wind: #5dcaa5;
+  --hud-el-water: #378add;
+  --hud-el-fire: #ba7517;
+  --hud-el-light: #fac775;
+  --hud-el-dark: #888780;
+  --hud-el-void: #7f77dd;
 
   /* ── Vital bars ─────────────────────────────────────────────── */
   /* HP — green track, bright fill, low-HP red warning */
-  --hud-hp:         var(--hud-track);  /* track background */
-  --hud-hp-fill:    #4caf73;   /* normal fill */
-  --hud-hp-low:     #cc3333;   /* fill under 30% → also pulses */
-  --hud-hp-label:   #88ee88;   /* "HP" label text in classic bar */
+  --hud-hp: var(--hud-track); /* track background */
+  --hud-hp-fill: #4caf73; /* normal fill */
+  --hud-hp-low: #cc3333; /* fill under 30% → also pulses */
+  --hud-hp-label: #88ee88; /* "HP" label text in classic bar */
   /* MP — blue track, bright fill, low-MP muted */
-  --hud-mp:         var(--hud-track);  /* track background (internal id: sp) */
-  --hud-mp-fill:    #5b9bd5;   /* normal fill */
-  --hud-mp-low:     #4f7fc0;   /* fill under 30% */
-  --hud-mp-label:   #8888ee;   /* "MP"/"SP" label text */
+  --hud-mp: var(--hud-track); /* track background (internal id: sp) */
+  --hud-mp-fill: #5b9bd5; /* normal fill */
+  --hud-mp-low: #4f7fc0; /* fill under 30% */
+  --hud-mp-label: #8888ee; /* "MP"/"SP" label text */
 
   /* ── XP tracks ──────────────────────────────────────────────── */
   /* Three independent mastery tracks: Base (BXP), Tech (TXP), Weapon (WXP). */
-  --hud-xp-base:          #4488cc;   /* BXP fill — steel blue */
-  --hud-xp-base-rgb:      68 136 204;  /* @kind other */
-  --hud-xp-base-label:    #88aaee;   /* BXP label */
-  --hud-xp-job:           #8855cc;   /* TXP fill — purple */
-  --hud-xp-job-rgb:       136 85 204;  /* @kind other */
-  --hud-xp-job-label:     #aa88ee;   /* TXP label */
-  --hud-xp-weapon:        #cc8844;   /* WXP fill — amber */
-  --hud-xp-weapon-rgb:    204 136 68;  /* @kind other */
-  --hud-xp-weapon-label:  #eeaa66;   /* WXP label */
+  --hud-xp-base: #4488cc; /* BXP fill — steel blue */
+  --hud-xp-base-rgb: 68 136 204; /* @kind other */
+  --hud-xp-base-label: #88aaee; /* BXP label */
+  --hud-xp-job: #8855cc; /* TXP fill — purple */
+  --hud-xp-job-rgb: 136 85 204; /* @kind other */
+  --hud-xp-job-label: #aa88ee; /* TXP label */
+  --hud-xp-weapon: #cc8844; /* WXP fill — amber */
+  --hud-xp-weapon-rgb: 204 136 68; /* @kind other */
+  --hud-xp-weapon-label: #eeaa66; /* WXP label */
 
   /* Progress bars in the player card detail (Marks / Craft). */
-  --hud-marks-track:  #3a2e6e;
-  --hud-marks-fill:   #7f77dd;
-  --hud-craft-track:  #4a2e0a;
-  --hud-craft-fill:   #ba7517;
+  --hud-marks-track: #3a2e6e;
+  --hud-marks-fill: #7f77dd;
+  --hud-craft-track: #4a2e0a;
+  --hud-craft-fill: #ba7517;
 
   /* ── Chat log channel tones ─────────────────────────────────── */
   /* Logs tab (battle narration) vs Chat tab (social stream). */
-  --hud-tone-battle: #ff8888;   /* combat hits, defeat lines */
-  --hud-tone-world:  #88ccff;   /* map announcements, world events */
-  --hud-tone-gain:   #aaffaa;   /* EXP / loot / discovery / rewards */
-  --hud-tone-say:    #cccccc;   /* player speech, system messages */
+  --hud-tone-battle: #ff8888; /* combat hits, defeat lines */
+  --hud-tone-world: #88ccff; /* map announcements, world events */
+  --hud-tone-gain: #aaffaa; /* EXP / loot / discovery / rewards */
+  --hud-tone-say: #cccccc; /* player speech, system messages */
 
   /* ── Status / buffs ─────────────────────────────────────────── */
-  --hud-danger:  var(--ns-pink);   /* death zone, error states */
-  --hud-buff:    var(--ns-green);  /* positive effect glyphs */
-  --hud-debuff:  #ee6666;          /* negative effect glyphs */
+  --hud-danger: var(--ns-pink); /* death zone, error states */
+  --hud-buff: var(--ns-green); /* positive effect glyphs */
+  --hud-debuff: #ee6666; /* negative effect glyphs */
 
   /* ── Minimap ────────────────────────────────────────────────── */
-  --hud-minimap-bg:   #091509;                      /* canvas fill */
-  --hud-minimap-edge: #2a4a2a;                      /* outer diamond stroke */
-  --hud-minimap-player: #ffffff;                    /* player dot */
-  --hud-minimap-enemy:  #ff5a5a;                    /* aggressive mob dot */
-  --hud-minimap-npc:    #f4c542;                    /* interactable / NPC dot */
-  --hud-minimap-dest:   var(--ns-cyan);             /* walk-goal diamond */
+  --hud-minimap-bg: #091509; /* canvas fill */
+  --hud-minimap-edge: #2a4a2a; /* outer diamond stroke */
+  --hud-minimap-player: #ffffff; /* player dot */
+  --hud-minimap-enemy: #ff5a5a; /* aggressive mob dot */
+  --hud-minimap-npc: #f4c542; /* interactable / NPC dot */
+  --hud-minimap-dest: var(--ns-cyan); /* walk-goal diamond */
 
   /* ── Geometry ───────────────────────────────────────────────── */
-  --hud-radius:    4px;
+  --hud-radius: 4px;
   --hud-radius-sm: 2px;
 
   /* ── Cross-layout geometry (640×360 design space) ───────────── */
   /* The HUD lives in a 3×3 grid over the 640×360 canvas.
      Each corner pocket sits inside its cell with 5% padding per axis. */
-  --hud-cross-cell-w: calc(640px / 3); /* @kind other */  /* 213.33px */
-  --hud-cross-cell-h: calc(360px / 3); /* @kind other */  /* 120px */
-  --hud-cross-pad-x:  calc(var(--hud-cross-cell-w) * 0.05); /* 10.67px */
+  --hud-cross-cell-w: calc(640px / 3); /* @kind other */ /* 213.33px */
+  --hud-cross-cell-h: calc(360px / 3); /* @kind other */ /* 120px */
+  --hud-cross-pad-x: calc(var(--hud-cross-cell-w) * 0.05); /* 10.67px */
   /* NOTE: CSS percentage padding always resolves to % of the element WIDTH,
      so pad-y equals pad-x, not 5% of the cell height. */
-  --hud-cross-pad-y:  calc(var(--hud-cross-cell-w) * 0.05); /* 10.67px — same as pad-x */
+  --hud-cross-pad-y: calc(var(--hud-cross-cell-w) * 0.05); /* 10.67px — same as pad-x */
 
   /* ── Inner 8×8 grid cell size (padded pocket ÷ 8) ──────────── */
   /* The padded pocket is 90% of the cell (5% pad each side). */
   /* Padded inner area: width = cell-w - 2*pad = 192px, height = cell-h - 2*pad = 98.67px */
-  --hud-grid-cell-w: calc((var(--hud-cross-cell-w) - 2 * var(--hud-cross-pad-x)) / 8); /* @kind spacing */ /* 24px    */
-  --hud-grid-cell-h: calc((var(--hud-cross-cell-h) - 2 * var(--hud-cross-pad-y)) / 8); /* @kind spacing */ /* 12.33px */
+  --hud-grid-cell-w: calc(
+    (var(--hud-cross-cell-w) - 2 * var(--hud-cross-pad-x)) / 8
+  ); /* @kind spacing */ /* 24px    */
+  --hud-grid-cell-h: calc(
+    (var(--hud-cross-cell-h) - 2 * var(--hud-cross-pad-y)) / 8
+  ); /* @kind spacing */ /* 12.33px */
 
   /* ── Minimum interactive element: 2×2 inner grid cells ─────── */
   /* No HUD element (button, slot, pip row, icon) may be smaller than this.

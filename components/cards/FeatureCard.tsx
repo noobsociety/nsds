@@ -3,7 +3,10 @@ import type { LiHTMLAttributes, ReactElement, ReactNode } from 'react';
 import { nsTokens, cx, mergeStyles } from '../shared/styles.js';
 import type { NSStyle } from '../shared/styles.js';
 
-export interface FeatureCardProps extends Omit<LiHTMLAttributes<HTMLLIElement>, 'children' | 'style' | 'title'> {
+export interface FeatureCardProps extends Omit<
+  LiHTMLAttributes<HTMLLIElement>,
+  'children' | 'style' | 'title'
+> {
   /** Pixel-art icon element. */
   icon: ReactNode;
   /** Card heading. */
@@ -40,9 +43,7 @@ export function FeatureCard({
         <h3 className="ns-feature-card__title">{title}</h3>
         <p className="ns-feature-card__body">{body}</p>
       </div>
-      {tag && (
-        <span className="ns-tag ns-feature-card__tag">{tag}</span>
-      )}
+      {tag && <span className="ns-tag ns-feature-card__tag">{tag}</span>}
     </li>
   );
 }

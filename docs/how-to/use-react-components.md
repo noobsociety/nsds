@@ -29,12 +29,7 @@ Invalid runtime values fall back to the default visual variant and size.
 ## Quest Cards
 
 ```tsx
-<QuestCard
-  gate={2}
-  title="HUD"
-  body="Build status, meter, and label primitives."
-  status="active"
-/>
+<QuestCard gate={2} title="HUD" body="Build status, meter, and label primitives." status="active" />
 ```
 
 ## HUD

@@ -109,11 +109,15 @@ npm run test:visual
 Install and export checks run as part of `npm run check`, and can be run directly:
 
 ```bash
+npm run check:commits
 npm run check:deps
 npm run check:docs
 npm run check:exports
 npm run check:install
+npm run check:markdown
 npm run check:workflows
+npm run format:check
+npm run lint
 ```
 
 ## Release checks

@@ -7,5 +7,5 @@ Please report security issues through GitHub Security Advisories for this reposi
 Supported release line:
 
 | Version | Supported |
-|---|---|
-| `0.x` | Yes |
+| ------- | --------- |
+| `0.x`   | Yes       |

@@ -1,8 +1,4 @@
-export {
-  NS,
-  nsTokens,
-  questStatus,
-} from '../components/shared/constants.js';
+export { NS, nsTokens, questStatus } from '../components/shared/constants.js';
 export {
   rpgIconElements,
   rpgIconGroups,
@@ -22,4 +18,4 @@ export type {
 
 export const nsClientRelease = '21.06' as const;
 export const nsClientTargets = ['web', 'game'] as const;
-export type NSClientTarget = typeof nsClientTargets[number];
+export type NSClientTarget = (typeof nsClientTargets)[number];

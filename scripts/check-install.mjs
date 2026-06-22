@@ -20,7 +20,7 @@ async function run(command, args, options = {}) {
   } catch (error) {
     const stdout = error.stdout ? `\n${error.stdout}` : '';
     const stderr = error.stderr ? `\n${error.stderr}` : '';
-    throw new Error(`${command} ${args.join(' ')} failed.${stdout}${stderr}`);
+    throw new Error(`${command} ${args.join(' ')} failed.${stdout}${stderr}`, { cause: error });
   }
 }
 
@@ -92,7 +92,7 @@ try {
       '',
       "const buttonProps: ButtonProps = { children: 'Play', variant: 'play' };",
       "const iconName: RPGIconName = 'sword';",
-      "const target: NSClientTarget = nsClientTargets[0];",
+      'const target: NSClientTarget = nsClientTargets[0];',
       '',
       'Button(buttonProps);',
       'RPGIcon({ name: iconName });',

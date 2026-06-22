@@ -2,7 +2,10 @@ import type { AnchorHTMLAttributes, ReactElement, ReactNode } from 'react';
 
 import { cx } from '../shared/styles.js';
 
-export interface SectionArrowProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'children' | 'href'> {
+export interface SectionArrowProps extends Omit<
+  AnchorHTMLAttributes<HTMLAnchorElement>,
+  'children' | 'href'
+> {
   /** href of the next section. */
   href: string;
   /** Accessible label for screen readers. */
@@ -36,12 +39,7 @@ export function SectionArrow({
   ...props
 }: SectionArrowProps): ReactElement {
   return (
-    <a
-      {...props}
-      href={href}
-      aria-label={label}
-      className={cx('ns-section-arrow', className)}
-    >
+    <a {...props} href={href} aria-label={label} className={cx('ns-section-arrow', className)}>
       {children || <ChevronDownIcon />}
     </a>
   );

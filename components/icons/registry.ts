@@ -11,11 +11,7 @@ export type RPGIconElement =
 export type RPGIconRace = 'human' | 'beast' | 'demon' | 'angel' | 'spirit';
 export type RPGIconSize = 'small' | 'medium' | 'large';
 
-export type RPGIconName =
-  | RPGIconWeapon
-  | RPGIconElement
-  | RPGIconRace
-  | RPGIconSize;
+export type RPGIconName = RPGIconWeapon | RPGIconElement | RPGIconRace | RPGIconSize;
 
 export const rpgIconWeapons = [
   'sword',
@@ -42,11 +38,7 @@ export const rpgIconRaces = [
   'angel',
   'spirit',
 ] as const satisfies readonly RPGIconRace[];
-export const rpgIconSizes = [
-  'small',
-  'medium',
-  'large',
-] as const satisfies readonly RPGIconSize[];
+export const rpgIconSizes = ['small', 'medium', 'large'] as const satisfies readonly RPGIconSize[];
 
 export const rpgIconGroups = {
   weapons: rpgIconWeapons,

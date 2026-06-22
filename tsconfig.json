@@ -3,10 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "jsx": "react-jsx",
-    "lib": [
-      "DOM",
-      "ES2022"
-    ],
+    "lib": ["DOM", "ES2022"],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "noEmit": true,
@@ -27,9 +24,5 @@
     "tests/**/*.tsx",
     "*.config.ts"
   ],
-  "exclude": [
-    "dist",
-    "node_modules",
-    "storybook-static"
-  ]
+  "exclude": ["dist", "node_modules", "storybook-static"]
 }

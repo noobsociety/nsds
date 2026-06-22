@@ -30,11 +30,7 @@ function fileName(format, entryName) {
   return format === 'es' ? `${entryName}.js` : `${entryName}.cjs`;
 }
 
-const external = [
-  'react',
-  'react-dom',
-  'react/jsx-runtime',
-];
+const external = ['react', 'react-dom', 'react/jsx-runtime'];
 
 export default defineConfig({
   plugins: [react(), nsdsDistAssets()],

@@ -4,7 +4,10 @@ import { cx, questStatus } from '../shared/styles.js';
 
 export type QuestCardStatus = 'done' | 'active' | 'planned' | 'locked';
 
-export interface QuestCardProps extends Omit<LiHTMLAttributes<HTMLLIElement>, 'children' | 'title'> {
+export interface QuestCardProps extends Omit<
+  LiHTMLAttributes<HTMLLIElement>,
+  'children' | 'title'
+> {
   /** Gate number shown in the title. */
   gate: number;
   /** Short gate name. */

@@ -15,12 +15,17 @@ for (const file of files) {
   const contents = readFileSync(join(root, path), 'utf8');
 
   for (const result of lint(contents, path)) {
-    failures.push(`${result.file}:${result.line}:${result.column} ${result.message} [${result.kind}]`);
+    failures.push(
+      `${result.file}:${result.line}:${result.column} ${result.message} [${result.kind}]`,
+    );
   }
 
   if (contents.includes('actions/setup-node@')) {
-    if (!/node-version:\s*22\b/.test(contents)) {
-      failures.push(`${path}: setup-node must pin node-version: 22`);
+    if (
+      !/node-version:\s*22\b/.test(contents) &&
+      !/node-version-file:\s*['"]?\.nvmrc['"]?/.test(contents)
+    ) {
+      failures.push(`${path}: setup-node must use node-version: 22 or node-version-file: .nvmrc`);
     }
   }
 }

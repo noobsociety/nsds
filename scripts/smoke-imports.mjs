@@ -10,11 +10,7 @@ import {
   QuestCard,
   SectionArrow,
 } from '@noobsociety/nsds';
-import {
-  nsClientRelease,
-  questStatus,
-  rpgIconNames,
-} from '@noobsociety/nsds/client';
+import { nsClientRelease, questStatus, rpgIconNames } from '@noobsociety/nsds/client';
 import * as ReactEntry from '@noobsociety/nsds/react';
 
 for (const name of [

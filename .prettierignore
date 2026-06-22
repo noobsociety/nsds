@@ -1,0 +1,8 @@
+coverage
+dist
+docs/reference/api
+node_modules
+package-lock.json
+storybook-static
+test-results
+*.png

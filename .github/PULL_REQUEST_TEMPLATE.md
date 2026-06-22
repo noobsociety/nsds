@@ -1,6 +1,6 @@
 ## Summary
 
-- 
+-
 
 ## Checks
 
@@ -23,4 +23,4 @@
 
 ## Notes
 
-- 
+-
