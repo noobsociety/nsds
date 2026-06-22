@@ -4,9 +4,11 @@ NSDS is the NoobSociety Design System. Changes should keep the package small, re
 
 ## Local setup
 
-Use Node.js 22 or newer.
+Use Node.js 22 or newer. The repo pins Node 22 in `.nvmrc` for parity with CI; with nvm, run
+`nvm use` to match it.
 
 ```bash
+nvm use
 npm install
 npm run check
 ```
@@ -73,7 +75,7 @@ npm run changeset:version
 
 This command applies the Changesets version plan and updates `CHANGELOG.md` from the `[Unreleased]` section. Open the result as a release pull request.
 
-Publishing is handled by the release workflow after the release pull request is merged to `main`, when `NPM_TOKEN` is configured:
+Publishing is handled by the release workflow after the release pull request is merged to `main`, when `NPM_TOKEN` is configured. When the package version is not already on npm, the workflow publishes the package and creates an annotated `vX.Y.Z` tag on the published commit.
 
 ```bash
 npm run changeset:publish
@@ -107,9 +109,11 @@ npm run test:visual
 Install and export checks run as part of `npm run check`, and can be run directly:
 
 ```bash
+npm run check:deps
 npm run check:docs
 npm run check:exports
 npm run check:install
+npm run check:workflows
 ```
 
 ## Release checks
@@ -121,6 +125,16 @@ npm run check
 npm run build:storybook
 npm run release:dry-run
 ```
+
+Use this order for package work: commit locally on a feature branch, open the
+pull request from that branch, merge the reviewed PR to `main`, then let the
+release workflow tag only after a version publishes.
+
+Before opening the PR, squash local role-pass cleanup commits into the smallest
+reviewable set that preserves the package-facing change. Use the PR title as the
+intended squash commit subject, and keep the squash body as one contiguous
+bullet list of meaningful branch changes. Commit generated API docs with the
+source or TypeDoc configuration change that generated them.
 
 Before publishing manually:
 

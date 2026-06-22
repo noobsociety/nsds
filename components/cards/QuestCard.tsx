@@ -9,7 +9,7 @@ export interface QuestCardProps extends Omit<LiHTMLAttributes<HTMLLIElement>, 'c
   gate: number;
   /** Short gate name. */
   title: string;
-  /** One-sentence description. */
+  /** Supporting copy shown below the gate title. */
   body: string;
   /** Controls border color, tint, icon, and pill label. */
   status?: QuestCardStatus;

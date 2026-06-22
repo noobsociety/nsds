@@ -36,6 +36,14 @@ export function App() {
 }
 ```
 
+## Use Client Registries
+
+Use the client entry when shared metadata is needed without a React import:
+
+```ts
+import { nsClientRelease, rpgIconNames } from '@noobsociety/nsds/client';
+```
+
 ## Add Tailwind
 
 Use the preset when your app uses Tailwind:
@@ -54,5 +62,6 @@ export default {
 Run your app and confirm:
 
 - NSDS CSS is loaded once.
+- Client registries import from `@noobsociety/nsds/client` when needed.
 - React components render with `ns-*` class names.
 - Tailwind utilities can read `ns` theme values from the preset.

@@ -40,6 +40,7 @@ const requiredFiles = [
   'CONTRIBUTING.md',
   'LICENSE',
   'SECURITY.md',
+  '.nvmrc',
   '.changeset/config.json',
   '.storybook/main.ts',
   '.storybook/preview.ts',
@@ -47,7 +48,9 @@ const requiredFiles = [
   'tsconfig.tailwind.json',
   'scripts/release-changelog.mjs',
   'scripts/prepare-types.mjs',
+  'scripts/check-deps.mjs',
   'scripts/check-install.mjs',
+  'scripts/check-workflows.mjs',
   'scripts/serve-static.mjs',
   'index.ts',
   'playwright.config.ts',
@@ -75,6 +78,7 @@ const requiredFiles = [
   'tests/visual/public-surface.spec.ts-snapshots/component-specimen-linux.png',
   'tests/visual/public-surface.spec.ts-snapshots/ui-kit-darwin.png',
   'tests/visual/public-surface.spec.ts-snapshots/ui-kit-linux.png',
+  'client/index.ts',
   'components/Showcase.stories.tsx',
   'components/buttons/Button.tsx',
   'components/buttons/Button.stories.tsx',
@@ -88,14 +92,20 @@ const requiredFiles = [
   'components/hud/HUDDivider.stories.tsx',
   'components/hud/HUDLabel.tsx',
   'components/hud/HUDLabel.stories.tsx',
+  'components/icons/registry.ts',
   'components/icons/RPGIcon.tsx',
   'components/icons/RPGIcon.stories.tsx',
+  'components/shared/constants.ts',
   'components/navigation/SectionArrow.tsx',
   'components/navigation/SectionArrow.stories.tsx',
   'dist/index.js',
   'dist/index.d.ts',
   'dist/index.d.cts',
   'dist/index.cjs',
+  'dist/client/index.js',
+  'dist/client/index.d.ts',
+  'dist/client/index.d.cts',
+  'dist/client/index.cjs',
   'tailwind/preset.cts',
   'dist/tailwind/preset.cjs',
   'dist/tailwind/preset.d.cts',
@@ -111,6 +121,7 @@ const requiredFiles = [
 ];
 
 assert(pkg.name === '@noobsociety/nsds', 'package name must be @noobsociety/nsds');
+assert(readFileSync(join(root, '.nvmrc'), 'utf8').trim() === '22', '.nvmrc must pin Node 22');
 assert(/^\d+\.\d+\.\d+(-[\w.-]+)?$/.test(pkg.version), 'package version must be semver-like');
 assert(pkg.private !== true, 'package must not be private');
 assert(pkg.license === 'MIT', 'package license must be MIT');
@@ -119,14 +130,21 @@ assert(pkg.repository?.url === 'git+https://github.com/noobsociety/nsds.git', 'r
 assert(pkg.bugs?.url === 'https://github.com/noobsociety/nsds/issues', 'bugs URL must point to GitHub issues');
 assert(pkg.homepage === 'https://github.com/noobsociety/nsds#readme', 'homepage must point to the GitHub README');
 assert(pkg.scripts?.changeset === 'changeset', 'package must expose npm run changeset');
+assert(pkg.scripts?.check?.includes('npm run check:deps'), 'npm run check must include check:deps');
+assert(pkg.scripts?.check?.includes('npm run check:workflows'), 'npm run check must include check:workflows');
+assert(pkg.scripts?.['check:deps'] === 'node scripts/check-deps.mjs', 'package must expose npm run check:deps');
 assert(
   pkg.scripts?.['check:exports'] ===
-    'publint run --pack npm --level warning && attw --pack . --profile node16 --entrypoints . ./react ./tailwind --format table --no-emoji',
+    'publint run --pack npm --level warning && attw --pack . --profile node16 --entrypoints . ./client ./react ./tailwind --format table --no-emoji',
   'package must expose npm run check:exports',
 );
 assert(
   pkg.scripts?.['check:install'] === 'node scripts/check-install.mjs',
   'package must expose npm run check:install',
+);
+assert(
+  pkg.scripts?.['check:workflows'] === 'node scripts/check-workflows.mjs',
+  'package must expose npm run check:workflows',
 );
 assert(
   pkg.scripts?.['check:docs'] === 'npm run docs:api && git diff --exit-code docs/reference/api',

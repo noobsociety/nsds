@@ -8,6 +8,7 @@
     "rootDir": "."
   },
   "include": [
+    "client/**/*.ts",
     "components/**/*.ts",
     "components/**/*.tsx",
     "index.ts"

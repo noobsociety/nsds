@@ -1,5 +1,22 @@
 import type { CSSProperties, ReactElement } from 'react';
 
+import { rpgIconNames } from './registry.js';
+import type {
+  RPGIconElement,
+  RPGIconName,
+  RPGIconRace,
+  RPGIconSize,
+  RPGIconWeapon,
+} from './registry.js';
+
+export type {
+  RPGIconElement,
+  RPGIconName,
+  RPGIconRace,
+  RPGIconSize,
+  RPGIconWeapon,
+} from './registry.js';
+
 /* ── Icon library ──────────────────────────────────────────────────────────
    Original geometric pixel-art, 16×16 viewBox.
    Canonical sets from the game design:
@@ -401,17 +418,6 @@ function SizeLargeIcon() {
 /* ══════════════════════════════════════════════════════════
    REGISTRY
    ══════════════════════════════════════════════════════════ */
-export type RPGIconWeapon  = 'sword' | 'staff' | 'bow' | 'katar' | 'book' | 'hammer';
-export type RPGIconElement = 'neutral' | 'earth' | 'wind' | 'water' | 'fire' | 'light' | 'dark' | 'void';
-export type RPGIconRace    = 'human' | 'beast' | 'demon' | 'angel' | 'spirit';
-export type RPGIconSize    = 'small' | 'medium' | 'large';
-
-export type RPGIconName =
-  | RPGIconWeapon
-  | RPGIconElement
-  | RPGIconRace
-  | RPGIconSize;
-
 export interface RPGIconProps {
   /** Icon name across weapon, element, race, and size groups. */
   name?: RPGIconName;
@@ -451,7 +457,7 @@ const ICONS = {
   large:   SizeLargeIcon,
 } satisfies Record<RPGIconName, IconComponent>;
 
-export const icons = Object.keys(ICONS) as RPGIconName[];
+export const icons = [...rpgIconNames] as RPGIconName[];
 
 /**
  * RPGIcon — 22 original pixel-art icons.

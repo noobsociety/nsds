@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import type { NSClientTarget, RPGIconName } from '@noobsociety/nsds/client';
 
 import {
   Button,
@@ -9,6 +10,7 @@ import {
   QuestCard,
   SectionArrow,
 } from '@noobsociety/nsds';
+import { nsClientTargets, rpgIconNames } from '@noobsociety/nsds/client';
 
 const button: ReactElement = Button({ children: 'Play' });
 const feature: ReactElement = FeatureCard({
@@ -29,9 +31,13 @@ const arrow: ReactElement = SectionArrow({
   href: '#next',
   label: 'Next section',
 });
+const target: NSClientTarget = nsClientTargets[0];
+const iconName: RPGIconName = rpgIconNames[0];
 void feature;
 void quest;
 void hudBar;
 void hudDivider;
 void hudLabel;
 void arrow;
+void target;
+void iconName;

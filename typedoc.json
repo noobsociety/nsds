@@ -2,7 +2,8 @@
   "$schema": "https://typedoc.org/schema.json",
   "disableSources": true,
   "entryPoints": [
-    "index.ts"
+    "index.ts",
+    "client/index.ts"
   ],
   "excludeExternals": true,
   "hideGenerator": true,

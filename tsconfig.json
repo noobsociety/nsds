@@ -16,6 +16,7 @@
   },
   "include": [
     ".storybook/**/*.ts",
+    "client/**/*.ts",
     "components/**/*.ts",
     "components/**/*.tsx",
     "global.d.ts",
@@ -24,7 +25,7 @@
     "tailwind/**/*.cts",
     "tests/**/*.ts",
     "tests/**/*.tsx",
-    "vitest.config.ts"
+    "*.config.ts"
   ],
   "exclude": [
     "dist",

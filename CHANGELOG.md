@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- Added a `@noobsociety/nsds/client` export for renderer-neutral 21.06 metadata, token references, quest status metadata, and RPG icon registries.
+- Added a Node 22 local runtime pin for contributor setup parity with CI.
+
+### Changed
+
+- Extracted shared token, quest status, and RPG icon registry metadata out of React-only modules.
+- Removed duplicate primitive stylesheet links from static browser fixtures.
+
+### Fixed
+
+- Added the missing `--hud-divider` alias used by HUD fixture surfaces.
+
 ## [0.3.1] - 2026-06-20
 
 ### Added

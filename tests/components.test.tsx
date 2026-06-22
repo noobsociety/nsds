@@ -11,6 +11,13 @@ import {
   RPGIcon,
   SectionArrow,
 } from '../index.js';
+import {
+  nsClientRelease,
+  nsClientTargets,
+  questStatus,
+  rpgIconGroups,
+  rpgIconNames,
+} from '../client/index.js';
 
 describe('Button', () => {
   it('renders stable class names for variants and sizes', () => {
@@ -131,6 +138,19 @@ describe('RPGIcon', () => {
 
     expect(RPGIcon.icons).toContain('void');
     expect(container.querySelector('svg')).toBeInTheDocument();
+  });
+});
+
+describe('client registries', () => {
+  it('exposes renderer-neutral 21.06 metadata', () => {
+    expect(nsClientRelease).toBe('21.06');
+    expect(nsClientTargets).toEqual(['web', 'game']);
+    expect(questStatus.active).toMatchObject({
+      className: 'ns-quest-card--active',
+      label: 'BUILDING',
+    });
+    expect(rpgIconGroups.weapons).toContain('sword');
+    expect(rpgIconNames).toEqual(RPGIcon.icons);
   });
 });
 

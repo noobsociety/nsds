@@ -19,7 +19,8 @@ NSDS tokens are CSS custom properties grouped by file.
 
 ## Usage
 
-Use tokens through CSS, Tailwind theme values, or component props:
+Use tokens through CSS, Tailwind theme values, component props, or the client
+registry entry when shared names are needed outside React:
 
 ```css
 .panel {
@@ -31,4 +32,8 @@ Use tokens through CSS, Tailwind theme values, or component props:
 
 ```tsx
 <HUDBar fillColor="var(--ns-cyan)" />
+```
+
+```ts
+import { nsTokens, questStatus, rpgIconNames } from '@noobsociety/nsds/client';
 ```

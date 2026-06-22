@@ -33,6 +33,7 @@
   --hud-bg-strong:  rgba(0, 0, 0, 0.72);
   --hud-track:      rgba(255, 255, 255, 0.10);   /* bar + XP track background */
   --hud-line:       rgba(255, 255, 255, 0.18);
+  --hud-divider:    var(--hud-line);
   --hud-avatar-bg:  rgba(72, 86, 116, 0.82);
 
   /* ── Input / selection ─────────────────────────────────────── */
