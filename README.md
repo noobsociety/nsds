@@ -110,7 +110,7 @@ Public React components:
 - `HUDPanel`
 - `HUDTabWindow`
 - `RPGIcon`
-- `HUDIcon`
+- `HUDIcon` _(deprecated; use `RPGIcon`)_
 - `SectionArrow`
 
 `RPGIcon` ships 68 pixel-art glyphs across 11 groups: weapons, elements, races, sizes, attack, skills, items, equip, skins, menu, and emotes. The renderer-neutral icon name, group, and type registries are also exported from `@noobsociety/nsds/client`.

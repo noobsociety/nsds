@@ -32,9 +32,10 @@ import { nsClientRelease, rpgIconNames } from '@noobsociety/nsds/client';
 ```
 
 The `client` entry exposes renderer-neutral metadata for code that needs shared
-names without React: token references (`NS`, `nsTokens`), quest status metadata
-(`questStatus`), the RPG icon registries (`rpgIconNames` and the `rpgIcon*`
-group, element, race, size, and weapon lists), and the registry's release and
+names without React: token references (`nsTokens`; `NS` is a deprecated alias),
+quest status metadata (`questStatus`), the RPG icon registries (`rpgIconNames`,
+`rpgIconGroups`, and per-group lists for weapons, elements, races, sizes,
+attack, skills, items, equip, menu, and emotes), and the registry's release and
 target markers (`nsClientRelease`, `nsClientTargets`).
 
 ## CSS
