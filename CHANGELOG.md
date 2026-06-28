@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.4.1] - 2026-06-28
+
 ### Added
 
 - Added five HUD React components — `HUDChat`, `HUDJoystick`, `HUDMinimap`, `HUDPanel`, and `HUDTabWindow` — each with Storybook stories, component tests, and named exports from `@noobsociety/nsds` and `@noobsociety/nsds/react`.
@@ -131,7 +133,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Initial NSDS package with tokens, CSS primitives, React components, and Tailwind support.
 
-[Unreleased]: https://github.com/noobsociety/nsds/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/noobsociety/nsds/compare/v0.4.1...HEAD
+[0.4.1]: https://github.com/noobsociety/nsds/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/noobsociety/nsds/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/noobsociety/nsds/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/noobsociety/nsds/compare/v0.2.1...v0.3.0
