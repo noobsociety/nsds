@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.4.2] - 2026-06-28
+
 ### Fixed
 
 - Exported the standalone `rpgIconSkins` client registry and `RPGIconSkill` root type so the
@@ -138,7 +140,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Initial NSDS package with tokens, CSS primitives, React components, and Tailwind support.
 
-[Unreleased]: https://github.com/noobsociety/nsds/compare/v0.4.1...HEAD
+[Unreleased]: https://github.com/noobsociety/nsds/compare/v0.4.2...HEAD
+[0.4.2]: https://github.com/noobsociety/nsds/compare/v0.4.1...v0.4.2
 [0.4.1]: https://github.com/noobsociety/nsds/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/noobsociety/nsds/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/noobsociety/nsds/compare/v0.3.0...v0.3.1
