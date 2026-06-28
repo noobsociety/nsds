@@ -1,18 +1,30 @@
 export { NS, nsTokens, questStatus } from '../components/shared/constants.js';
 export {
+  rpgIconAttack,
   rpgIconElements,
+  rpgIconEmotes,
+  rpgIconEquip,
   rpgIconGroups,
+  rpgIconItems,
+  rpgIconMenu,
   rpgIconNames,
   rpgIconRaces,
   rpgIconSizes,
+  rpgIconSkills,
   rpgIconWeapons,
   rpgIconNames as icons,
 } from '../components/icons/registry.js';
 export type {
+  RPGIconAttack,
   RPGIconElement,
+  RPGIconEmote,
+  RPGIconEquip,
+  RPGIconItem,
+  RPGIconMenu,
   RPGIconName,
   RPGIconRace,
   RPGIconSize,
+  RPGIconSkin,
   RPGIconWeapon,
 } from '../components/icons/registry.js';
 

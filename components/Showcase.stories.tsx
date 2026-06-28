@@ -5,8 +5,13 @@ import { Button } from './buttons/Button.js';
 import { FeatureCard } from './cards/FeatureCard.js';
 import { QuestCard } from './cards/QuestCard.js';
 import { HUDBar } from './hud/HUDBar.js';
+import { HUDChat } from './hud/HUDChat.js';
 import { HUDDivider } from './hud/HUDDivider.js';
+import { HUDJoystick } from './hud/HUDJoystick.js';
 import { HUDLabel } from './hud/HUDLabel.js';
+import { HUDMinimap } from './hud/HUDMinimap.js';
+import { HUDPanel } from './hud/HUDPanel.js';
+import { HUDTabWindow } from './hud/HUDTabWindow.js';
 import { RPGIcon } from './icons/RPGIcon.js';
 
 const meta = {
@@ -111,9 +116,88 @@ export const FullSurface: Story = {
           <HUDLabel text="HEALTH" align="center" scale={2} />
           <HUDDivider />
           <div style={{ display: 'grid', alignContent: 'center', gap: 8 }}>
-            <HUDBar value={32} max={40} aria-label="Health" />
-            <HUDBar value={18} max={30} fillColor="var(--ns-cyan)" aria-label="Mana" />
+            <HUDBar variant="hp" value={32} max={40} aria-label="Health" />
+            <HUDBar variant="mp" value={18} max={30} aria-label="Mana" />
+            <HUDBar variant="stamina" value={22} max={40} aria-label="Stamina" />
           </div>
+        </div>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+            gap: 16,
+          }}
+        >
+          <div style={{ height: 120 }}>
+            <HUDPanel variant="dark" radius={4}>
+              <HUDTabWindow
+                tabs={[
+                  {
+                    id: 'stats',
+                    label: 'STATS',
+                    content: (
+                      <div style={{ padding: 8, color: 'var(--ns-ink-dim)', fontSize: 8 }}>
+                        STR 12 · DEX 9 · INT 7
+                      </div>
+                    ),
+                  },
+                  { id: 'map', label: 'MAP', content: <HUDMinimap /> },
+                ]}
+              />
+            </HUDPanel>
+          </div>
+          <div style={{ height: 120 }}>
+            <HUDPanel variant="dark" radius={4}>
+              <HUDChat />
+            </HUDPanel>
+          </div>
+          <div
+            style={{
+              display: 'grid',
+              placeItems: 'center',
+              height: 120,
+              background: 'var(--ns-bg-2)',
+            }}
+          >
+            <HUDJoystick size={88} />
+          </div>
+        </div>
+      </section>
+
+      <section style={sectionStyle}>
+        <h2 style={titleStyle}>Icons</h2>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+          {(
+            [
+              'sword',
+              'fire',
+              'human',
+              'potion',
+              'helm',
+              'passive',
+              'attack-bow',
+              'menu',
+              'emote-win',
+            ] as const
+          ).map((name) => (
+            <div
+              key={name}
+              style={{
+                display: 'grid',
+                justifyItems: 'center',
+                gap: 4,
+                width: 64,
+                padding: 8,
+                background: 'var(--ns-bg-2)',
+                border: '1px solid var(--ns-line)',
+                color: 'var(--ns-ink-dim)',
+                font: '600 9px var(--ns-font-body)',
+              }}
+            >
+              <RPGIcon name={name} size={28} />
+              <span>{name}</span>
+            </div>
+          ))}
         </div>
       </section>
     </main>

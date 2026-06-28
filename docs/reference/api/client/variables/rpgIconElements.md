@@ -6,4 +6,4 @@
 
 # Variable: rpgIconElements
 
-> `const` **rpgIconElements**: readonly \[`"neutral"`, `"earth"`, `"wind"`, `"water"`, `"fire"`, `"light"`, `"dark"`, `"void"`\]
+> `const` **rpgIconElements**: readonly \[`"neutral"`, `"fire"`, `"earth"`, `"wind"`, `"water"`, `"light"`, `"dark"`, `"void"`\]

@@ -16,7 +16,7 @@
 
 > **body**: `string`
 
-Supporting copy shown below the gate title.
+One-sentence description.
 
 ***
 

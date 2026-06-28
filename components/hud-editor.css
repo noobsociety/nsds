@@ -1,0 +1,197 @@
+/* NoobSociety — In-game HUD editor chrome.
+   Toolbar, category tabs and the draggable element palette used by the
+   HUD Builder. Token-driven (no literals); import through styles.css.
+   Pairs with the 24×24 placement grid defined in tokens/hud.css. */
+
+/* ── Rail container ─────────────────────────────────────────────── */
+.ns-hud-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  background: var(--ns-bg-1);
+  border-left: 1px solid var(--ns-line);
+  color: var(--ns-ink);
+  font-family: var(--hud-font-ui);
+  overflow: hidden;
+}
+
+.ns-hud-panel__head {
+  display: flex;
+  align-items: center;
+  gap: var(--ns-space-2);
+  padding: var(--ns-space-3);
+  background: var(--ns-bg-0);
+  border-bottom: 1px solid var(--ns-line-soft);
+  flex-shrink: 0;
+}
+
+/* ── Pixel eyebrow / section label ──────────────────────────────── */
+.ns-hud-eyebrow {
+  margin: 0;
+  color: var(--ns-gold);
+  font-family: var(--hud-font);
+  font-size: var(--hud-text-md);
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.ns-hud-eyebrow--muted {
+  color: var(--ns-ink-faint);
+}
+
+/* ── Toolbar ────────────────────────────────────────────────────── */
+.ns-hud-toolbar {
+  display: flex;
+  gap: var(--ns-space-2);
+  padding: var(--ns-space-3);
+  flex-shrink: 0;
+}
+
+.ns-hud-tool {
+  flex: 1;
+  min-height: var(--hud-min-tap-h);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ns-space-2);
+  color: var(--ns-ink-dim);
+  background: var(--ns-bg-2);
+  border: 1px solid var(--ns-line);
+  border-radius: var(--hud-radius-sm);
+  font-family: var(--hud-font);
+  font-size: var(--hud-text-lg);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    color var(--ns-transition-fast),
+    background-color var(--ns-transition-fast),
+    border-color var(--ns-transition-fast);
+}
+
+.ns-hud-tool:hover {
+  color: var(--ns-ink);
+  border-color: var(--ns-line-strong);
+}
+
+.ns-hud-tool.is-on {
+  color: var(--ns-gold-btn-fg);
+  background: var(--ns-gold);
+  border-color: var(--ns-gold-deep);
+}
+
+.ns-hud-tool:active {
+  transform: translateY(1px);
+}
+
+/* ── Divider ────────────────────────────────────────────────────── */
+.ns-hud-divider {
+  height: 1px;
+  margin-inline: var(--ns-space-3);
+  background: var(--ns-line-soft);
+  flex-shrink: 0;
+}
+
+/* ── Palette section ────────────────────────────────────────────── */
+.ns-hud-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-2);
+  padding: var(--ns-space-3);
+  flex: 1;
+  min-height: 0;
+}
+
+.ns-hud-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ns-space-1);
+  flex-shrink: 0;
+}
+
+.ns-hud-tab {
+  padding: var(--ns-space-1) 0.375rem;
+  color: var(--ns-ink-faint);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--hud-radius-sm);
+  font-family: var(--hud-font);
+  font-size: var(--hud-text-md);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    color var(--ns-transition-fast),
+    background-color var(--ns-transition-fast),
+    border-color var(--ns-transition-fast);
+}
+
+.ns-hud-tab:hover {
+  color: var(--ns-ink-dim);
+  background: var(--ns-line-soft);
+}
+
+.ns-hud-tab.is-active {
+  color: var(--ns-gold);
+  background: color-mix(in srgb, var(--ns-gold) 10%, transparent);
+  border-color: color-mix(in srgb, var(--ns-gold) 30%, transparent);
+}
+
+/* ── Element grid ───────────────────────────────────────────────── */
+.ns-hud-palette {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: var(--ns-space-2);
+  padding-top: var(--ns-space-1);
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ns-line-strong) transparent;
+}
+
+.ns-hud-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--ns-icon-slot-sm);
+  height: var(--ns-icon-slot-sm);
+  color: var(--ns-gold);
+  background: var(--ns-bg-2);
+  border: 1px solid transparent;
+  border-radius: var(--hud-radius-sm);
+  cursor: grab;
+  flex: 0 0 auto;
+  transition:
+    border-color var(--ns-transition-fast),
+    background-color var(--ns-transition-fast);
+}
+
+.ns-hud-slot:hover {
+  border-color: color-mix(in srgb, var(--ns-gold) 55%, transparent);
+  background: var(--ns-bg-0);
+}
+
+.ns-hud-slot:active {
+  cursor: grabbing;
+}
+
+.ns-hud-slot svg {
+  width: 16px;
+  height: 16px;
+  image-rendering: pixelated;
+  display: block;
+}
+
+.ns-hud-hint {
+  flex-basis: 100%;
+  margin-top: var(--ns-space-1);
+  color: var(--ns-ink-faint);
+  font-family: var(--hud-font);
+  font-size: var(--hud-text-xs);
+  letter-spacing: 0.04em;
+  line-height: var(--ns-leading-pixel);
+}

@@ -6,4 +6,4 @@
 
 # Variable: rpgIconWeapons
 
-> `const` **rpgIconWeapons**: readonly \[`"sword"`, `"staff"`, `"bow"`, `"katar"`, `"book"`, `"hammer"`\]
+> `const` **rpgIconWeapons**: readonly \[`"sword"`, `"bow"`, `"staff"`, `"katar"`, `"book"`, `"hammer"`\]

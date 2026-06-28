@@ -1,12 +1,17 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
 import {
   Button,
   FeatureCard,
   HUDBar,
+  HUDChat,
   HUDDivider,
+  HUDJoystick,
   HUDLabel,
+  HUDMinimap,
+  HUDPanel,
+  HUDTabWindow,
   QuestCard,
   RPGIcon,
   SectionArrow,
@@ -130,6 +135,52 @@ describe('HUD components', () => {
     expect(label).toHaveTextContent('MP');
     expect(label).toHaveStyle({ justifyContent: 'center' });
   });
+
+  it('renders HUDChat rows with sender and message text', () => {
+    render(<HUDChat messages={[{ sender: 'Mage', text: 'casting now' }]} data-testid="chat" />);
+
+    expect(screen.getByTestId('chat')).toBeInTheDocument();
+    expect(screen.getByText('Mage:')).toBeInTheDocument();
+    expect(screen.getByText('casting now')).toBeInTheDocument();
+  });
+
+  it('renders an interactive HUDJoystick pad', () => {
+    render(<HUDJoystick data-testid="joystick" />);
+
+    expect(screen.getByTestId('joystick')).toBeInTheDocument();
+  });
+
+  it('renders HUDMinimap as an SVG surface', () => {
+    const { container } = render(<HUDMinimap data-testid="map" />);
+
+    expect(screen.getByTestId('map')).toBeInTheDocument();
+    expect(container.querySelector('svg')).toBeInTheDocument();
+  });
+
+  it('renders HUDPanel children and tolerates invalid variants', () => {
+    render(
+      <HUDPanel variant={'glow' as never} data-testid="panel">
+        <span>inventory</span>
+      </HUDPanel>,
+    );
+
+    expect(screen.getByTestId('panel')).toHaveTextContent('inventory');
+  });
+
+  it('switches the active HUDTabWindow panel on tab click', () => {
+    render(
+      <HUDTabWindow
+        tabs={[
+          { id: 'stats', label: 'STATS', content: <span>stat sheet</span> },
+          { id: 'bag', label: 'BAG', content: <span>bag items</span> },
+        ]}
+      />,
+    );
+
+    expect(screen.getByText('stat sheet')).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'BAG' }));
+    expect(screen.getByText('bag items')).toBeInTheDocument();
+  });
 });
 
 describe('RPGIcon', () => {
@@ -137,6 +188,16 @@ describe('RPGIcon', () => {
     const { container } = render(<RPGIcon name="void" size={32} />);
 
     expect(RPGIcon.icons).toContain('void');
+    expect(container.querySelector('svg')).toBeInTheDocument();
+  });
+
+  it('exposes the expanded icon set across the new categories', () => {
+    expect(RPGIcon.icons).toHaveLength(68);
+    for (const name of ['attack-sword', 'passive', 'potion', 'helm', 'hat', 'menu', 'emote-tysm']) {
+      expect(RPGIcon.icons).toContain(name);
+    }
+
+    const { container } = render(<RPGIcon name="emote-lol" size={24} />);
     expect(container.querySelector('svg')).toBeInTheDocument();
   });
 });
@@ -150,6 +211,10 @@ describe('client registries', () => {
       label: 'BUILDING',
     });
     expect(rpgIconGroups.weapons).toContain('sword');
+    expect(rpgIconGroups.skills).toContain('passive');
+    expect(rpgIconGroups.emotes).toContain('emote-tysm');
+    expect(Object.keys(rpgIconGroups)).toHaveLength(11);
+    expect(rpgIconNames).toHaveLength(68);
     expect(rpgIconNames).toEqual(RPGIcon.icons);
   });
 });

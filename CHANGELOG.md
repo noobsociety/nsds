@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- Added five HUD React components — `HUDChat`, `HUDJoystick`, `HUDMinimap`, `HUDPanel`, and `HUDTabWindow` — each with Storybook stories, component tests, and named exports from `@noobsociety/nsds` and `@noobsociety/nsds/react`.
+- Expanded `RPGIcon` to 68 pixel-art glyphs across 11 groups, adding the attack, skills, items, equip, skins, menu, and emote categories with matching name, group, and type registries on `@noobsociety/nsds` and `@noobsociety/nsds/client`.
+- Added `HUDBar` bar variants (`hp`, `mp`, `xp`, `stamina`) with optional or hidden labels and segmented fills.
+- Added the `--hud-edit-*` editor-chrome token group, plus HUD text-scale, stamina, minimap-path, grid-overlay, and 24×24 canvas/grid tokens, to `tokens/hud.css`.
+- Added `components/hud-editor.css` (token-driven in-game HUD editor chrome) to the CSS entry point, and shipped `components/scene-builder.css`, `components/scene-builder.js`, and `components/_card-base.css` as design-system source.
+
+### Changed
+
+- Redrew `RPGIcon` artwork on a 24×24 viewBox (existing glyphs preserved) and renamed the chat emotes to NoobSociety command codes (`emote-tysm`, `emote-sos`, `emote-lol`, `emote-win`, `emote-lgo`, `emote-ugh`, `emote-myb`, `emote-wut`, `emote-grr`).
+- Restructured `QuestCard` with a header (gate number and name) and per-status data attributes, and moved quest-card colours onto `--ns-quest-*` tokens.
+
 ## [0.4.0] - 2026-06-22
 
 ### Added

@@ -16,7 +16,7 @@
 
 > `optional` **fillColor?**: `string`
 
-Bar fill color.
+Bar fill colour. Overrides the variant's fill.
 
 ***
 
@@ -28,11 +28,36 @@ Bar height in px.
 
 ***
 
+### label?
+
+> `optional` **label?**: `string` \| `false`
+
+Label text. Defaults to `"{value} / {max}"`.
+Pass a string to override, or `false`/`""` to hide the label entirely.
+
+***
+
 ### max?
 
 > `optional` **max?**: `number`
 
 Maximum stat value.
+
+***
+
+### segmented?
+
+> `optional` **segmented?**: `boolean`
+
+Render the fill as discrete notched segments (defaults to the variant's setting).
+
+***
+
+### segmentSize?
+
+> `optional` **segmentSize?**: `number`
+
+Width of one segment + gutter in px, when `segmented`.
 
 ***
 
@@ -46,7 +71,7 @@ Maximum stat value.
 
 > `optional` **trackColor?**: `string`
 
-Bar track color.
+Bar track colour.
 
 ***
 
@@ -55,3 +80,11 @@ Bar track color.
 > `optional` **value?**: `number`
 
 Current stat value.
+
+***
+
+### variant?
+
+> `optional` **variant?**: [`HUDBarVariant`](../type-aliases/HUDBarVariant.md)
+
+Built-in bar kind — sets fill colour, label colour and (for stamina) segmentation.

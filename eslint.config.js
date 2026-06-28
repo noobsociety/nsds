@@ -26,6 +26,7 @@ const globals = {
 export default [
   {
     ignores: [
+      'components/scene-builder.js',
       'coverage/**',
       'dist/**',
       'docs/reference/api/**',
