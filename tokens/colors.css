@@ -76,4 +76,8 @@
   --ns-quest-pill-locked: rgba(255, 255, 255, 0.05);
   --ns-focus-ring: rgba(230, 219, 116, 0.35);
   --ns-selection-bg: rgba(249, 38, 114, 0.28);
+
+  /* ── Quest card component variables (overridden per-status in primitives) ── */
+  --ns-quest-color: var(--ns-status-later); /* default: locked/later */
+  --ns-quest-pill-bg: var(--ns-quest-pill-locked); /* default: locked */
 }

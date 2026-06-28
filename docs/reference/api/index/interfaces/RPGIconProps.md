@@ -12,7 +12,7 @@
 
 > `optional` **name?**: [`RPGIconName`](../type-aliases/RPGIconName.md)
 
-Icon name across weapon, element, race, and size groups.
+Icon name across all eleven groups (weapons, elements, races, sizes, attack, skills, items, equip, skins, menu, emotes).
 
 ***
 

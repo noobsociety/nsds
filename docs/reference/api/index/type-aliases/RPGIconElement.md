@@ -6,4 +6,4 @@
 
 # Type Alias: RPGIconElement
 
-> **RPGIconElement** = `"neutral"` \| `"earth"` \| `"wind"` \| `"water"` \| `"fire"` \| `"light"` \| `"dark"` \| `"void"`
+> **RPGIconElement** = `"neutral"` \| `"fire"` \| `"earth"` \| `"wind"` \| `"water"` \| `"light"` \| `"dark"` \| `"void"`

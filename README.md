@@ -102,11 +102,18 @@ Public React components:
 - `FeatureCard`
 - `QuestCard`
 - `HUDBar`
+- `HUDChat`
 - `HUDDivider`
+- `HUDJoystick`
 - `HUDLabel`
+- `HUDMinimap`
+- `HUDPanel`
+- `HUDTabWindow`
 - `RPGIcon`
 - `HUDIcon`
 - `SectionArrow`
+
+`RPGIcon` ships 68 pixel-art glyphs across 11 groups: weapons, elements, races, sizes, attack, skills, items, equip, skins, menu, and emotes. The renderer-neutral icon name, group, and type registries are also exported from `@noobsociety/nsds/client`.
 
 Run Storybook for component documentation:
 

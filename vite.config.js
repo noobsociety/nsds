@@ -16,10 +16,15 @@ function nsdsDistAssets() {
       await cp(resolve(__dirname, 'tokens'), resolve(dist, 'tokens'), { recursive: true });
 
       await mkdir(resolve(dist, 'components'), { recursive: true });
-      await cp(
-        resolve(__dirname, 'components/primitives.css'),
-        resolve(dist, 'components/primitives.css'),
-      );
+      for (const file of [
+        'components/primitives.css',
+        'components/hud-editor.css',
+        'components/scene-builder.css',
+        'components/scene-builder.js',
+        'components/_card-base.css',
+      ]) {
+        await cp(resolve(__dirname, file), resolve(dist, file));
+      }
 
       await cp(resolve(__dirname, 'styles.css'), resolve(dist, 'styles.css'));
     },

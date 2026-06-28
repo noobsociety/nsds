@@ -13,6 +13,13 @@
   --hud-font: var(--ns-font-pixel); /* chrome labels, tab caps, key glyphs */
   --hud-font-ui: var(--ns-font-body); /* draggable windows, dialogue, inventory */
 
+  /* ── HUD text scale (pixel-perfect at 24×24 grid) ───────────── */
+  --hud-text-xs: 4px;
+  --hud-text-sm: 5px;
+  --hud-text-md: 7px;
+  --hud-text-lg: 9px;
+  --hud-text-xl: 11px;
+
   /* ── Accent / currency ─────────────────────────────────────── */
   /* DS is source of truth: game migrates from #ffe066 → --ns-gold (#e6db74). */
   --hud-gold: var(--ns-gold);
@@ -63,6 +70,10 @@
   --hud-mp-low: #4f7fc0; /* fill under 30% */
   --hud-mp-label: #8888ee; /* "MP"/"SP" label text */
 
+  /* Stamina — segmented endurance bar */
+  --hud-stamina-fill: #5dcaa5; /* teal fill */
+  --hud-stamina-label: #8fe6cc; /* stamina label text */
+
   /* ── XP tracks ──────────────────────────────────────────────── */
   /* Three independent mastery tracks: Base (BXP), Tech (TXP), Weapon (WXP). */
   --hud-xp-base: #4488cc; /* BXP fill — steel blue */
@@ -96,6 +107,7 @@
   /* ── Minimap ────────────────────────────────────────────────── */
   --hud-minimap-bg: #091509; /* canvas fill */
   --hud-minimap-edge: #2a4a2a; /* outer diamond stroke */
+  --hud-minimap-path: var(--hud-gold); /* paths / points of interest */
   --hud-minimap-player: #ffffff; /* player dot */
   --hud-minimap-enemy: #ff5a5a; /* aggressive mob dot */
   --hud-minimap-npc: #f4c542; /* interactable / NPC dot */
@@ -104,6 +116,30 @@
   /* ── Geometry ───────────────────────────────────────────────── */
   --hud-radius: 4px;
   --hud-radius-sm: 2px;
+  --hud-grid-overlay: rgba(255, 255, 255, 0.07); /* drag-mode grid line tint */
+
+  /* ── Scene Builder editor chrome ────────────────────────────── */
+  /* Canvas-editing affordances for the HUD composer (resize handles, delete
+     buttons, align bar, swatches, ghost, tooltips). Consumed by
+     components/scene-builder.css — the source of truth for the editor's look.
+     The black-ink shadows below live in tokens (not literals) so every editing
+     overlay shares one stroke/ring vocabulary. */
+  --hud-edit-handle: 5px; /* resize-handle box */
+  --hud-edit-handle-fill: rgb(var(--ns-gold-rgb) / 0.95);
+  --hud-edit-handle-ring: 0 0 0 1px rgba(0, 0, 0, 0.6);
+  --hud-edit-del: 10px; /* per-element + floating delete */
+  --hud-edit-btn: 22px; /* header chrome buttons */
+  --hud-edit-toggle-h: 18px; /* grid / hud / bg toggles */
+  --hud-edit-ring: rgba(0, 0, 0, 0.5); /* floater & tooltip 1px ring / drop shadow */
+  --hud-edit-hover: rgba(255, 255, 255, 0.06); /* subtle chrome hover fill */
+  --hud-edit-overlay: rgba(255, 255, 255, 0.1); /* align-button resting fill */
+  /* White HUD text over the world: 4-corner pixel stroke (+ soft glow on labels). */
+  --hud-edit-stroke:
+    -1px -1px 0 rgba(0, 0, 0, 0.92), 1px -1px 0 rgba(0, 0, 0, 0.92), -1px 1px 0 rgba(0, 0, 0, 0.92),
+    1px 1px 0 rgba(0, 0, 0, 0.92), 0 0 4px rgba(0, 0, 0, 0.6);
+  --hud-edit-stroke-bar:
+    -1px -1px 0 rgba(0, 0, 0, 0.92), 1px -1px 0 rgba(0, 0, 0, 0.92), -1px 1px 0 rgba(0, 0, 0, 0.92),
+    1px 1px 0 rgba(0, 0, 0, 0.92);
 
   /* ── Cross-layout geometry (640×360 design space) ───────────── */
   /* The HUD lives in a 3×3 grid over the 640×360 canvas.
@@ -115,23 +151,24 @@
      so pad-y equals pad-x, not 5% of the cell height. */
   --hud-cross-pad-y: calc(var(--hud-cross-cell-w) * 0.05); /* 10.67px — same as pad-x */
 
-  /* ── Inner 8×8 grid cell size (padded pocket ÷ 8) ──────────── */
-  /* The padded pocket is 90% of the cell (5% pad each side). */
-  /* Padded inner area: width = cell-w - 2*pad = 192px, height = cell-h - 2*pad = 98.67px */
-  --hud-grid-cell-w: calc(
-    (var(--hud-cross-cell-w) - 2 * var(--hud-cross-pad-x)) / 8
-  ); /* @kind spacing */ /* 24px    */
-  --hud-grid-cell-h: calc(
-    (var(--hud-cross-cell-h) - 2 * var(--hud-cross-pad-y)) / 8
-  ); /* @kind spacing */ /* 12.33px */
+  /* ── Game canvas & 24×24 drag grid ─────────────────────────── */
+  /* Source of truth for the 667×375 HUD canvas and its 24×24 placement grid.
+     All HUD element positioning uses grid-column / grid-row spans.
+     No element may span fewer than 1 cell on either axis. */
+  --hud-canvas-bg: #000; /* outer background behind the game canvas */
+  --hud-canvas-w: 667px; /* design canvas width  */
+  --hud-canvas-h: 375px; /* design canvas height */
+  --hud-grid-cols: 24; /* @kind other */
+  --hud-grid-rows: 24; /* @kind other */
+  --hud-grid-gap: 2px; /* gap between cells          */
+  /* Cell dimensions (canvas minus gaps, divided by count) */
+  --hud-cell-w: calc((667px - 23 * 2px) / 24); /* @kind spacing */ /* ≈27.8px */
+  --hud-cell-h: calc((375px - 23 * 2px) / 24); /* @kind spacing */ /* ≈15.6px */
 
-  /* ── Minimum interactive element: 2×2 inner grid cells ─────── */
-  /* No HUD element (button, slot, pip row, icon) may be smaller than this.
-     Smaller than 2×2 is invisible at a glance and un-tappable on mobile.
-     At runtime the HUD scales by --hud-scale (~2–3×), so 48×27 design px
-     maps to ~96×54 real px on a typical phone — the 44px mobile floor. */
-  /* Interactive elements only — buttons, slots, icons, cells.
-     Passive elements (bars, dividers, borders) are exempt. */
-  --hud-min-tap-w: calc(var(--hud-grid-cell-w) * 2); /* @kind spacing */ /* 48px   */
-  --hud-min-tap-h: calc(var(--hud-grid-cell-h) * 2); /* @kind spacing */ /* 27px   */
+  /* ── Minimum interactive tap target: 2×2 cells ──────────────── */
+  /* No HUD button, slot, or icon may be smaller than this.
+     Passive elements (bars, dividers, borders) are exempt.
+     At runtime HUD scales ~2–3×, mapping these to ≥44px real px. */
+  --hud-min-tap-w: calc(var(--hud-cell-w) * 2); /* @kind spacing */ /* ≈55.6px */
+  --hud-min-tap-h: calc(var(--hud-cell-h) * 2); /* @kind spacing */ /* ≈31.2px */
 }

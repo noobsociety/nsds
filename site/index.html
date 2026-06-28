@@ -64,18 +64,28 @@
               <span>32 / 40</span>
             </div>
             <ul class="site-quest-list" aria-label="Quest card specimens">
-              <li class="ns-quest-card ns-quest-card--done">
-                <span class="ns-quest-card__icon" aria-hidden="true">✓</span>
+              <li class="ns-quest-card ns-quest-card--done" data-quest-status="done">
+                <div class="ns-quest-card__header">
+                  <span class="ns-quest-card__icon" aria-hidden="true">✓</span>
+                  <div>
+                    <p class="ns-quest-card__gate">Gate 1</p>
+                    <p class="ns-quest-card__name">Tokens</p>
+                  </div>
+                </div>
                 <div class="ns-quest-card__body">
-                  <p class="ns-quest-card__title">Gate 1 · Tokens</p>
                   <p class="ns-quest-card__desc">Color, type, spacing, and motion values hold.</p>
                   <span class="ns-status-pill">HOLDS</span>
                 </div>
               </li>
-              <li class="ns-quest-card ns-quest-card--active">
-                <span class="ns-quest-card__icon" aria-hidden="true">▶</span>
+              <li class="ns-quest-card ns-quest-card--active" data-quest-status="active">
+                <div class="ns-quest-card__header">
+                  <span class="ns-quest-card__icon" aria-hidden="true">▶</span>
+                  <div>
+                    <p class="ns-quest-card__gate">Gate 2</p>
+                    <p class="ns-quest-card__name">Components</p>
+                  </div>
+                </div>
                 <div class="ns-quest-card__body">
-                  <p class="ns-quest-card__title">Gate 2 · Components</p>
                   <p class="ns-quest-card__desc">React primitives stay typed and tested.</p>
                   <span class="ns-status-pill">BUILDING</span>
                 </div>

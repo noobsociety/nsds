@@ -6,4 +6,4 @@
 
 # Type Alias: RPGIconWeapon
 
-> **RPGIconWeapon** = `"sword"` \| `"staff"` \| `"bow"` \| `"katar"` \| `"book"` \| `"hammer"`
+> **RPGIconWeapon** = `"sword"` \| `"bow"` \| `"staff"` \| `"katar"` \| `"book"` \| `"hammer"`

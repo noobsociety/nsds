@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { RPGIcon, icons } from './RPGIcon.js';
+import type { RPGIconName } from './RPGIcon.js';
+import { rpgIconGroups } from './registry.js';
 
 const meta = {
   title: 'Components/RPGIcon',
@@ -53,6 +55,59 @@ export const Gallery: Story = {
           <RPGIcon name={name} size={28} />
           <span>{name}</span>
         </div>
+      ))}
+    </div>
+  ),
+};
+
+export const ByCategory: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: 16, maxWidth: 560 }}>
+      {Object.entries(rpgIconGroups).map(([group, names]) => (
+        <section key={group} style={{ display: 'grid', gap: 8 }}>
+          <h3
+            style={{
+              margin: 0,
+              color: 'var(--ns-gold)',
+              font: '700 11px var(--ns-font-pixel)',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+            }}
+          >
+            {group}
+          </h3>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+            {(names as readonly RPGIconName[]).map((name) => (
+              <div
+                key={name}
+                title={name}
+                style={{
+                  display: 'grid',
+                  justifyItems: 'center',
+                  gap: 4,
+                  width: 64,
+                  padding: 8,
+                  background: 'var(--ns-bg-2)',
+                  border: '1px solid var(--ns-line)',
+                  color: 'var(--ns-ink-dim)',
+                  font: '600 9px var(--ns-font-body)',
+                }}
+              >
+                <RPGIcon name={name} size={28} />
+                <span
+                  style={{
+                    maxWidth: '100%',
+                    overflow: 'hidden',
+                    whiteSpace: 'nowrap',
+                    textOverflow: 'ellipsis',
+                  }}
+                >
+                  {name}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
       ))}
     </div>
   ),

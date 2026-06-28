@@ -1,0 +1,740 @@
+/* NoobSociety — Scene Builder canvas chrome.
+   The in-canvas editing affordances for the HUD composer: world-grid
+   checkerboard, draggable HUD elements, 8-way resize handles, delete buttons,
+   alignment bar, colour swatches, ghost, drag overlay and tooltips — plus the
+   side-panel toolbar/IO buttons that the .ns-hud-* rail (components/hud-editor.css)
+   does not cover.
+
+   Token-driven (see --hud-edit-* in tokens/hud.css). Linked directly by the
+   Scene Builder card; NOT auto-imported through styles.css, because the Game
+   View template intentionally ships its own diverged copy of this chrome.
+
+   Geometry (--hud-col / --hud-row / canvas size) is supplied by the host page,
+   so this sheet adapts to whatever canvas it is dropped into. */
+
+.grid-hidden .ig {
+  border-color: transparent !important;
+}
+.grid-hidden .cell-l {
+  display: none !important;
+}
+.grid-hidden .cell-d {
+  display: none !important;
+}
+/* The grid toggle only controls the grid LINES — editing chrome (resize handles,
+   delete buttons, alignment bar, selection outline, color swatches) stays available
+   whether the grid is shown or hidden. */
+.world-bg {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(
+    var(--ns-world-zones),
+    calc(var(--ns-world-w) / var(--ns-world-zones))
+  );
+  grid-template-rows: repeat(
+    var(--ns-world-zones),
+    calc(var(--ns-world-h) / var(--ns-world-zones))
+  );
+  width: var(--ns-world-w);
+  height: var(--ns-world-h);
+}
+.cell-l {
+  background: rgb(var(--ns-green-rgb) / 0.1);
+}
+.cell-d {
+  background: rgb(var(--ns-bg-2-rgb) / 0.75);
+}
+.inner {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+}
+.ig {
+  border-right: 1px dotted rgb(var(--ns-gold-rgb) / 0.55);
+  border-bottom: 1px dotted rgb(var(--ns-gold-rgb) / 0.55);
+}
+.ig:nth-child(8n + 1) {
+  border-left: 1px dotted rgb(var(--ns-gold-rgb) / 0.55);
+}
+.ig:nth-child(-n + 8) {
+  border-top: 1px dotted rgb(var(--ns-gold-rgb) / 0.55);
+}
+
+/* ── HUD layer ──────────────────────────────────── */
+.hud {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--hud-grid-cols), 1fr);
+  grid-template-rows: repeat(var(--hud-grid-rows), 1fr);
+  font-family: var(--hud-font);
+  color: var(--hud-text);
+  pointer-events: none;
+}
+
+/* ── Card grid ──────────────────────────────────── */
+.hud-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--ns-world-w);
+  height: var(--ns-world-h);
+  display: grid;
+  grid-template-columns: repeat(var(--hud-grid-cols), 1fr);
+  grid-template-rows: repeat(var(--hud-grid-rows), 1fr);
+  gap: 0;
+  pointer-events: auto;
+}
+
+/* ── Base element ───────────────────────────────── */
+.hud-card > [data-grid] {
+  cursor: grab;
+  user-select: none;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.hud-card > [data-backdrop] {
+  z-index: 0;
+}
+.hud-card > [data-grid].dragging {
+  cursor: grabbing;
+  opacity: 0.35;
+}
+.hud-card > [data-grid].selected {
+  outline: 1px solid rgb(var(--ns-gold-rgb) / 0.7);
+  outline-offset: -1px;
+  z-index: 30;
+}
+
+/* ── Resize handles (8-direction) ──────────────── */
+.rz {
+  position: absolute;
+  width: var(--hud-edit-handle);
+  height: var(--hud-edit-handle);
+  background: var(--hud-edit-handle-fill);
+  box-shadow: var(--hud-edit-handle-ring);
+  z-index: 20;
+  pointer-events: auto;
+  display: none;
+}
+.selected .rz {
+  display: block;
+}
+/* Handles sit 1px inside the element so edge-of-grid objects never clip them */
+.rz[data-rz='nw'] {
+  top: 1px;
+  left: 1px;
+  cursor: nw-resize;
+}
+.rz[data-rz='n'] {
+  top: 1px;
+  left: calc(50% - 2.5px);
+  cursor: n-resize;
+}
+.rz[data-rz='ne'] {
+  top: 1px;
+  right: 1px;
+  cursor: ne-resize;
+}
+.rz[data-rz='e'] {
+  top: calc(50% - 2.5px);
+  right: 1px;
+  cursor: e-resize;
+}
+.rz[data-rz='se'] {
+  bottom: 1px;
+  right: 1px;
+  cursor: se-resize;
+  clip-path: none;
+}
+.rz[data-rz='s'] {
+  bottom: 1px;
+  left: calc(50% - 2.5px);
+  cursor: s-resize;
+}
+.rz[data-rz='sw'] {
+  bottom: 1px;
+  left: 1px;
+  cursor: sw-resize;
+}
+.rz[data-rz='w'] {
+  top: calc(50% - 2.5px);
+  left: 1px;
+  cursor: w-resize;
+}
+
+/* ── Delete button ──────────────────────────────── */
+.del-btn {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: var(--hud-edit-del);
+  height: var(--hud-edit-del);
+  background: rgb(var(--ns-pink-rgb) / 0.85);
+  color: var(--ns-ink);
+  font-family: var(--hud-font);
+  font-size: var(--hud-text-sm);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 30;
+  line-height: 1;
+  pointer-events: auto;
+}
+/* The per-element × is replaced by the floating delete button (#del-floater),
+   which sits on the cell NEXT TO the selection so it never covers the object
+   or its resize handles. The node is kept (hidden) so the Tab Window close
+   button can still trigger it programmatically. */
+.selected .del-btn {
+  display: none;
+}
+
+/* ── Floating delete button (sits beside the selection) ── */
+#del-floater {
+  position: absolute;
+  width: var(--hud-edit-del);
+  height: var(--hud-edit-del);
+  background: rgb(var(--ns-pink-rgb) / 0.9);
+  color: var(--ns-ink);
+  font-family: var(--hud-font);
+  font-size: var(--hud-text-md);
+  line-height: 1;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 80;
+  pointer-events: auto;
+  border-radius: var(--ns-radius-sm, 2px);
+  box-shadow: 0 0 0 1px var(--hud-edit-ring);
+}
+#del-floater:hover {
+  background: rgb(var(--ns-pink-rgb) / 1);
+}
+
+/* ── Backdrop panels fill cell edge-to-edge ──── */
+.hud-card > [data-backdrop] {
+  width: 100% !important;
+  height: 100% !important;
+  align-self: stretch !important;
+  justify-self: stretch !important;
+  align-items: stretch !important;
+  justify-content: stretch !important;
+}
+
+/* ── Tab window container override ─────────────── */
+.hud-card > [data-comp-el='tabwin'] {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  height: 100% !important;
+  align-self: stretch !important;
+}
+/* Tab bar fills width, buttons fill height */
+.hud-card > [data-comp-el='tabwin'] > [data-tab-bar] {
+  display: flex !important;
+  flex-shrink: 0 !important;
+  width: 100% !important;
+}
+.hud-card > [data-comp-el='tabwin'] > [data-tab-bar] > button {
+  height: 100% !important;
+  flex-shrink: 0;
+}
+/* Pane fills remaining space */
+.hud-card > [data-comp-el='tabwin'] > div:not([data-tab-bar]) {
+  flex: 1 !important;
+  overflow: hidden !important;
+}
+#ghost {
+  background: rgb(var(--ns-gold-rgb) / 0.1);
+  border: 1px dashed rgb(var(--ns-gold-rgb) / 0.65);
+  pointer-events: none;
+  z-index: 80;
+  display: none;
+}
+#ghost.active {
+  display: block;
+}
+
+/* ── Dragging mode grid overlay ─────────────────── */
+.hud-card.drag-mode::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(to right, var(--hud-grid-overlay) 0 1px, transparent 1px 100%),
+    repeating-linear-gradient(to bottom, var(--hud-grid-overlay) 0 1px, transparent 1px 100%);
+  background-size: var(--hud-col) var(--hud-row);
+  pointer-events: none;
+  z-index: 70;
+}
+
+/* ── Text elements ──────────────────────────────── */
+.hud-card > [data-grid].ns-text,
+.hud-card > [data-grid][data-custom] {
+  font-size: var(--hud-text-sm);
+  white-space: nowrap;
+  overflow: hidden;
+  justify-content: flex-start;
+  padding-left: 3px;
+  z-index: 3;
+}
+.et {
+  /* editable-text span */
+  outline: none;
+  pointer-events: none;
+  min-width: 1px;
+}
+.et[contenteditable='true'] {
+  pointer-events: auto;
+  cursor: text;
+}
+
+/* ── Color swatch panel ────────────────────────────── */
+#color-swatches {
+  position: absolute;
+  z-index: 4000;
+  display: none;
+  flex-wrap: wrap;
+  gap: 2px;
+  background: var(--hud-bg-strong);
+  border: 1px solid var(--ns-line-strong);
+  padding: 4px;
+  width: 56px;
+}
+#color-swatches.show {
+  display: flex;
+}
+.cs-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  flex-shrink: 0;
+  border: 1px solid var(--ns-line);
+}
+.cs-dot:hover {
+  transform: scale(1.25);
+}
+.cs-dot.on {
+  outline: 1.5px solid var(--ns-ink);
+  outline-offset: 1px;
+}
+
+/* ── Align toolbar ──────────────────────────────── */
+#align-bar {
+  position: absolute;
+  display: none;
+  grid-template-columns: repeat(5, var(--hud-col));
+  grid-auto-rows: var(--hud-row);
+  gap: 0;
+  place-items: stretch;
+  z-index: 200;
+  pointer-events: auto;
+  padding: 0;
+  background: var(--hud-bg-strong);
+  border: none;
+  overflow: visible;
+}
+#align-bar.show {
+  display: grid;
+}
+.ab.is-disabled {
+  opacity: 0.25;
+  pointer-events: none;
+}
+#align-bar .ab {
+  height: 100%;
+  padding: 0;
+  font-size: var(--hud-text-sm);
+  border-radius: 0;
+}
+.ab {
+  height: 10px;
+  padding: 0 3px;
+  background: var(--hud-edit-hover);
+  border: 1px solid var(--ns-line);
+  color: rgb(var(--ns-ink-rgb) / 0.55);
+  font-family: var(--hud-font);
+  font-size: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  flex-shrink: 0;
+  border-radius: 1px;
+  white-space: nowrap;
+}
+.ab:hover {
+  background: var(--hud-edit-overlay);
+  border-color: rgb(var(--ns-gold-rgb) / 0.8);
+  color: var(--ns-ink);
+}
+.ab.on {
+  background: rgb(var(--ns-gold-rgb) / 0.22);
+  border-color: var(--hud-gold);
+  color: var(--hud-gold);
+}
+.ab-sep {
+  width: 1px;
+  height: 8px;
+  background: var(--ns-line-strong);
+  flex-shrink: 0;
+}
+#align-bar .color-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  place-self: center;
+  background: var(--ns-ink-dim);
+  border: 1px solid var(--ns-line);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4px;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-shadow:
+    0 0 1px rgba(0, 0, 0, 0.95),
+    0 1px 1px rgba(0, 0, 0, 0.95);
+}
+#align-bar .color-btn:hover {
+  transform: scale(1.15);
+}
+
+/* Baked HUD element SVGs — fixed icon size to prevent 300x150 default */
+.hud-card > [data-grid] > svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  image-rendering: pixelated;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* ── Text readability: white + dark stroke on all HUD text ── */
+.hud .et {
+  color: var(--ns-ink);
+  text-shadow: var(--hud-edit-stroke);
+}
+.hud .bar-text {
+  text-shadow: var(--hud-edit-stroke-bar);
+}
+
+/* ── Icon palette: styling provided by .ns-hud-* classes in the design system ── */
+
+/* ── HUD tooltip ─────────────────────── */
+#hud-tooltip {
+  position: fixed;
+  display: none;
+  font-family: var(--hud-font);
+  font-size: var(--hud-text-sm);
+  color: var(--ns-ink);
+  background: var(--hud-bg-strong);
+  border: 1px solid var(--ns-line-strong);
+  padding: 3px 6px;
+  pointer-events: none;
+  z-index: 9999;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+
+/* ── UI chrome tooltip (buttons / toggles) ─────────────── */
+#ui-tooltip {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: none;
+  font-family: var(--hud-font);
+  font-size: var(--hud-text-sm);
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+  color: var(--ns-ink);
+  background: var(--hud-bg-strong, #14161b);
+  border: 1px solid var(--ns-line-strong);
+  border-radius: 3px;
+  padding: 4px 7px;
+  max-width: none;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10000;
+  box-shadow: 0 3px 10px var(--hud-edit-ring);
+  opacity: 0;
+  transform: translateY(2px);
+  transition:
+    opacity 0.12s ease,
+    transform 0.12s ease;
+}
+#ui-tooltip.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+#ui-tooltip::after {
+  content: '';
+  position: absolute;
+  left: var(--arrow-x, 50%);
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+}
+#ui-tooltip:not(.below)::after {
+  top: 100%;
+  border-top-color: var(--ns-line-strong);
+} /* tooltip above element → caret points down */
+#ui-tooltip.below::after {
+  bottom: 100%;
+  border-bottom-color: var(--ns-line-strong);
+} /* tooltip below element → caret points up */
+
+/* GRID / BG / HUD toggles — one type level smaller, equal width & height */
+#side-panel .ns-hud-toolbar {
+  display: flex;
+  gap: var(--ns-space-1);
+}
+#side-panel .ns-hud-toolbar .ns-hud-tool {
+  font-size: var(--hud-text-sm);
+  flex: 1 1 0;
+  min-width: 0;
+  height: var(--hud-edit-toggle-h);
+  min-height: var(--hud-edit-toggle-h);
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+#bg-toggle:disabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Background action button (header) — upload when empty, obvious delete when set */
+#bg-action {
+  position: relative;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--hud-edit-btn);
+  height: var(--hud-edit-btn);
+  padding: 0;
+  color: var(--ns-ink-faint);
+  background: transparent;
+  border: 1px solid var(--ns-line-strong);
+  border-radius: var(--ns-radius-sm, 2px);
+  cursor: pointer;
+  transition:
+    color 0.12s,
+    border-color 0.12s,
+    background 0.12s;
+}
+#bg-action:hover {
+  color: var(--ns-ink);
+  border-color: var(--ns-ink-faint);
+  background: var(--hud-edit-hover);
+}
+#bg-action.is-delete {
+  color: var(--ns-pink, #e0607e);
+  border-color: rgb(var(--ns-pink-rgb, 224 96 126) / 0.6);
+}
+#bg-action.is-delete:hover {
+  color: var(--ns-pink, #e0607e);
+  border-color: var(--ns-pink, #e0607e);
+  background: rgb(var(--ns-pink-rgb, 224 96 126) / 0.16);
+}
+
+/* Panel header label is informational, not interactive — keep it neutral
+   (gold is reserved for buttons/active states) and give it a real line-height
+   so it stays legible if it ever wraps to two lines. */
+.ns-hud-panel__head .ns-hud-eyebrow {
+  color: var(--ns-ink);
+  line-height: 1.35;
+}
+.ns-hud-eyebrow,
+.ns-hud-hint,
+#palette-tabs .ns-hud-tab .tab-label {
+  line-height: 1.35;
+}
+
+/* Export / Import buttons */
+#export-snapshot,
+#import-snapshot,
+#undo-btn,
+#redo-btn {
+  position: relative;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--hud-edit-btn);
+  height: var(--hud-edit-btn);
+  padding: 0;
+  background: transparent;
+  color: var(--ns-ink-faint);
+  border: 1px solid var(--ns-line-strong);
+  border-radius: var(--ns-radius-sm, 2px);
+  cursor: pointer;
+  transition:
+    color 0.12s,
+    border-color 0.12s,
+    background 0.12s,
+    opacity 0.12s;
+}
+#import-snapshot:hover {
+  color: var(--ns-ink);
+  border-color: var(--ns-ink-faint);
+  background: var(--hud-edit-hover);
+}
+#undo-btn:hover:not(:disabled),
+#redo-btn:hover:not(:disabled) {
+  color: var(--ns-ink);
+  border-color: var(--ns-ink-faint);
+  background: var(--hud-edit-hover);
+}
+#undo-btn:disabled,
+#redo-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+/* Export — clean / nothing new to export → muted & inert */
+#export-snapshot:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+/* Export — unsaved changes → gold + pulsing dot badge */
+#export-snapshot.is-dirty {
+  color: var(--hud-gold);
+  border-color: var(--hud-gold);
+  background: rgb(var(--ns-gold-rgb) / 0.12);
+}
+#export-snapshot.is-dirty:hover {
+  background: rgb(var(--ns-gold-rgb) / 0.22);
+}
+#export-snapshot.is-dirty::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--hud-gold);
+  box-shadow: 0 0 0 1.5px var(--ns-bg-1, #1b1d22);
+  animation: save-pulse 1.4s ease-in-out infinite;
+}
+@keyframes save-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+/* Just exported / imported — green confirm, no dot */
+#export-snapshot.just-saved,
+#import-snapshot.just-saved {
+  color: var(--ns-green, #5dcaa5);
+  border-color: var(--ns-green, #5dcaa5);
+  background: rgb(var(--ns-green-rgb, 93 202 165) / 0.16);
+  opacity: 1;
+}
+#export-snapshot.just-saved::after {
+  display: none;
+}
+
+/* Category tabs — two columns, each label centered both axes */
+#palette-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--ns-space-1);
+}
+#palette-tabs .ns-hud-tab {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--ns-space-1);
+  text-align: left;
+  font-size: var(--hud-text-sm);
+}
+#palette-tabs .ns-hud-tab .tab-glyph {
+  flex: 0 0 auto;
+  width: 11px;
+  height: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  image-rendering: pixelated;
+  opacity: 0.95;
+}
+#palette-tabs .ns-hud-tab .tab-glyph svg {
+  width: 11px;
+  height: 11px;
+  overflow: visible;
+  display: block;
+}
+#palette-tabs .ns-hud-tab .tab-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1;
+}
+#palette-icons .ns-hud-hint {
+  text-align: center;
+}
+.ns-elements-head {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+/* divider removed between toggles & Elements — reclaim the gap it used to occupy */
+#side-panel .ns-hud-section {
+  padding-top: 0;
+}
+/* Palette scrolls; the hint stays pinned at the bottom of the panel */
+#side-panel .ns-hud-section {
+  min-height: 0;
+}
+#palette-icons {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  align-content: flex-start;
+}
+.palette-hint {
+  flex: 0 0 auto;
+  text-align: center;
+  margin-top: var(--ns-space-1);
+}
+
+/* ── Keyboard focus: contained gold ring for the editor's action buttons ──
+   The DS global :focus-visible (tokens/base.css) halos at ~7px with a 3px
+   offset + 4px outer ring — sized for full-page controls, it clips against
+   .ns-hud-panel's overflow:hidden and dwarfs the 18–22px chrome. Scope a
+   proportionate ring drawn INSIDE the box (negative offset) so it reads
+   crisply on the dark rail and never clips. Gold keeps it on the system's
+   focus convention. Palette tabs/slots and the align bar are mouse-only
+   <div>s (no tabindex) and are intentionally not in scope here. */
+#side-panel .ns-hud-toolbar .ns-hud-tool:focus-visible,
+#side-panel .ns-hud-io button:focus-visible {
+  outline: 2px solid var(--hud-gold);
+  outline-offset: -2px;
+  box-shadow: none;
+}

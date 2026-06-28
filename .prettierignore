@@ -1,4 +1,5 @@
 coverage
+components/scene-builder.js
 .changeset/*.md
 dist
 docs/reference/api

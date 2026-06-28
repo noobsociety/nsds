@@ -33,3 +33,15 @@ export const ResourceBars: Story = {
     </div>
   ),
 };
+
+export const Variants: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: 8, width: 240 }}>
+      <HUDBar variant="hp" value={38} max={40} />
+      <HUDBar variant="mp" value={19} max={30} />
+      <HUDBar variant="xp" value={120} max={400} label="XP 120 / 400" />
+      <HUDBar variant="stamina" value={24} max={40} />
+      <HUDBar variant="hp" value={32} max={40} label={false} />
+    </div>
+  ),
+};

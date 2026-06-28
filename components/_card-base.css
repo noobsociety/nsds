@@ -1,0 +1,99 @@
+/* NoobSociety DS — Shared card base styles
+   Import this in every .card.html after styles.css:
+   <link rel="stylesheet" href="../_card-base.css">
+   (adjust path depth as needed)
+   Never override these fundamentals in per-card <style> blocks —
+   extend them instead.
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--ns-bg-0);
+  padding: 24px 28px;
+  font-family: var(--ns-font-pixel);
+  color: var(--ns-ink);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: auto;
+}
+
+/* ── Section ─────────────────────────────────── */
+.card-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-label {
+  font-size: 7px;
+  color: var(--ns-ink-faint);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--ns-line-soft);
+}
+
+/* ── Layout helpers ──────────────────────────── */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+/* ── Swatch / chip ───────────────────────────── */
+.sw {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+}
+
+.chip {
+  width: 56px;
+  height: 40px;
+  border-radius: var(--ns-radius-sm, 4px);
+  border: 1px solid var(--ns-line);
+}
+
+.chip-lg {
+  width: 80px;
+  height: 56px;
+  border-radius: var(--ns-radius-sm, 4px);
+  border: 1px solid var(--ns-line);
+}
+
+/* ── Labels ──────────────────────────────────── */
+.tk {
+  font-size: 6px;
+  color: var(--ns-ink-faint);
+  white-space: nowrap;
+}
+.hex {
+  font-size: 6px;
+  color: var(--ns-ink-dim);
+  white-space: nowrap;
+}
+.sub {
+  font-size: 7px;
+  color: var(--ns-ink-dim);
+  white-space: nowrap;
+}

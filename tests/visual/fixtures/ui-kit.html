@@ -115,26 +115,41 @@
       </ul>
 
       <ul class="visual-kit__grid" aria-label="Quest card samples">
-        <li class="ns-quest-card ns-quest-card--done">
-          <span class="ns-quest-card__icon" aria-hidden="true">1</span>
+        <li class="ns-quest-card ns-quest-card--done" data-quest-status="done">
+          <div class="ns-quest-card__header">
+            <span class="ns-quest-card__icon" aria-hidden="true">1</span>
+            <div>
+              <p class="ns-quest-card__gate">Gate 1</p>
+              <p class="ns-quest-card__name">Foundation</p>
+            </div>
+          </div>
           <div class="ns-quest-card__body">
-            <p class="ns-quest-card__title">Gate 1 - Foundation</p>
             <p class="ns-quest-card__desc">Package surface holds.</p>
             <span class="ns-status-pill">HOLDS</span>
           </div>
         </li>
-        <li class="ns-quest-card ns-quest-card--active">
-          <span class="ns-quest-card__icon" aria-hidden="true">2</span>
+        <li class="ns-quest-card ns-quest-card--active" data-quest-status="active">
+          <div class="ns-quest-card__header">
+            <span class="ns-quest-card__icon" aria-hidden="true">2</span>
+            <div>
+              <p class="ns-quest-card__gate">Gate 2</p>
+              <p class="ns-quest-card__name">Runtime</p>
+            </div>
+          </div>
           <div class="ns-quest-card__body">
-            <p class="ns-quest-card__title">Gate 2 - Runtime</p>
             <p class="ns-quest-card__desc">Components stay typed.</p>
             <span class="ns-status-pill">BUILDING</span>
           </div>
         </li>
-        <li class="ns-quest-card ns-quest-card--locked">
-          <span class="ns-quest-card__icon" aria-hidden="true">3</span>
+        <li class="ns-quest-card ns-quest-card--locked" data-quest-status="locked">
+          <div class="ns-quest-card__header">
+            <span class="ns-quest-card__icon" aria-hidden="true">3</span>
+            <div>
+              <p class="ns-quest-card__gate">Gate 3</p>
+              <p class="ns-quest-card__name">Release</p>
+            </div>
+          </div>
           <div class="ns-quest-card__body">
-            <p class="ns-quest-card__title">Gate 3 - Release</p>
             <p class="ns-quest-card__desc">Future changes stay visible.</p>
             <span class="ns-status-pill">LATER</span>
           </div>
