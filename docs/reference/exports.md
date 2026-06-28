@@ -35,8 +35,8 @@ The `client` entry exposes renderer-neutral metadata for code that needs shared
 names without React: token references (`nsTokens`; `NS` is a deprecated alias),
 quest status metadata (`questStatus`), the RPG icon registries (`rpgIconNames`,
 `rpgIconGroups`, and per-group lists for weapons, elements, races, sizes,
-attack, skills, items, equip, menu, and emotes), and the registry's release and
-target markers (`nsClientRelease`, `nsClientTargets`).
+attack, skills, items, equip, skins, menu, and emotes), and the registry's
+release and target markers (`nsClientRelease`, `nsClientTargets`).
 
 ## CSS
 

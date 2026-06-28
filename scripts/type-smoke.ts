@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import type { RPGIconSkill } from '@noobsociety/nsds';
 import type { NSClientTarget, RPGIconName } from '@noobsociety/nsds/client';
 
 import {
@@ -10,7 +11,7 @@ import {
   QuestCard,
   SectionArrow,
 } from '@noobsociety/nsds';
-import { nsClientTargets, rpgIconNames } from '@noobsociety/nsds/client';
+import { nsClientTargets, rpgIconNames, rpgIconSkins } from '@noobsociety/nsds/client';
 
 const button: ReactElement = Button({ children: 'Play' });
 const feature: ReactElement = FeatureCard({
@@ -33,6 +34,7 @@ const arrow: ReactElement = SectionArrow({
 });
 const target: NSClientTarget = nsClientTargets[0];
 const iconName: RPGIconName = rpgIconNames[0];
+const skillName: RPGIconSkill = 'passive';
 void feature;
 void quest;
 void hudBar;
@@ -41,3 +43,5 @@ void hudLabel;
 void arrow;
 void target;
 void iconName;
+void skillName;
+void rpgIconSkins;

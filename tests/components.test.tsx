@@ -22,6 +22,7 @@ import {
   questStatus,
   rpgIconGroups,
   rpgIconNames,
+  rpgIconSkins,
 } from '../client/index.js';
 
 describe('Button', () => {
@@ -212,6 +213,8 @@ describe('client registries', () => {
     });
     expect(rpgIconGroups.weapons).toContain('sword');
     expect(rpgIconGroups.skills).toContain('passive');
+    expect(rpgIconGroups.skins).toBe(rpgIconSkins);
+    expect(rpgIconSkins).toEqual(['hat', 'emblem', 'cape', 'badge', 'boots']);
     expect(rpgIconGroups.emotes).toContain('emote-tysm');
     expect(Object.keys(rpgIconGroups)).toHaveLength(11);
     expect(rpgIconNames).toHaveLength(68);

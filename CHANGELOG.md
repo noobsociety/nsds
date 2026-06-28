@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+- Exported the standalone `rpgIconSkins` client registry and `RPGIconSkill` root type so the
+  documented RPG icon registry surface matches the generated API reference.
+
 ## [0.4.1] - 2026-06-28
 
 ### Added

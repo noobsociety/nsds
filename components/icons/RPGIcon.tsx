@@ -13,6 +13,7 @@ export type {
   RPGIconName,
   RPGIconRace,
   RPGIconSize,
+  RPGIconSkill,
   RPGIconSkin,
   RPGIconWeapon,
 } from './registry.js';

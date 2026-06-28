@@ -40,6 +40,7 @@
 - [RPGIconName](type-aliases/RPGIconName.md)
 - [RPGIconRace](type-aliases/RPGIconRace.md)
 - [RPGIconSize](type-aliases/RPGIconSize.md)
+- [RPGIconSkill](type-aliases/RPGIconSkill.md)
 - [RPGIconSkin](type-aliases/RPGIconSkin.md)
 - [RPGIconWeapon](type-aliases/RPGIconWeapon.md)
 

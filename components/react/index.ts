@@ -32,6 +32,7 @@ export type {
   RPGIconProps,
   RPGIconRace,
   RPGIconSize,
+  RPGIconSkill,
   RPGIconSkin,
   RPGIconWeapon,
 } from '../icons/RPGIcon.js';

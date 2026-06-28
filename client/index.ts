@@ -11,6 +11,7 @@ export {
   rpgIconRaces,
   rpgIconSizes,
   rpgIconSkills,
+  rpgIconSkins,
   rpgIconWeapons,
   rpgIconNames as icons,
 } from '../components/icons/registry.js';
@@ -24,6 +25,7 @@ export type {
   RPGIconName,
   RPGIconRace,
   RPGIconSize,
+  RPGIconSkill,
   RPGIconSkin,
   RPGIconWeapon,
 } from '../components/icons/registry.js';
