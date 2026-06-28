@@ -28,6 +28,7 @@
 - [rpgIconRaces](variables/rpgIconRaces.md)
 - [rpgIconSizes](variables/rpgIconSizes.md)
 - [rpgIconSkills](variables/rpgIconSkills.md)
+- [rpgIconSkins](variables/rpgIconSkins.md)
 - [rpgIconWeapons](variables/rpgIconWeapons.md)
 
 ## References
@@ -89,6 +90,12 @@ Re-exports [RPGIconRace](../index/type-aliases/RPGIconRace.md)
 ### RPGIconSize
 
 Re-exports [RPGIconSize](../index/type-aliases/RPGIconSize.md)
+
+***
+
+### RPGIconSkill
+
+Re-exports [RPGIconSkill](../index/type-aliases/RPGIconSkill.md)
 
 ***
 
