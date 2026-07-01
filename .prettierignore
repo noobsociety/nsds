@@ -1,9 +1,13 @@
 coverage
+.sync-src
+NoobSociety Design System
+NoobSociety Design System.zip
 components/scene-builder.js
 .changeset/*.md
 dist
 docs/reference/api
 node_modules
+playwright-report
 package-lock.json
 storybook-static
 test-results

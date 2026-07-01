@@ -2,6 +2,8 @@ import type { ReactElement } from 'react';
 import type { RPGIconSkill } from '@noobsociety/nsds';
 import type { NSClientTarget, RPGIconName } from '@noobsociety/nsds/client';
 
+import heroAvatarUrl from '@noobsociety/nsds/assets/hero-avatar.svg';
+import sceneBackgroundUrl from '@noobsociety/nsds/assets/scene-bg.png';
 import {
   Button,
   FeatureCard,
@@ -44,4 +46,6 @@ void arrow;
 void target;
 void iconName;
 void skillName;
+void (heroAvatarUrl satisfies string);
+void (sceneBackgroundUrl satisfies string);
 void rpgIconSkins;

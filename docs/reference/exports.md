@@ -9,6 +9,7 @@
 | `@noobsociety/nsds/styles`                    | Full CSS entry                                         |
 | `@noobsociety/nsds/styles.css`                | CSS entry compatibility alias                          |
 | `@noobsociety/nsds/tokens/*`                  | Individual token CSS files                             |
+| `@noobsociety/nsds/assets/*`                  | Typed bundled Scene Builder imagery                    |
 | `@noobsociety/nsds/primitives`                | Component primitive CSS                                |
 | `@noobsociety/nsds/components/primitives.css` | Primitive CSS compatibility alias                      |
 | `@noobsociety/nsds/package.json`              | Package metadata                                       |
@@ -45,4 +46,13 @@ imports.
 
 ```tsx
 import '@noobsociety/nsds/styles';
+```
+
+## Assets
+
+Scene Builder imagery is available through typed asset exports for bundlers that
+resolve package asset URLs:
+
+```ts
+import sceneBackgroundUrl from '@noobsociety/nsds/assets/scene-bg.png';
 ```

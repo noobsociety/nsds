@@ -21,7 +21,18 @@ function nsdsDistAssets() {
         'components/hud-editor.css',
         'components/scene-builder.css',
         'components/scene-builder.js',
-        'components/_card-base.css',
+      ]) {
+        await cp(resolve(__dirname, file), resolve(dist, file));
+      }
+
+      await cp(resolve(__dirname, '_card-base.css'), resolve(dist, '_card-base.css'));
+
+      await mkdir(resolve(dist, 'assets'), { recursive: true });
+      for (const file of [
+        'assets/scene-bg.png',
+        'assets/scene-bg.png.d.ts',
+        'assets/hero-avatar.svg',
+        'assets/hero-avatar.svg.d.ts',
       ]) {
         await cp(resolve(__dirname, file), resolve(dist, file));
       }

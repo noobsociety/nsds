@@ -88,6 +88,8 @@ try {
     [
       "import type { ButtonProps, RPGIconName, RPGIconSkill } from '@noobsociety/nsds';",
       "import type { NSClientTarget } from '@noobsociety/nsds/client';",
+      "import heroAvatarUrl from '@noobsociety/nsds/assets/hero-avatar.svg';",
+      "import sceneBackgroundUrl from '@noobsociety/nsds/assets/scene-bg.png';",
       "import { Button, RPGIcon } from '@noobsociety/nsds';",
       "import { nsClientTargets, rpgIconSkins } from '@noobsociety/nsds/client';",
       "import preset from '@noobsociety/nsds/tailwind';",
@@ -101,6 +103,8 @@ try {
       'RPGIcon({ name: iconName });',
       'void skillName;',
       'void target;',
+      'void (heroAvatarUrl satisfies string);',
+      'void (sceneBackgroundUrl satisfies string);',
       'void rpgIconSkins;',
       'void preset.theme;',
       '',

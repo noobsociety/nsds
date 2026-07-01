@@ -22,7 +22,20 @@ function exists(path) {
   return existsSync(join(root, path));
 }
 
-function walk(dir, ignored = new Set(['.git', 'node_modules', 'storybook-static'])) {
+function walk(
+  dir,
+  ignored = new Set([
+    '.git',
+    '.sync-src',
+    'coverage',
+    'dist',
+    'NoobSociety Design System',
+    'node_modules',
+    'playwright-report',
+    'storybook-static',
+    'test-results',
+  ]),
+) {
   const abs = join(root, dir);
   if (!existsSync(abs)) return [];
 
@@ -98,6 +111,11 @@ const requiredFiles = [
   'tests/visual/public-surface.spec.ts-snapshots/component-specimen-linux.png',
   'tests/visual/public-surface.spec.ts-snapshots/ui-kit-darwin.png',
   'tests/visual/public-surface.spec.ts-snapshots/ui-kit-linux.png',
+  '_card-base.css',
+  'assets/hero-avatar.svg',
+  'assets/hero-avatar.svg.d.ts',
+  'assets/scene-bg.png',
+  'assets/scene-bg.png.d.ts',
   'client/index.ts',
   'components/Showcase.stories.tsx',
   'components/buttons/Button.tsx',
@@ -130,6 +148,11 @@ const requiredFiles = [
   'dist/tailwind/preset.cjs',
   'dist/tailwind/preset.d.cts',
   'dist/styles.css',
+  'dist/_card-base.css',
+  'dist/assets/hero-avatar.svg',
+  'dist/assets/hero-avatar.svg.d.ts',
+  'dist/assets/scene-bg.png',
+  'dist/assets/scene-bg.png.d.ts',
   'dist/tokens/colors.css',
   'dist/tokens/typography.css',
   'dist/tokens/hud.css',
@@ -339,7 +362,7 @@ const internalArtifactPatterns = [
   /^support\.js$/,
   /^_lab\//,
   /^references\//,
-  /^assets\//,
+  /^assets\/(?!(?:hero-avatar\.svg|hero-avatar\.svg\.d\.ts|scene-bg\.png|scene-bg\.png\.d\.ts)$)/,
   /^guidelines\/.*\.card\.html$/,
   /^components\/.*\.(?:prompt\.md|card\.html)$/,
 ];

@@ -1,5 +1,8 @@
 .DS_Store
 .thumbnail
+.sync-src/
+NoobSociety Design System/
+NoobSociety Design System.zip
 node_modules/
 dist/
 build/

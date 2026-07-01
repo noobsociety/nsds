@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- Added the bundled Scene Builder assets (`scene-bg.png` and `hero-avatar.svg`), asset URL
+  declarations, the `--ns-world-*` tile-grid tokens, and an `@noobsociety/nsds/assets/*` export so
+  editor surfaces can resolve their default imagery from the package.
+
+### Changed
+
+- Moved the shared card-specimen base stylesheet to the project-root `_card-base.css` source and
+  build output, matching the authoring project layout.
+
 ## [0.4.2] - 2026-06-28
 
 ### Fixed
@@ -21,7 +32,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Expanded `RPGIcon` to 68 pixel-art glyphs across 11 groups, adding the attack, skills, items, equip, skins, menu, and emote categories with matching name, group, and type registries on `@noobsociety/nsds` and `@noobsociety/nsds/client`.
 - Added `HUDBar` bar variants (`hp`, `mp`, `xp`, `stamina`) with optional or hidden labels and segmented fills.
 - Added the `--hud-edit-*` editor-chrome token group, plus HUD text-scale, stamina, minimap-path, grid-overlay, and 24×24 canvas/grid tokens, to `tokens/hud.css`.
-- Added `components/hud-editor.css` (token-driven in-game HUD editor chrome) to the CSS entry point, and shipped `components/scene-builder.css`, `components/scene-builder.js`, and `components/_card-base.css` as design-system source.
+- Added `components/hud-editor.css` (token-driven in-game HUD editor chrome) to the CSS entry point, and shipped `components/scene-builder.css`, `components/scene-builder.js`, and `_card-base.css` as design-system source.
 
 ### Changed
 

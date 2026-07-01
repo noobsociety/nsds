@@ -33,6 +33,14 @@
   --ns-header-h: 4rem; /* 64px — sticky header */
   --ns-section-min: calc(100svh - var(--ns-header-h));
 
+  /* ── World grid (in-game tile space) ──────────────────────────── */
+  --ns-tile: 24px; /* canonical tile (= --ns-space-6) */
+  --ns-world-cols: 20; /* @kind other */
+  --ns-world-rows: 15; /* @kind other */
+  --ns-world-zones: 3; /* @kind other */
+  --ns-world-w: calc(var(--ns-tile) * var(--ns-world-cols)); /* 480px */
+  --ns-world-h: calc(var(--ns-tile) * var(--ns-world-rows)); /* 360px */
+
   /* ── Radii ────────────────────────────────────────────────────── */
   --ns-radius-sm: 0.25rem; /* 4px  */
   --ns-radius-md: 0.5rem; /* 8px  */
