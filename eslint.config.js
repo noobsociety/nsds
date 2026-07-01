@@ -28,9 +28,12 @@ export default [
     ignores: [
       'components/scene-builder.js',
       'coverage/**',
+      '.sync-src/**',
       'dist/**',
       'docs/reference/api/**',
       'node_modules/**',
+      'NoobSociety Design System/**',
+      'playwright-report/**',
       'storybook-static/**',
       'test-results/**',
     ],

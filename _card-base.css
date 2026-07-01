@@ -1,7 +1,8 @@
-/* NoobSociety DS — Shared card base styles
-   Import this in every .card.html after styles.css:
-   <link rel="stylesheet" href="../_card-base.css">
-   (adjust path depth as needed)
+/* NoobSociety DS — Shared card-specimen base styles (canonical · project root)
+   The single base stylesheet for every .card.html DS-tab specimen.
+   Import it after styles.css, at the depth of the card's folder:
+     guidelines/*.card.html          →  <link rel="stylesheet" href="../_card-base.css">
+     components/<group>/*.card.html   →  <link rel="stylesheet" href="../../_card-base.css">
    Never override these fundamentals in per-card <style> blocks —
    extend them instead.
 */

@@ -89,6 +89,7 @@ export default {
 | `@noobsociety/nsds/styles`                    | Full CSS entry                                         |
 | `@noobsociety/nsds/styles.css`                | CSS entry compatibility alias                          |
 | `@noobsociety/nsds/tokens/*`                  | Individual token CSS files                             |
+| `@noobsociety/nsds/assets/*`                  | Typed bundled Scene Builder imagery                    |
 | `@noobsociety/nsds/primitives`                | Component primitive CSS                                |
 | `@noobsociety/nsds/components/primitives.css` | Component primitive CSS compatibility alias            |
 
@@ -162,6 +163,7 @@ npm run release:dry-run
 | Path          | Purpose                                                                |
 | ------------- | ---------------------------------------------------------------------- |
 | `styles.css`  | Public CSS entry point                                                 |
+| `assets/`     | Bundled Scene Builder imagery used by editor surfaces                  |
 | `client/`     | Renderer-neutral client registry entry point                           |
 | `tokens/`     | CSS custom properties for color, type, spacing, motion, and HUD values |
 | `components/` | TypeScript React source, primitive CSS, and Storybook stories          |

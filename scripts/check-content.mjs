@@ -2,7 +2,17 @@ import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '..');
-const ignoredDirs = new Set(['.git', 'dist', 'node_modules', 'storybook-static']);
+const ignoredDirs = new Set([
+  '.git',
+  '.sync-src',
+  'coverage',
+  'dist',
+  'NoobSociety Design System',
+  'node_modules',
+  'playwright-report',
+  'storybook-static',
+  'test-results',
+]);
 const checkedExtensions = new Set(['.md', '.mdx', '.yml', '.yaml', '.json', '.jsonc']);
 const checkedNames = new Set(['package.json']);
 const failures = [];

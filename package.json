@@ -114,6 +114,10 @@
     "./styles": "./dist/styles.css",
     "./styles.css": "./dist/styles.css",
     "./tokens/*": "./dist/tokens/*",
+    "./assets/*": {
+      "types": "./dist/assets/*.d.ts",
+      "default": "./dist/assets/*"
+    },
     "./primitives": "./dist/components/primitives.css",
     "./components/primitives.css": "./dist/components/primitives.css",
     "./package.json": "./package.json"
