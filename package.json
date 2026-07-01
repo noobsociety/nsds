@@ -1,6 +1,6 @@
 {
   "name": "@noobsociety/nsds",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "NoobSociety Design System — Monokai dark tokens, client registries, Tailwind preset, and pixel-art React components",
   "keywords": [
     "design-system",
